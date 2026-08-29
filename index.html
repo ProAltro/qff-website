@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Qiskit Fall Fest 2026 — 3D Wave Interference Mesh</title>
+  <title>Qiskit Fall Fest 2026 — BITS Pilani × IBM Quantum</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -24,6 +24,7 @@
 
       <nav class="mesh-nav" id="mainNav">
         <button class="nav-link active" onclick="switchWaveTab('home')">Home</button>
+        <button class="nav-link" onclick="switchWaveTab('about')">About</button>
         <button class="nav-link" onclick="switchWaveTab('schedule')">Schedule</button>
         <button class="nav-link" onclick="switchWaveTab('hackathon')">Hackathon</button>
         <button class="nav-link" onclick="switchWaveTab('community')">Community</button>
@@ -50,7 +51,7 @@
       <div class="hero-center">
         <img src="/illustrations/badge-pink.svg" alt="Qiskit Fall Fest 2026 Badge" class="hero-emblem">
         <div class="pill-badge">GLOBAL STUDENT QUANTUM HACKATHON</div>
-        <h1 class="hero-title">DISCOVER<br><span class="gradient-text">SUPERPOSITION</span></h1>
+        <h1 class="hero-title">DISCOVER<br><span id="quantum-word" class="gradient-text">SUPERPOSITION</span></h1>
         <p class="hero-lead">An open 3-week quantum computing festival for collegiate builders. Write real code, explore quantum algorithms, and compete for $15,000 in prizes.</p>
         <p class="host-line">Hosted by <strong>BITS Pilani</strong>, Pilani Campus</p>
 
@@ -79,6 +80,76 @@
           <div class="card-num">03</div>
           <h3>$15k Prize Pool</h3>
           <p>Win cash awards, research compute grants, and mentorship fast-tracks across three challenge tracks.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: ABOUT -->
+    <section id="tab-about" class="wave-tab">
+      <div class="view-header">
+        <div class="pill-badge">ABOUT THE FESTIVAL</div>
+        <h2>THE QUANTUM FRONTIER</h2>
+        <p>Empowering the next generation of quantum researchers and algorithmic architects.</p>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="stats-matrix">
+        <div class="stat-box">
+          <div class="stat-number">133</div>
+          <div class="stat-label">Qubits on IBM Heron</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">3 Weeks</div>
+          <div class="stat-label">Sprints & Mentorship</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">$15,000</div>
+          <div class="stat-label">Prize & Compute Pool</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">1,500+</div>
+          <div class="stat-label">Global Participants</div>
+        </div>
+      </div>
+
+      <!-- Two-Column Narrative Cards -->
+      <div class="about-grid-duo">
+        <div class="about-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCard(this)">
+          <span class="card-tag">GLOBAL INITIATIVE</span>
+          <h3>What is Qiskit Fall Fest?</h3>
+          <p><strong>Qiskit Fall Fest</strong> is an international celebration of quantum computation sponsored by <strong>IBM Quantum</strong>. Designed for undergraduate, graduate, and high-school innovators, it delivers a university-tailored festival format featuring hands-on technical workshops, direct access to cloud quantum hardware, and real-world algorithmic challenges.</p>
+          <p>Participants explore the cutting edge with <strong>Qiskit 1.0</strong> and Qiskit Runtime Primitives (Estimator & Sampler), learning how to write scalable quantum circuits that mitigate noise and prepare for quantum utility.</p>
+        </div>
+
+        <div class="about-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCard(this)">
+          <span class="card-tag">INSTITUTE OF EMINENCE</span>
+          <h3>Hosted by BITS Pilani</h3>
+          <p><strong>Birla Institute of Technology and Science, Pilani</strong> (Pilani Campus) is recognized as one of India's premier technological and research universities with an illustrious history of engineering excellence.</p>
+          <p>The Pilani campus spearheads interdisciplinary quantum research across theoretical physics, quantum information, and high-performance quantum algorithms. By hosting Qiskit Fall Fest 2026, BITS Pilani connects collegiate developers across the globe with IBM Quantum scientists and hardware backends.</p>
+        </div>
+      </div>
+
+      <!-- BITS Pilani Quantum Ecosystem Spotlight -->
+      <div class="bits-spotlight-card">
+        <span class="card-tag">CAMPUS SPOTLIGHT</span>
+        <h3>Quantum Computing at BITS Pilani</h3>
+        <p>
+          The Department of Physics and Computer Science at BITS Pilani fosters a vibrant quantum ecosystem. From student-led research in fault-tolerant quantum error correction to tensor network simulations and quantum machine learning, the institute provides a launchpad for deep-tech innovation.
+        </p>
+
+        <div class="bits-topics-grid">
+          <div class="topic-chip">
+            <strong>Quantum Information Theory</strong>
+            <span>Investigating entanglement witnesses, quantum discord, and non-local correlations.</span>
+          </div>
+          <div class="topic-chip">
+            <strong>Superconducting Hardware Control</strong>
+            <span>Optimizing microwave pulse sequences and dynamic circuit execution on IBM QPUs.</span>
+          </div>
+          <div class="topic-chip">
+            <strong>Quantum Machine Learning</strong>
+            <span>Exploring parameterized variational quantum circuits for chemistry and optimization.</span>
+          </div>
         </div>
       </div>
     </section>
@@ -199,11 +270,11 @@
 
   <footer class="mesh-footer">
     <div class="footer-left">
-      <img src="/brand/ibm-quantum-white.png" alt="IBM Quantum" class="ibm-footer-logo">
       <span>Qiskit Fall Fest 2026</span>
     </div>
     <div class="footer-right">
       <span>Hosted by BITS Pilani, Pilani Campus</span>
+      <span class="footer-sponsor">In collaboration with IBM Quantum</span>
     </div>
   </footer>
 

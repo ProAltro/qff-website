@@ -24,7 +24,7 @@ function initWaveMesh() {
   // Plane Geometry with high density vertices
   const geometry = new THREE.PlaneGeometry(28, 20, 70, 50);
 
-  // Wireframe material with custom vertex color / glow
+  // Wireframe material with restrained Heron accent
   const material = new THREE.MeshBasicMaterial({
     color: 0x00F5D4,
     wireframe: true,
@@ -118,6 +118,7 @@ function toggleMobileMenu() {
   const toggle = document.getElementById('menuToggle');
   if (nav && toggle) {
     nav.classList.toggle('open');
+    toggle.classList.toggle('open');
     toggle.classList.toggle('active');
   }
 }
@@ -127,6 +128,7 @@ function closeMobileMenu() {
   const toggle = document.getElementById('menuToggle');
   if (nav && toggle) {
     nav.classList.remove('open');
+    toggle.classList.remove('open');
     toggle.classList.remove('active');
   }
 }
@@ -138,7 +140,7 @@ function switchWaveTab(tabName) {
   const links = document.querySelectorAll('.nav-link');
   links.forEach(l => l.classList.remove('active'));
 
-  const tabNames = ['home', 'schedule', 'hackathon', 'community'];
+  const tabNames = ['home', 'about', 'schedule', 'hackathon', 'community'];
   const index = tabNames.indexOf(tabName);
   if (index !== -1 && links[index]) {
     links[index].classList.add('active');
@@ -153,6 +155,62 @@ function switchWaveTab(tabName) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
+
+// DYNAMIC QUANTUM HERO WORD CYCLER
+const QUANTUM_WORDS = [
+  'SUPERPOSITION',
+  'ENTANGLEMENT',
+  'INTERFERENCE'
+];
+// Every placeholder is one character wide, keeping the headline footprint stable while it cycles.
+const GLITCH_CHARS = ['0', '1', 'Ψ', 'Φ', '⊗', 'Δ', 'Ω', 'Σ', 'ħ', 'ψ'];
+
+let currentWordIndex = 0;
+let isCycling = false;
+
+function initQuantumWordCycler() {
+  const el = document.getElementById('quantum-word');
+  if (!el) return;
+
+  setInterval(() => {
+    if (isCycling) return;
+    isCycling = true;
+    currentWordIndex = (currentWordIndex + 1) % QUANTUM_WORDS.length;
+    const targetWord = QUANTUM_WORDS[currentWordIndex];
+
+    // Phase 1: Exit transition with blur & float upward
+    el.classList.add('cycle-exit');
+
+    setTimeout(() => {
+      // Phase 2: Quantum state character scramble & resolve
+      let frame = 0;
+      const totalFrames = 9;
+      el.classList.remove('cycle-exit');
+      el.classList.add('cycle-enter', 'scramble');
+
+      const scrambleInterval = setInterval(() => {
+        frame++;
+        if (frame >= totalFrames) {
+          clearInterval(scrambleInterval);
+          el.textContent = targetWord;
+          el.classList.remove('cycle-enter', 'scramble');
+          isCycling = false;
+        } else {
+          let scrambled = '';
+          for (let i = 0; i < targetWord.length; i++) {
+            if (i < (frame / totalFrames) * targetWord.length) {
+              scrambled += targetWord[i];
+            } else {
+              scrambled += GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+            }
+          }
+          el.textContent = scrambled;
+        }
+      }, 35);
+    }, 280);
+  }, 3200);
+}
+
 // Registration
 function handleWaveRegister() {
   const input = document.getElementById('waveEmail');
@@ -172,4 +230,7 @@ function handleWaveRegister() {
   input.value = '';
 }
 
-window.addEventListener('DOMContentLoaded', initWaveMesh);
+window.addEventListener('DOMContentLoaded', () => {
+  initWaveMesh();
+  initQuantumWordCycler();
+});
