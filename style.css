@@ -275,7 +275,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-  min-width: 13ch;
+  width: 13ch;
   white-space: nowrap;
   text-align: center;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease, filter 0.28s ease;
@@ -283,19 +283,14 @@ body {
 }
 
 .gradient-text.cycle-exit {
-  opacity: 0;
-  transform: translateY(-16px) scale(0.95);
-  filter: blur(8px);
-}
-
-.gradient-text.cycle-enter {
-  opacity: 0;
-  transform: translateY(16px) scale(1.05);
-  filter: blur(8px);
+  opacity: 0.35;
+  transform: translateX(-18px);
+  filter: blur(3px);
 }
 
 .gradient-text.scramble {
   filter: drop-shadow(0 0 20px rgba(255, 126, 182, 0.85));
+  text-shadow: 2px 0 rgba(0, 245, 212, 0.5), -2px 0 rgba(255, 126, 182, 0.45);
 }
 
 .hero-lead {
@@ -852,7 +847,10 @@ body {
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.gradient-text.scramble { filter: drop-shadow(0 0 20px rgba(0, 245, 212, 0.7)); }
+.gradient-text.scramble {
+  filter: drop-shadow(0 0 20px rgba(0, 245, 212, 0.7));
+  text-shadow: 2px 0 rgba(0, 245, 212, 0.5), -2px 0 rgba(255, 126, 182, 0.45);
+}
 .host-line strong { color: var(--teal-glow); }
 .btn-solid:hover {
   background: var(--teal-glow);

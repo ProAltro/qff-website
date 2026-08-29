@@ -178,27 +178,27 @@ function initQuantumWordCycler() {
     currentWordIndex = (currentWordIndex + 1) % QUANTUM_WORDS.length;
     const targetWord = QUANTUM_WORDS[currentWordIndex];
 
-    // Phase 1: Exit transition with blur & float upward
+    // Slide left briefly, then return while the letters resolve into their new state.
     el.classList.add('cycle-exit');
 
     setTimeout(() => {
-      // Phase 2: Quantum state character scramble & resolve
       let frame = 0;
-      const totalFrames = 9;
+      const totalFrames = 18;
       el.classList.remove('cycle-exit');
-      el.classList.add('cycle-enter', 'scramble');
+      el.classList.add('scramble');
 
       const scrambleInterval = setInterval(() => {
         frame++;
         if (frame >= totalFrames) {
           clearInterval(scrambleInterval);
           el.textContent = targetWord;
-          el.classList.remove('cycle-enter', 'scramble');
+          el.classList.remove('scramble');
           isCycling = false;
         } else {
+          const settledCharacters = Math.floor((frame / totalFrames) * targetWord.length);
           let scrambled = '';
           for (let i = 0; i < targetWord.length; i++) {
-            if (i < (frame / totalFrames) * targetWord.length) {
+            if (i < settledCharacters) {
               scrambled += targetWord[i];
             } else {
               scrambled += GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
@@ -206,7 +206,7 @@ function initQuantumWordCycler() {
           }
           el.textContent = scrambled;
         }
-      }, 35);
+      }, 42);
     }, 280);
   }, 3200);
 }
