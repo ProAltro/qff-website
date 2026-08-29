@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qiskit Fall Fest 2026 — 3D Wave Interference Mesh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Fullscreen 3D Wave Mesh Background -->
+  <div id="wave-canvas-container"></div>
+
+  <!-- Header -->
+  <header class="mesh-header">
+    <div class="brand">
+      <span class="brand-title">QISKIT FALL FEST <strong>2026</strong></span>
+    </div>
+
+    <nav class="mesh-nav">
+      <button class="nav-link active" onclick="switchWaveTab('home')">Home</button>
+      <button class="nav-link" onclick="switchWaveTab('schedule')">Schedule</button>
+      <button class="nav-link" onclick="switchWaveTab('hackathon')">Hackathon</button>
+      <button class="nav-link" onclick="switchWaveTab('community')">Community</button>
+    </nav>
+
+    <div class="mesh-cta">
+      <button class="glass-pill-btn" onclick="switchWaveTab('community')">Join Event ↗</button>
+    </div>
+  </header>
+
+  <main class="mesh-main">
+    <!-- TAB 1: HOME -->
+    <section id="tab-home" class="wave-tab active">
+      <div class="hero-center">
+        <div class="pill-badge">GLOBAL STUDENT QUANTUM HACKATHON</div>
+        <h1 class="hero-title">DISCOVER<br><span class="gradient-text">SUPERPOSITION</span></h1>
+        <p class="hero-lead">An open 3-week quantum computing festival for collegiate builders. Write real code, explore quantum algorithms, and compete for $15,000 in prizes.</p>
+
+        <div class="hero-btns">
+          <button class="btn-solid" onclick="switchWaveTab('community')">Register Free ↗</button>
+          <button class="btn-glass" onclick="switchWaveTab('schedule')">View Schedule</button>
+        </div>
+
+        <div class="wave-interact-tip">
+          <span>~ MOVE CURSOR TO DISTURB 3D WAVE MESH ~</span>
+        </div>
+      </div>
+
+      <div class="cards-trio">
+        <div class="trio-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCard(this)">
+          <div class="card-num">01</div>
+          <h3>Learn with Experts</h3>
+          <p>Interactive workshops led by IBM Quantum researchers covering algorithms, error mitigation, and Qiskit 1.0.</p>
+        </div>
+        <div class="trio-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCard(this)">
+          <div class="card-num">02</div>
+          <h3>133-Qubit Access</h3>
+          <p>Execute your final hackathon circuits on real superconducting hardware via dedicated cloud queues.</p>
+        </div>
+        <div class="trio-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCard(this)">
+          <div class="card-num">03</div>
+          <h3>$15k Prize Pool</h3>
+          <p>Win cash awards, research compute grants, and mentorship fast-tracks across three challenge tracks.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: SCHEDULE -->
+    <section id="tab-schedule" class="wave-tab">
+      <div class="view-header">
+        <h2>SCHEDULE OF EVENTS</h2>
+        <p>Three weeks of keynotes, live tutorials, and project sprint milestones.</p>
+      </div>
+
+      <div class="glass-timeline">
+        <div class="glass-event">
+          <div class="date-tag">OCT 14</div>
+          <div class="event-info">
+            <span class="event-badge">OPENING</span>
+            <h3>Global Kickoff Keynote & Hardware Briefing</h3>
+            <p>Welcome address and walkthrough of available quantum backends.</p>
+          </div>
+        </div>
+
+        <div class="glass-event">
+          <div class="date-tag">OCT 17</div>
+          <div class="event-info">
+            <span class="event-badge">WORKSHOP</span>
+            <h3>Hands-on Quantum Algorithm Design</h3>
+            <p>Interactive Jupyter lab on crafting circuits using Qiskit Runtime Primitives.</p>
+          </div>
+        </div>
+
+        <div class="glass-event">
+          <div class="date-tag">OCT 23</div>
+          <div class="event-info">
+            <span class="event-badge">HACKATHON</span>
+            <h3>Problem Statements Released</h3>
+            <p>Hackathon opens globally. Teams start building and submitting circuits to QPU queues.</p>
+          </div>
+        </div>
+
+        <div class="glass-event">
+          <div class="date-tag">NOV 01</div>
+          <div class="event-info">
+            <span class="event-badge">DEADLINE</span>
+            <h3>Project Submissions Lock</h3>
+            <p>GitHub repository and demonstration video submissions close.</p>
+          </div>
+        </div>
+
+        <div class="glass-event">
+          <div class="date-tag">NOV 04</div>
+          <div class="event-info">
+            <span class="event-badge">FINALE</span>
+            <h3>Awards Ceremony & Showcase</h3>
+            <p>Top teams present live benchmarks and winners are announced.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: HACKATHON -->
+    <section id="tab-hackathon" class="wave-tab">
+      <div class="view-header">
+        <h2>HACKATHON TRACKS</h2>
+        <p>Choose your direction and build with teams of up to 4 students.</p>
+      </div>
+
+      <div class="track-cards-grid">
+        <div class="track-glass-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCard(this)">
+          <div class="track-price">$5,000 PRIZE</div>
+          <h3>Quantum Algorithms</h3>
+          <p>Design algorithms that solve complex optimization, chemistry, or mathematics challenges with optimal circuit depth.</p>
+        </div>
+
+        <div class="track-glass-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCard(this)">
+          <div class="track-price">$5,000 PRIZE</div>
+          <h3>Error Mitigation</h3>
+          <p>Implement innovative zero-noise extrapolation and twirling techniques to boost fidelity on noisy quantum processors.</p>
+        </div>
+
+        <div class="track-glass-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCard(this)">
+          <div class="track-price">$5,000 PRIZE</div>
+          <h3>Developer Tools</h3>
+          <p>Create visual simulators, interactive developer tools, or open-source educational games for the quantum ecosystem.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: COMMUNITY -->
+    <section id="tab-community" class="wave-tab">
+      <div class="view-header">
+        <h2>COMMUNITY GATEWAY</h2>
+        <p>Join our Discord server to connect with participants and find teammates.</p>
+      </div>
+
+      <div class="community-box">
+        <div class="comm-inner-card">
+          <h3>Qiskit Discord Hub</h3>
+          <p>Over 1,500 students and researchers are already sharing ideas and forming teams.</p>
+          <a href="https://discord.gg" target="_blank" class="btn-solid" style="display:inline-block; text-decoration:none;">Open Discord Server ↗</a>
+        </div>
+
+        <div class="comm-inner-card">
+          <h3>Fast Email Registration</h3>
+          <p>Enter your student email to claim your participant badge and access key.</p>
+          <div class="input-row">
+            <input type="email" id="waveEmail" placeholder="student@university.edu">
+            <button class="btn-solid" onclick="handleWaveRegister()">Register</button>
+          </div>
+          <div id="waveFeedback" class="feedback-text"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mesh-footer">
+    <span>Qiskit Fall Fest 2026</span>
+    <span>IBM Quantum Research Collaborative</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
