@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QFF // 2026 QUANTUM ASSEMBLY TERMINAL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="crt">
+  <!-- System Status Topline -->
+  <header class="term-header">
+    <div class="status-stream">
+      <span class="pulse-dot"></span>
+      <span class="sys-tag">SYS://IBM_HERON_R2</span>
+      <span class="sys-divider">|</span>
+      <span>STATUS: <strong>ONLINE_EXECUTION</strong></span>
+      <span class="sys-divider">|</span>
+      <span>2Q_ERROR: <strong>0.14%</strong></span>
+      <span class="sys-divider">|</span>
+      <span>SHOTS_QUEUED: <strong>81,920</strong></span>
+      <span class="sys-divider">|</span>
+      <span>CALIBRATION: <strong>OCT_2026</strong></span>
+    </div>
+
+    <div class="cli-masthead">
+      <pre class="ascii-logo">
+ ██████╗ ███████╗███████╗    ██████╗  ██████╗ ██████╗  ██████╗ 
+██╔═══██╗██╔════╝██╔════╝    ╚════██╗██╔═████╗╚════██╗██╔════╝ 
+██║   ██║█████╗  █████╗       █████╔╝██║██╔██║ █████╔╝███████╗ 
+██║▄▄ ██║██╔══╝  ██╔══╝      ██╔═══╝ ████╔╝██║██╔═══╝ ██╔═══██╗
+╚██████╔╝██║     ██║         ███████╗╚██████╔╝███████╗╚██████╔╝
+ ╚══▀▀═╝ ╚═╝     ╚═╝         ╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝ 
+[ QISKIT FALL FESTIVAL // OPEN UTILITY COMPUTE SPRINT ]
+      </pre>
+    </div>
+
+    <!-- Navigation Command Bar -->
+    <nav class="term-nav">
+      <button class="term-tab active" onclick="switchTermTab('home')">[01_HOME.ASM]</button>
+      <button class="term-tab" onclick="switchTermTab('schedule')">[02_SCHEDULE.CRON]</button>
+      <button class="term-tab" onclick="switchTermTab('hackathon')">[03_BOUNTY_MATRIX.JSON]</button>
+      <button class="term-tab" onclick="switchTermTab('comm')">[04_IRC_GATEWAY.SH]</button>
+    </nav>
+  </header>
+
+  <main class="term-viewport">
+    <!-- TAB 1: HOME -->
+    <section id="tab-home" class="term-panel active">
+      <div class="box-frame">
+        <div class="box-title">┌─ [01.0] QUANTUM CIRCUIT SIMULATOR // OPENQASM 3.0 RUNTIME ────────────────┐</div>
+        <div class="box-content">
+          <div class="cli-circuit-editor">
+            <div class="circuit-meta">
+              <span>REGISTER: <code>qreg q[2]; creg c[2];</code></span>
+              <span>BACKEND: <code>ibm_heron_133q</code></span>
+              <span>SAMPLER: <code>SamplerV2(mode="resilience_level_2")</code></span>
+            </div>
+
+            <div class="ascii-wire-canvas">
+              <div class="wire-track">
+                <span class="q-label">q[0] ──</span>
+                <button class="gate-btn active" onclick="toggleTermGate('H')">[ H ]</button>
+                <span class="wire-span">──</span>
+                <button class="gate-btn" onclick="toggleTermGate('Rz')">[ Rz(π/4) ]</button>
+                <span class="wire-span">──</span>
+                <span class="ctrl-node">●</span>
+                <span class="wire-span">──────</span>
+                <button class="gate-btn" onclick="toggleTermGate('M0')">[ ◩ M0 ]</button>
+                <span class="wire-span">──</span>
+              </div>
+              <div class="wire-track">
+                <span class="q-label">q[1] ──</span>
+                <span class="wire-span">──────</span>
+                <button class="gate-btn" onclick="toggleTermGate('X')">[ X ]</button>
+                <span class="wire-span">──</span>
+                <span class="target-node">⊕</span>
+                <span class="wire-span">──────</span>
+                <button class="gate-btn" onclick="toggleTermGate('M1')">[ ◩ M1 ]</button>
+                <span class="wire-span">──</span>
+              </div>
+            </div>
+
+            <div class="telemetry-bar">
+              <div>STATE VECTOR: <strong id="term-state" class="text-amber">|ψ⟩ = 1/√2 |00⟩ + 1/√2 |11⟩</strong></div>
+              <div>ENTANGLEMENT: <strong class="text-cyan">MAXIMAL (BELL BASIS)</strong></div>
+              <div>PURITY γ: <strong>0.9984</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">└─────────────────────────────────────────────────────────────────────────────┘</div>
+      </div>
+
+      <div class="dual-column">
+        <div class="box-frame">
+          <div class="box-title">┌─ [01.1] MANIFESTO & OBJECTIVES ────────────────────────────┐</div>
+          <div class="box-content text-block">
+            <p>> QFF 2026 is an uncompromised algorithmic hackathon for collegiate researchers.</p>
+            <p>> We reject toy-circuit abstractions. You will transpile circuits down to native basis gates ($R_z, SX, X, ECR$), implement dynamical decoupling kernels, and evaluate observables on 133-qubit hardware.</p>
+            <div class="bullet-list">
+              <div>[+] DATES: OCTOBER 14 – NOVEMBER 04, 2026</div>
+              <div>[+] VENUE: GLOBAL DECENTRALIZED CAMPUS HUBS</div>
+              <div>[+] ACCESS: FREE RESEARCH PASS / RUNTIME GRANTS</div>
+            </div>
+          </div>
+          <div class="box-footer">└────────────────────────────────────────────────────────────┘</div>
+        </div>
+
+        <div class="box-frame">
+          <div class="box-title">┌─ [01.2] RUNTIME SPECIFICATION ─────────────────────────────┐</div>
+          <div class="box-content">
+            <table class="term-table">
+              <tr><td>COHERENCE (T1/T2)</td><td class="text-amber">314 μs / 240 μs</td></tr>
+              <tr><td>MEDIAN 2Q GATE FIDELITY</td><td class="text-cyan">99.86%</td></tr>
+              <tr><td>ERROR MITIGATION</td><td>ZNE + Pauli Twirling</td></tr>
+              <tr><td>TARGET HARDWARE</td><td>IBM Heron Superconducting QPU</td></tr>
+            </table>
+          </div>
+          <div class="box-footer">└────────────────────────────────────────────────────────────┘</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: SCHEDULE -->
+    <section id="tab-schedule" class="term-panel">
+      <div class="box-frame">
+        <div class="box-title">┌─ [02.0] CRON SCHEDULE PIPELINE // DISPATCH LOG ──────────────────────────────┐</div>
+        <div class="box-content">
+          <div class="filter-strip">
+            <span>FILTER_CRON:</span>
+            <button class="cron-btn active" onclick="filterTermSchedule('ALL')">[ALL_STREAMS]</button>
+            <button class="cron-btn" onclick="filterTermSchedule('KEYNOTE')">[KEYNOTES]</button>
+            <button class="cron-btn" onclick="filterTermSchedule('WORKSHOP')">[WORKSHOPS]</button>
+            <button class="cron-btn" onclick="filterTermSchedule('SPRINT')">[HACKATHON]</button>
+          </div>
+
+          <table class="cron-table">
+            <thead>
+              <tr>
+                <th>TIMESTAMP</th>
+                <th>EVENT_TYPE</th>
+                <th>MODULE_IDENTIFIER & SUMMARY</th>
+                <th>HOST</th>
+                <th>ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-type="KEYNOTE">
+                <td class="text-amber">2026-10-14T14:00Z</td>
+                <td><span class="badge-term amber">[KEYNOTE]</span></td>
+                <td>
+                  <strong>HERON_QPU_PLENARY: Quantum Utility in Practice</strong>
+                  <div class="sub-log">> Overview of 133Q tunable couplers and Qiskit Runtime SamplerV2.</div>
+                </td>
+                <td>IBM Quantum Labs</td>
+                <td><button class="btn-sub">[STREAM]</button></td>
+              </tr>
+              <tr data-type="WORKSHOP">
+                <td class="text-cyan">2026-10-16T16:30Z</td>
+                <td><span class="badge-term cyan">[WORKSHOP]</span></td>
+                <td>
+                  <strong>TRANSPILER_LAB: Layout & Routing Optimization</strong>
+                  <div class="sub-log">> SABRE routing, basis transformation, and circuit depth reduction.</div>
+                </td>
+                <td>Qiskit Core Team</td>
+                <td><button class="btn-sub">[JUPYTER]</button></td>
+              </tr>
+              <tr data-type="WORKSHOP">
+                <td class="text-cyan">2026-10-19T18:00Z</td>
+                <td><span class="badge-term cyan">[WORKSHOP]</span></td>
+                <td>
+                  <strong>ERROR_MITIGATION_LAB: EstimatorV2 + ZNE Workflows</strong>
+                  <div class="sub-log">> Zero-noise extrapolation techniques for unbiased expectation values.</div>
+                </td>
+                <td>MIT Quantum Info</td>
+                <td><button class="btn-sub">[JUPYTER]</button></td>
+              </tr>
+              <tr data-type="SPRINT">
+                <td class="text-purple">2026-10-23T12:00Z</td>
+                <td><span class="badge-term purple">[HACK_START]</span></td>
+                <td>
+                  <strong>CHALLENGE_RELEASE: Problem Repos & Hardware Tokens</strong>
+                  <div class="sub-log">> Hackathon repo unlock. Direct QPU queue allocation initialized.</div>
+                </td>
+                <td>Hackathon Ops</td>
+                <td><button class="btn-sub">[REPOS]</button></td>
+              </tr>
+              <tr data-type="SPRINT">
+                <td class="text-purple">2026-11-01T23:59Z</td>
+                <td><span class="badge-term purple">[HACK_CLOSE]</span></td>
+                <td>
+                  <strong>SUBMISSION_INGEST: GitHub Repo & Jupyter Benchmark Lock</strong>
+                  <div class="sub-log">> Automated benchmarking and code freeze.</div>
+                </td>
+                <td>Ingestion Daemon</td>
+                <td><button class="btn-sub">[STATUS]</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-footer">└─────────────────────────────────────────────────────────────────────────────┘</div>
+      </div>
+    </section>
+
+    <!-- TAB 3: HACKATHON -->
+    <section id="tab-hackathon" class="term-panel">
+      <div class="box-frame">
+        <div class="box-title">┌─ [03.0] BOUNTY MATRIX & HARDWARE COMPUTE GRANTS ─────────────────────────────┐</div>
+        <div class="box-content">
+          <div class="bounty-grid">
+            <div class="bounty-cell">
+              <div class="bounty-header">
+                <span class="text-cyan">BOUNTY_ID: 0x01</span>
+                <span class="badge-term amber">$5,000 BOUNTY</span>
+              </div>
+              <h4>ALGORITHMIC DEPTH MINIMIZATION</h4>
+              <p>Construct algorithms that demonstrate optimal circuit depth scaling and minimum 2-qubit gate overhead for chemistry simulation.</p>
+              <div class="bounty-reqs">
+                <div>TARGET: Transverse-Field Ising Model</div>
+                <div>METRIC: State Fidelity > 94%</div>
+                <div>STACK: Qiskit 1.0, SamplerV2</div>
+              </div>
+            </div>
+
+            <div class="bounty-cell">
+              <div class="bounty-header">
+                <span class="text-cyan">BOUNTY_ID: 0x02</span>
+                <span class="badge-term amber">$5,000 BOUNTY</span>
+              </div>
+              <h4>ERROR MITIGATION & NOISE RESILIENCE</h4>
+              <p>Implement innovative error suppression protocols using Pauli twirling, measurement error mitigation, and dynamic decoupling.</p>
+              <div class="bounty-reqs">
+                <div>TARGET: Expectation Value Precision</div>
+                <div>METRIC: Mean Squared Error Bias < 0.02</div>
+                <div>STACK: EstimatorV2, Mitiq</div>
+              </div>
+            </div>
+
+            <div class="bounty-cell">
+              <div class="bounty-header">
+                <span class="text-cyan">BOUNTY_ID: 0x03</span>
+                <span class="badge-term amber">$5,000 BOUNTY</span>
+              </div>
+              <h4>OPEN QUANTUM SYSTEMS & TOOLING</h4>
+              <p>Engineer open-source developer tooling, QASM 3.0 analyzers, or educational visualization engines.</p>
+              <div class="bounty-reqs">
+                <div>TARGET: Developer Experience / Tools</div>
+                <div>METRIC: Reproducibility & Docs</div>
+                <div>STACK: Python / Rust / WASM</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="qpu-grant-box">
+            <div class="text-amber">>> IBM QUANTUM HARDWARE ALLOCATION POLICY:</div>
+            <p>Every accepted research team receives 10 execution hours on IBM Heron 133Q systems with dedicated priority reservation slots during the sprint period.</p>
+          </div>
+        </div>
+        <div class="box-footer">└─────────────────────────────────────────────────────────────────────────────┘</div>
+      </div>
+    </section>
+
+    <!-- TAB 4: COMMUNICATION -->
+    <section id="tab-comm" class="term-panel">
+      <div class="box-frame">
+        <div class="box-title">┌─ [04.0] SECURE IRC / DISCORD BOT ONBOARDING GATEWAY ────────────────────────┐</div>
+        <div class="box-content">
+          <div class="irc-terminal">
+            <div class="irc-log" id="irc-output">
+              <div class="log-row"><span class="log-time">[14:02:11]</span> <span class="log-bot">&lt;QFF_BOT&gt;</span> Initializing quantum communication daemon...</div>
+              <div class="log-row"><span class="log-time">[14:02:12]</span> <span class="log-bot">&lt;QFF_BOT&gt;</span> Connected to channel #qff-2026-global. 1,482 hackers online.</div>
+              <div class="log-row"><span class="log-time">[14:02:13]</span> <span class="log-bot">&lt;QFF_BOT&gt;</span> Enter your academic email below to request cryptographic guild credentials.</div>
+            </div>
+
+            <div class="irc-input-row">
+              <span class="irc-prompt">qff@user:~$</span>
+              <input type="text" id="term-input" placeholder="Type email and hit ENTER (e.g. hacker@university.edu)" onkeydown="handleTermInput(event)">
+              <button class="btn-sub" onclick="submitTermInput()">EXECUTE [↵]</button>
+            </div>
+          </div>
+
+          <div class="server-status-grid">
+            <div class="status-card">
+              <div class="text-cyan">DISCORD GUILD</div>
+              <strong>discord.gg/qiskit-fall-fest</strong>
+              <p>Team formation, mentor ticketing, Q&A</p>
+            </div>
+            <div class="status-card">
+              <div class="text-cyan">SLACK WORKSPACE</div>
+              <strong>qiskit.slack.com (#qff-2026)</strong>
+              <p>Core researcher discussions & office hours</p>
+            </div>
+            <div class="status-card">
+              <div class="text-cyan">MENTOR DESK</div>
+              <strong>DAILY 14:00 - 20:00 UTC</strong>
+              <p>1-on-1 algorithm & debugging help</p>
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">└─────────────────────────────────────────────────────────────────────────────┘</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Command Status -->
+  <footer class="term-footer">
+    <span>PRESS [1-4] TO NAVIGATE TABS</span>
+    <span>IBM QUANTUM & QISKIT FALL FEST // 2026</span>
+    <span>ENCRYPTION: QUANTUM_SECURE_KYBER</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
