@@ -1,0 +1,260 @@
+{
+  "version": "2.17",
+  "name": "QFF 2026 - Direction 2: State Vector // Wave Interference",
+  "description": "Continuous, physics-centric, poetic quantum UI artboards featuring 3D Bloch sphere projections, diffraction timelines, and quantum glassmorphism.",
+  "tokens": {
+    "colors": {
+      "bg-obsidian": "#07090E",
+      "bg-surface": "rgba(13, 17, 27, 0.75)",
+      "border-glass": "rgba(255, 255, 255, 0.08)",
+      "accent-indigo": "#4F46E5",
+      "accent-teal": "#00F2FE",
+      "accent-paprika": "#FF5E3A",
+      "accent-gold": "#FBBF24",
+      "accent-violet": "#8B5CF6",
+      "text-primary": "#F1F5F9",
+      "text-secondary": "#94A3B8",
+      "text-muted": "#64748B"
+    },
+    "typography": {
+      "display": "Syne, 800/700",
+      "subhead": "Space Grotesk, 600/500",
+      "mono": "JetBrains Mono / Fira Code, 500",
+      "body": "Inter / Plus Jakarta Sans, 400"
+    }
+  },
+  "children": [
+    {
+      "id": "frame-tab-1-home",
+      "name": "Artboard 1: Home (Wave Interference)",
+      "type": "frame",
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 1800,
+      "background": "#07090E",
+      "children": [
+        {
+          "name": "Floating Navbar Dock",
+          "type": "component",
+          "x": 360,
+          "y": 40,
+          "width": 720,
+          "height": 64
+        },
+        {
+          "name": "Hero Headline & Dirac Math",
+          "type": "group",
+          "x": 80,
+          "y": 150,
+          "width": 580,
+          "height": 400
+        },
+        {
+          "name": "3D Bloch Sphere Simulator",
+          "type": "vector",
+          "x": 910,
+          "y": 210,
+          "width": 340,
+          "height": 340
+        },
+        {
+          "name": "Wave Interference Ribbon",
+          "type": "vector",
+          "x": 0,
+          "y": 600,
+          "width": 1440,
+          "height": 140
+        },
+        {
+          "name": "Quantum State Metrics (4 Cards)",
+          "type": "group",
+          "x": 80,
+          "y": 780,
+          "width": 1280,
+          "height": 140
+        },
+        {
+          "name": "Superposition Principles (3 Cards)",
+          "type": "group",
+          "x": 80,
+          "y": 980,
+          "width": 1280,
+          "height": 600
+        },
+        {
+          "name": "CTA Registration Banner",
+          "type": "group",
+          "x": 80,
+          "y": 1630,
+          "width": 1280,
+          "height": 130
+        }
+      ]
+    },
+    {
+      "id": "frame-tab-2-schedule",
+      "name": "Artboard 2: Event Schedule (Diffraction Continuum)",
+      "type": "frame",
+      "x": 1540,
+      "y": 0,
+      "width": 1440,
+      "height": 1800,
+      "background": "#07090E",
+      "children": [
+        {
+          "name": "Floating Navbar Dock",
+          "type": "component",
+          "x": 360,
+          "y": 40,
+          "width": 720,
+          "height": 64
+        },
+        {
+          "name": "Schedule Header & Filters",
+          "type": "group",
+          "x": 80,
+          "y": 140,
+          "width": 1280,
+          "height": 180
+        },
+        {
+          "name": "Diffraction Laser Beam Spine",
+          "type": "vector",
+          "x": 260,
+          "y": 360,
+          "width": 4,
+          "height": 1300
+        },
+        {
+          "name": "Phase Event Cards (5 Nodes)",
+          "type": "group",
+          "x": 80,
+          "y": 380,
+          "width": 1280,
+          "height": 1300
+        }
+      ]
+    },
+    {
+      "id": "frame-tab-3-hackathon",
+      "name": "Artboard 3: Hackathon Details (State Space Tracks)",
+      "type": "frame",
+      "x": 3080,
+      "y": 0,
+      "width": 1440,
+      "height": 1800,
+      "background": "#07090E",
+      "children": [
+        {
+          "name": "Floating Navbar Dock",
+          "type": "component",
+          "x": 360,
+          "y": 40,
+          "width": 720,
+          "height": 64
+        },
+        {
+          "name": "Hackathon Header",
+          "type": "group",
+          "x": 80,
+          "y": 140,
+          "width": 1280,
+          "height": 100
+        },
+        {
+          "name": "3 Challenge Tracks Matrix",
+          "type": "group",
+          "x": 80,
+          "y": 270,
+          "width": 1280,
+          "height": 490
+        },
+        {
+          "name": "QPU Hardware Allocation Banner",
+          "type": "group",
+          "x": 80,
+          "y": 790,
+          "width": 1280,
+          "height": 340
+        },
+        {
+          "name": "Rules of Coherence & Prize Purse",
+          "type": "group",
+          "x": 80,
+          "y": 1160,
+          "width": 1280,
+          "height": 440
+        },
+        {
+          "name": "Team Registration CTA",
+          "type": "group",
+          "x": 80,
+          "y": 1630,
+          "width": 1280,
+          "height": 130
+        }
+      ]
+    },
+    {
+      "id": "frame-tab-4-community",
+      "name": "Artboard 4: Community & Portal (Entangled Mesh)",
+      "type": "frame",
+      "x": 4620,
+      "y": 0,
+      "width": 1440,
+      "height": 1800,
+      "background": "#07090E",
+      "children": [
+        {
+          "name": "Floating Navbar Dock",
+          "type": "component",
+          "x": 360,
+          "y": 40,
+          "width": 720,
+          "height": 64
+        },
+        {
+          "name": "Community Header",
+          "type": "group",
+          "x": 80,
+          "y": 140,
+          "width": 1280,
+          "height": 100
+        },
+        {
+          "name": "Discord Client Terminal Simulator",
+          "type": "group",
+          "x": 80,
+          "y": 260,
+          "width": 760,
+          "height": 520
+        },
+        {
+          "name": "Live Community Resonance Card",
+          "type": "group",
+          "x": 880,
+          "y": 260,
+          "width": 480,
+          "height": 520
+        },
+        {
+          "name": "Mentor Roster & Office Hours",
+          "type": "group",
+          "x": 80,
+          "y": 830,
+          "width": 1280,
+          "height": 340
+        },
+        {
+          "name": "Global 85+ University Hub Matrix",
+          "type": "group",
+          "x": 80,
+          "y": 1220,
+          "width": 1280,
+          "height": 360
+        }
+      ]
+    }
+  ]
+}

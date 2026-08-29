@@ -1,0 +1,1394 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6060 1800" width="6060" height="1800">
+  <!--
+    QISKIT FALL FEST 2026 - DIRECTION 2: STATE VECTOR // WAVE INTERFERENCE
+    High-Fidelity 4-Artboard Figma Vector Canvas
+    Artboard 1: Home (x: 0, w: 1440, h: 1800)
+    Artboard 2: Event Schedule (x: 1540, w: 1440, h: 1800)
+    Artboard 3: Hackathon Details (x: 3080, w: 1440, h: 1800)
+    Artboard 4: Join Community (x: 4620, w: 1440, h: 1800)
+  -->
+  <defs>
+    <!-- Fonts Import Simulation / Styles -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Syne:wght@700;800&amp;display=swap');
+      .font-display { font-family: 'Syne', sans-serif; }
+      .font-subhead { font-family: 'Space Grotesk', sans-serif; }
+      .font-mono { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+      .font-sans { font-family: 'Inter', sans-serif; }
+    </style>
+
+    <!-- Linear & Radial Gradients -->
+    <linearGradient id="bg-obsidian-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07090E" />
+      <stop offset="50%" stop-color="#0B0F19" />
+      <stop offset="100%" stop-color="#040507" />
+    </linearGradient>
+
+    <radialGradient id="aurora-teal-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00F2FE" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#00F2FE" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#00F2FE" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="indigo-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4F46E5" stop-opacity="0.3" />
+      <stop offset="50%" stop-color="#8B5CF6" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#4F46E5" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="paprika-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF5E3A" stop-opacity="0.35" />
+      <stop offset="60%" stop-color="#FF5E3A" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#FF5E3A" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="bloch-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00F2FE" stop-opacity="0.3" />
+      <stop offset="40%" stop-color="#4F46E5" stop-opacity="0.15" />
+      <stop offset="80%" stop-color="#FF5E3A" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <linearGradient id="state-vector-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00F2FE" />
+      <stop offset="60%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#FF5E3A" />
+    </linearGradient>
+
+    <linearGradient id="btn-primary-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF5E3A" />
+      <stop offset="50%" stop-color="#EE0979" />
+      <stop offset="100%" stop-color="#4F46E5" />
+    </linearGradient>
+
+    <linearGradient id="btn-indigo-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#00F2FE" />
+    </linearGradient>
+
+    <linearGradient id="glass-card-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FE" stop-opacity="0.4" />
+      <stop offset="50%" stop-color="rgba(255,255,255,0.12)" />
+      <stop offset="100%" stop-color="#FF5E3A" stop-opacity="0.3" />
+    </linearGradient>
+
+    <linearGradient id="glass-card-stroke-subtle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.18)" />
+      <stop offset="100%" stop-color="rgba(255,255,255,0.03)" />
+    </linearGradient>
+
+    <linearGradient id="text-interference-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F1F5F9" />
+      <stop offset="45%" stop-color="#00F2FE" />
+      <stop offset="75%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#FF5E3A" />
+    </linearGradient>
+
+    <linearGradient id="slit-laser-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FE" stop-opacity="0" />
+      <stop offset="30%" stop-color="#00F2FE" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="1" />
+      <stop offset="70%" stop-color="#FF5E3A" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#FF5E3A" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="glow-filter" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="subtle-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Pattern: Quantum Grid & Wave Fringes -->
+    <pattern id="quantum-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.025)" stroke-width="1" />
+      <circle cx="40" cy="0" r="1" fill="rgba(0, 242, 254, 0.2)" />
+    </pattern>
+  </defs>
+
+
+    <!-- TAB 1: HOME ARTBOARD -->
+    <g id="Artboard-Tab1-Home" transform="translate(0, 0)">
+      <!-- Base Background -->
+      <rect x="0" y="0" width="1440" height="1800" fill="url(#bg-obsidian-grad)" />
+      <rect x="0" y="0" width="1440" height="1800" fill="url(#quantum-grid)" opacity="0.7" />
+      
+      <!-- Ambient Optical Glow Orbs -->
+      <circle cx="300" cy="400" r="450" fill="url(#indigo-glow)" />
+      <circle cx="1150" cy="480" r="500" fill="url(#aurora-teal-glow)" />
+      <circle cx="720" cy="1200" r="550" fill="url(#paprika-glow)" />
+    
+
+    <!-- Floating Glassmorphic Nav Dock -->
+    <g id="Navbar" transform="translate(0, 0)">
+      <!-- Outer Glow -->
+      <rect x="356" y="36" width="728" height="72" rx="36" fill="none" stroke="rgba(0, 242, 254, 0.15)" stroke-width="1.5" filter="url(#subtle-glow)" />
+      <!-- Glass Background -->
+      <rect x="360" y="40" width="720" height="64" rx="32" fill="#0D111B" fill-opacity="0.8" stroke="url(#glass-card-stroke-subtle)" stroke-width="1.5" />
+      
+      <!-- Logo / QFF Quantum Glyph -->
+      <g transform="translate(388, 58)">
+        <circle cx="14" cy="14" r="14" fill="#07090E" stroke="#00F2FE" stroke-width="1.5" />
+        <circle cx="14" cy="14" r="6" fill="#FF5E3A" />
+        <ellipse cx="14" cy="14" rx="12" ry="4" fill="none" stroke="#8B5CF6" stroke-width="1" transform="rotate(45 14 14)" />
+        <text x="36" y="18" font-family="Syne, sans-serif" font-size="15" font-weight="800" fill="#F1F5F9" letter-spacing="0.05em">QFF<tspan fill="#00F2FE">.26</tspan></text>
+      </g>
+
+      <!-- Active Tab Indicator Pill -->
+      <rect x="395" y="52" width="160" height="40" rx="20" fill="url(#btn-indigo-grad)" opacity="0.9" filter="url(#subtle-glow)" />
+      
+      <!-- Nav Links -->
+      <g font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" text-anchor="middle">
+        <text x="475.0" y="77" fill="#FFFFFF">Home</text>
+        <text x="640.0" y="77" fill="#94A3B8">Schedule</text>
+        <text x="805.0" y="77" fill="#94A3B8">Hackathon</text>
+        <text x="955.0" y="77" fill="#94A3B8">Community</text>
+      </g>
+
+      <!-- Top Right QPU Live Status Tag -->
+      <g transform="translate(1150, 56)">
+        <rect x="0" y="0" width="210" height="32" rx="16" fill="#07090E" stroke="rgba(0, 242, 254, 0.3)" stroke-width="1" />
+        <circle cx="16" cy="16" r="4" fill="#00F2FE" filter="url(#subtle-glow)" />
+        <text x="28" y="20" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#00F2FE" letter-spacing="0.05em">QPU ONLINE // 127-Q</text>
+      </g>
+    </g>
+    
+
+      <!-- HERO SECTION -->
+      <g id="Hero-Section" transform="translate(80, 150)">
+        <!-- Dynamic Status Chip -->
+        <g transform="translate(0, 0)">
+          <rect x="0" y="0" width="460" height="32" rx="16" fill="#0D111B" stroke="#00F2FE" stroke-width="1.2" />
+          <circle cx="16" cy="16" r="4" fill="#00F2FE" filter="url(#subtle-glow)" />
+          <text x="30" y="20" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#F1F5F9" letter-spacing="0.08em">STATE VECTOR SUPERPOSITION // QFF.2026</text>
+        </g>
+        
+        <!-- Main Headline -->
+        <text x="0" y="90" font-family="Syne, sans-serif" font-size="52" font-weight="800" fill="#F1F5F9" letter-spacing="-0.03em" line-height="1.05">
+          Where Superposition
+        </text>
+        <text x="0" y="150" font-family="Syne, sans-serif" font-size="52" font-weight="800" fill="url(#text-interference-grad)" letter-spacing="-0.03em">
+          Meets Autumn Brilliance.
+        </text>
+
+        <!-- Subtitle -->
+        <text x="0" y="210" font-family="Inter, sans-serif" font-size="16" font-weight="400" fill="#94A3B8" width="580">
+          <tspan x="0" dy="0">Join thousands of quantum researchers, developers, and physics enthusiasts at</tspan>
+          <tspan x="0" dy="24">Qiskit Fall Fest 2026. Explore real quantum hardware, pulse-level control,</tspan>
+          <tspan x="0" dy="24">and wave interference algorithms in a month-long celebration.</tspan>
+        </text>
+
+        <!-- Dirac Notation Mathematical Sub-band -->
+        <g transform="translate(0, 290)">
+          <rect x="0" y="0" width="560" height="46" rx="8" fill="#0D111B" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+          <text x="20" y="28" font-family="JetBrains Mono, monospace" font-size="13" font-weight="500" fill="#00F2FE">
+            |ψ(t)⟩ = e<tspan font-size="10" dy="-4">-iĤt/ℏ</tspan><tspan font-size="13" dy="4"> ( α|0⟩ + β|1⟩ )  // COHERENCE T₁ = 184µs</tspan>
+          </text>
+        </g>
+
+        <!-- CTA Buttons -->
+        <g transform="translate(0, 365)">
+          <!-- Primary Glow Button -->
+          <g>
+            <rect x="0" y="0" width="220" height="54" rx="27" fill="url(#btn-primary-grad)" filter="url(#subtle-glow)" />
+            <text x="110" y="33" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.02em">
+              Register for Fest →
+            </text>
+          </g>
+          
+          <!-- Secondary Optical Button -->
+          <g transform="translate(240, 0)">
+            <rect x="0" y="0" width="230" height="54" rx="27" fill="#0D111B" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+            <text x="115" y="33" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="600" fill="#F1F5F9" text-anchor="middle">
+              Explore Bloch Sphere
+            </text>
+          </g>
+        </g>
+      </g>
+    
+<circle cx="1080" cy="380" r="210" fill="url(#bloch-glow)" opacity="0.6" />
+<circle cx="1080" cy="380" r="170" fill="#0A0F1D" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+<ellipse cx="1080" cy="380" rx="170" ry="59.49999999999999" fill="none" stroke="rgba(0, 242, 254, 0.4)" stroke-width="1.2" stroke-dasharray="4 4" />
+<ellipse cx="1080" cy="380" rx="59.49999999999999" ry="170" fill="none" stroke="rgba(79, 70, 229, 0.35)" stroke-width="1.2" stroke-dasharray="4 4" />
+<ellipse cx="1080" cy="295.0" rx="147.22" ry="51.526999999999994" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />
+<ellipse cx="1080" cy="465.0" rx="147.22" ry="51.526999999999994" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />
+<line x1="1080" y1="575" x2="1080" y2="185" stroke="#F1F5F9" stroke-width="2" />
+<polygon points="1080,178 1075,188 1085,188" fill="#F1F5F9" />
+<text x="1095" y="190" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" fill="#00F2FE">|0⟩ (+Z)</text>
+<text x="1095" y="575" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" fill="#FF5E3A">|1⟩ (-Z)</text>
+<line x1="1080" y1="380" x2="944.0" y2="456.5" stroke="#8B5CF6" stroke-width="1.5" />
+<text x="909.0" y="471.5" font-family="JetBrains Mono, monospace" font-size="12" fill="#8B5CF6">|+⟩ (X)</text>
+<line x1="1080" y1="380" x2="1241.5" y2="397.0" stroke="#FBBF24" stroke-width="1.5" />
+<text x="1251.5" y="402.0" font-family="JetBrains Mono, monospace" font-size="12" fill="#FBBF24">|i+⟩ (Y)</text>
+<line x1="1080" y1="380" x2="1174.5753874050854" y2="292.1094336993083" stroke="url(#state-vector-grad)" stroke-width="3.5" stroke-linecap="round" />
+<circle cx="1174.5753874050854" cy="292.1094336993083" r="8" fill="#FF5E3A" filter="url(#glow-filter)" />
+<circle cx="1174.5753874050854" cy="292.1094336993083" r="4" fill="#FFFFFF" />
+<path d="M 1134.5753874050854 312.1094336993083 Q 1194.5753874050854 262.1094336993083 1224.5753874050854 302.1094336993083" fill="none" stroke="#00F2FE" stroke-width="2" stroke-dasharray="3 3" opacity="0.8" />
+
+    <g transform="translate(1194.5753874050854, 257.1094336993083)">
+      <rect x="0" y="0" width="180" height="42" rx="8" fill="#0D111B" stroke="#00F2FE" stroke-width="1.5" opacity="0.95" />
+      <text x="12" y="24" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#F1F5F9">|ψ⟩ = α|0⟩ + β|1⟩</text>
+      <text x="12" y="36" font-family="JetBrains Mono, monospace" font-size="9" fill="#00F2FE">θ: 48°  φ: 38°  |α|²: 0.83</text>
+    </g>
+    
+<line x1="1174.5753874050854" y1="292.1094336993083" x2="1174.5753874050854" y2="405.8616367803142" stroke="rgba(255,255,255,0.4)" stroke-width="1" stroke-dasharray="2 2" />
+<line x1="1080" y1="380" x2="1174.5753874050854" y2="405.8616367803142" stroke="rgba(0,242,254,0.5)" stroke-width="1" stroke-dasharray="2 2" />
+<circle cx="1174.5753874050854" cy="405.8616367803142" r="3" fill="#00F2FE" />
+
+      <!-- Wave Interference Ribbon Layer -->
+      <g transform="translate(0, 600)">
+        <path d="M 0 70.0 L 0 70.00 L 20 77.16 L 40 84.05 L 60 90.44 L 80 96.10 L 100 100.84 L 120 104.50 L 140 106.98 L 160 108.24 L 180 108.27 L 200 107.12 L 220 104.92 L 240 101.79 L 260 97.93 L 280 93.56 L 300 88.89 L 320 84.18 L 340 79.64 L 360 75.49 L 380 71.91 L 400 69.05 L 420 67.02 L 440 65.87 L 460 65.62 L 480 66.23 L 500 67.59 L 520 69.59 L 540 72.05 L 560 74.77 L 580 77.56 L 600 80.18 L 620 82.44 L 640 84.14 L 660 85.10 L 680 85.20 L 700 84.34 L 720 82.49 L 740 79.66 L 760 75.91 L 780 71.35 L 800 66.13 L 820 60.45 L 840 54.52 L 860 48.59 L 880 42.91 L 900 37.71 L 920 33.23 L 940 29.67 L 960 27.19 L 980 25.92 L 1000 25.92 L 1020 27.23 L 1040 29.81 L 1060 33.56 L 1080 38.35 L 1100 44.01 L 1120 50.31 L 1140 57.02 L 1160 63.88 L 1180 70.63 L 1200 77.03 L 1220 82.86 L 1240 87.91 L 1260 92.02 L 1280 95.09 L 1300 97.04 L 1320 97.88 L 1340 97.64 L 1360 96.42 L 1380 94.35 L 1400 91.60 L 1420 88.38 L 1440 84.90" fill="none" stroke="#4F46E5" stroke-width="2.5" opacity="0.35" />
+<path d="M 0 70.0 L 0 112.95 L 20 121.89 L 40 128.66 L 60 132.81 L 80 134.02 L 100 132.17 L 120 127.33 L 140 119.74 L 160 109.81 L 180 98.09 L 200 85.24 L 220 71.98 L 240 59.05 L 260 47.14 L 280 36.87 L 300 28.75 L 320 23.12 L 340 20.17 L 360 19.90 L 380 22.14 L 400 26.57 L 420 32.73 L 440 40.08 L 460 48.00 L 480 55.89 L 500 63.19 L 520 69.40 L 540 74.15 L 560 77.20 L 580 78.48 L 600 78.05 L 620 76.15 L 640 73.12 L 660 69.41 L 680 65.52 L 700 61.99 L 720 59.31 L 740 57.91 L 760 58.11 L 780 60.12 L 800 63.97 L 820 69.55 L 840 76.58 L 860 84.66 L 880 93.27 L 900 101.82 L 920 109.68 L 940 116.24 L 960 120.94 L 980 123.35 L 1000 123.14 L 1020 120.15 L 1040 114.41 L 1060 106.13 L 1080 95.67 L 1100 83.55 L 1120 70.41 L 1140 56.95 L 1160 43.92 L 1180 32.04 L 1200 21.96 L 1220 14.22 L 1240 9.22 L 1260 7.20 L 1280 8.20 L 1300 12.08 L 1320 18.54 L 1340 27.11 L 1360 37.22 L 1380 48.20 L 1400 59.38 L 1420 70.10 L 1440 79.74" fill="none" stroke="#00F2FE" stroke-width="2.2" opacity="0.45" />
+<path d="M 0 70.0 L 0 129.19 L 20 130.16 L 40 126.37 L 60 117.74 L 80 104.63 L 100 87.85 L 120 68.58 L 140 48.31 L 160 28.63 L 180 11.17 L 200 -2.61 L 220 -11.50 L 240 -14.73 L 260 -11.96 L 280 -3.38 L 300 10.33 L 320 28.07 L 340 48.42 L 360 69.74 L 380 90.35 L 400 108.68 L 420 123.39 L 440 133.50 L 460 138.45 L 480 138.17 L 500 133.05 L 520 123.89 L 540 111.79 L 560 98.07 L 580 84.08 L 600 71.14 L 620 60.32 L 640 52.40 L 660 47.81 L 680 46.54 L 700 48.25 L 720 52.23 L 740 57.55 L 760 63.18 L 780 68.08 L 800 71.33 L 820 72.28 L 840 70.59 L 860 66.26 L 880 59.69 L 900 51.60 L 920 42.97 L 940 34.93 L 960 28.63 L 980 25.13 L 1000 25.24 L 1020 29.46 L 1040 37.89 L 1060 50.18 L 1080 65.59 L 1100 83.00 L 1120 101.02 L 1140 118.15 L 1160 132.86 L 1180 143.79 L 1200 149.84 L 1220 150.31 L 1240 144.98 L 1260 134.10 L 1280 118.41 L 1300 99.09 L 1320 77.60 L 1340 55.63 L 1360 34.87 L 1380 16.93 L 1400 3.13 L 1420 -5.54 L 1440 -8.59" fill="none" stroke="#8B5CF6" stroke-width="1.9" opacity="0.3" />
+<path d="M 0 70.0 L 0 81.01 L 20 77.86 L 40 72.57 L 60 65.59 L 80 57.66 L 100 49.77 L 120 42.99 L 140 38.33 L 160 36.64 L 180 38.43 L 200 43.80 L 220 52.41 L 240 63.52 L 260 76.01 L 280 88.58 L 300 99.83 L 320 108.48 L 340 113.53 L 360 114.32 L 380 110.72 L 400 103.05 L 420 92.12 L 440 79.08 L 460 65.35 L 480 52.37 L 500 41.48 L 520 33.78 L 540 29.95 L 560 30.23 L 580 34.37 L 600 41.70 L 620 51.23 L 640 61.75 L 660 72.03 L 680 80.96 L 700 87.67 L 720 91.63 L 740 92.72 L 760 91.19 L 780 87.63 L 800 82.85 L 820 77.75 L 840 73.17 L 860 69.81 L 880 68.09 L 900 68.09 L 920 69.60 L 940 72.11 L 960 74.90 L 980 77.21 L 1000 78.31 L 1020 77.66 L 1040 74.98 L 1060 70.35 L 1080 64.17 L 1100 57.16 L 1120 50.25 L 1140 44.45 L 1160 40.72 L 1180 39.83 L 1200 42.24 L 1220 48.00 L 1240 56.73 L 1260 67.67 L 1280 79.72 L 1300 91.57 L 1320 101.89 L 1340 109.46 L 1360 113.32 L 1380 112.95 L 1400 108.26 L 1420 99.67 L 1440 88.05" fill="none" stroke="#FF5E3A" stroke-width="1.6" opacity="0.25" />
+<path d="M 0 70.0 L 0 70.11 L 20 69.19 L 40 65.86 L 60 61.13 L 80 56.44 L 100 53.33 L 120 53.16 L 140 56.78 L 160 64.29 L 180 74.96 L 200 87.35 L 220 99.47 L 240 109.13 L 260 114.33 L 280 113.65 L 300 106.51 L 320 93.37 L 340 75.69 L 360 55.76 L 380 36.39 L 400 20.44 L 420 10.41 L 440 8.01 L 460 13.87 L 480 27.38 L 500 46.83 L 520 69.59 L 540 92.51 L 560 112.41 L 580 126.57 L 600 133.11 L 620 131.26 L 640 121.51 L 660 105.46 L 680 85.57 L 700 64.76 L 720 45.94 L 740 31.61 L 760 23.42 L 780 22.04 L 800 27.03 L 820 37.06 L 840 50.11 L 860 63.89 L 880 76.23 L 900 85.42 L 920 90.50 L 940 91.34 L 960 88.60 L 980 83.58 L 1000 77.86 L 1020 73.00 L 1040 70.23 L 1060 70.17 L 1080 72.72 L 1100 77.09 L 1120 81.98 L 1140 85.83 L 1160 87.18 L 1180 84.98 L 1200 78.84 L 1220 69.17 L 1240 57.19 L 1260 44.72 L 1280 33.93 L 1300 26.92 L 1320 25.37 L 1340 30.18 L 1360 41.28 L 1380 57.56 L 1400 76.98 L 1420 96.89 L 1440 114.39" fill="none" stroke="#FBBF24" stroke-width="1.3" opacity="0.2" />
+      </g>
+    
+
+      <!-- QUANTUM STATE METRICS SECTION -->
+      <g id="Metrics-Section" transform="translate(80, 780)">
+    
+
+        <g transform="translate(0, 0)">
+          <!-- Glass Card -->
+          <rect x="0" y="0" width="300" height="140" rx="16" fill="#0D111B" fill-opacity="0.7" stroke="url(#glass-card-stroke-subtle)" stroke-width="1.5" />
+          <line x1="20" y1="0" x2="100" y2="0" stroke="#00F2FE" stroke-width="2" filter="url(#subtle-glow)" />
+          
+          <text x="24" y="52" font-family="Syne, sans-serif" font-size="34" font-weight="800" fill="#00F2FE">1.4M+</text>
+          <text x="24" y="82" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#F1F5F9">Quantum Circuits Run</text>
+          <text x="24" y="108" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="#94A3B8">Executed on IBM Eagle & Heron QPUs</text>
+        </g>
+        
+
+        <g transform="translate(320, 0)">
+          <!-- Glass Card -->
+          <rect x="0" y="0" width="300" height="140" rx="16" fill="#0D111B" fill-opacity="0.7" stroke="url(#glass-card-stroke-subtle)" stroke-width="1.5" />
+          <line x1="20" y1="0" x2="100" y2="0" stroke="#8B5CF6" stroke-width="2" filter="url(#subtle-glow)" />
+          
+          <text x="24" y="52" font-family="Syne, sans-serif" font-size="34" font-weight="800" fill="#8B5CF6">85+</text>
+          <text x="24" y="82" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#F1F5F9">Global Hubs & Nodes</text>
+          <text x="24" y="108" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="#94A3B8">Universities & Research Centers</text>
+        </g>
+        
+
+        <g transform="translate(640, 0)">
+          <!-- Glass Card -->
+          <rect x="0" y="0" width="300" height="140" rx="16" fill="#0D111B" fill-opacity="0.7" stroke="url(#glass-card-stroke-subtle)" stroke-width="1.5" />
+          <line x1="20" y1="0" x2="100" y2="0" stroke="#FF5E3A" stroke-width="2" filter="url(#subtle-glow)" />
+          
+          <text x="24" y="52" font-family="Syne, sans-serif" font-size="34" font-weight="800" fill="#FF5E3A">10,000+</text>
+          <text x="24" y="82" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#F1F5F9">QPU Compute Secs</text>
+          <text x="24" y="108" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="#94A3B8">Dedicated Hardware Execution Time</text>
+        </g>
+        
+
+        <g transform="translate(960, 0)">
+          <!-- Glass Card -->
+          <rect x="0" y="0" width="300" height="140" rx="16" fill="#0D111B" fill-opacity="0.7" stroke="url(#glass-card-stroke-subtle)" stroke-width="1.5" />
+          <line x1="20" y1="0" x2="100" y2="0" stroke="#FBBF24" stroke-width="2" filter="url(#subtle-glow)" />
+          
+          <text x="24" y="52" font-family="Syne, sans-serif" font-size="34" font-weight="800" fill="#FBBF24">$45,000</text>
+          <text x="24" y="82" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#F1F5F9">Prizes & Grants</text>
+          <text x="24" y="108" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="#94A3B8">Algorithm, Education & Error Tracks</text>
+        </g>
+        
+</g>
+
+      <!-- VALUE PROPOSITIONS SECTION -->
+      <g id="Value-Props-Section" transform="translate(80, 980)">
+        <text x="0" y="30" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#00F2FE" letter-spacing="0.1em">SUPERPOSITION PRINCIPLES</text>
+        <text x="0" y="70" font-family="Syne, sans-serif" font-size="36" font-weight="800" fill="#F1F5F9">Physics-Grounded Quantum Excellence</text>
+    
+
+        <g transform="translate(0, 105)">
+          <rect x="0" y="0" width="1280" height="170" rx="20" fill="#0D111B" fill-opacity="0.8" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+          <!-- Accent Line / Slit Refraction Indicator -->
+          <rect x="0" y="20" width="5" height="130" rx="2.5" fill="#00F2FE" filter="url(#subtle-glow)" />
+          
+          <!-- Tag & Title -->
+          <text x="40" y="44" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#00F2FE">01 // COHERENCE</text>
+          <text x="40" y="80" font-family="Syne, sans-serif" font-size="22" font-weight="700" fill="#F1F5F9">Direct Cloud QPU Access</text>
+          <text x="40" y="112" font-family="Inter, sans-serif" font-size="14" font-weight="400" fill="#94A3B8" width="720">
+            Run variational and pulse-level quantum experiments directly on utility-scale 127-qubit IBM Eagle and Heron processors with zero queue throttling.
+          </text>
+          
+          <!-- Mathematical Optical Formula Tag on right -->
+          <g transform="translate(860, 45)">
+            <rect x="0" y="0" width="380" height="80" rx="12" fill="#07090E" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+            <text x="20" y="32" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#94A3B8" letter-spacing="0.08em">THEORETICAL DERIVATION:</text>
+            <text x="20" y="58" font-family="JetBrains Mono, monospace" font-size="13" font-weight="500" fill="#00F2FE">Ψ = cos(θ/2)|0⟩ + e^iφ sin(θ/2)|1⟩</text>
+          </g>
+        </g>
+        
+
+        <g transform="translate(0, 300)">
+          <rect x="0" y="0" width="1280" height="170" rx="20" fill="#0D111B" fill-opacity="0.8" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+          <!-- Accent Line / Slit Refraction Indicator -->
+          <rect x="0" y="20" width="5" height="130" rx="2.5" fill="#8B5CF6" filter="url(#subtle-glow)" />
+          
+          <!-- Tag & Title -->
+          <text x="40" y="44" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#8B5CF6">02 // INTERFERENCE</text>
+          <text x="40" y="80" font-family="Syne, sans-serif" font-size="22" font-weight="700" fill="#F1F5F9">Slit Track Mentorship</text>
+          <text x="40" y="112" font-family="Inter, sans-serif" font-size="14" font-weight="400" fill="#94A3B8" width="720">
+            Direct 1-on-1 office hours with Qiskit core contributors, IBM Quantum research scientists, and leading university quantum physics professors.
+          </text>
+          
+          <!-- Mathematical Optical Formula Tag on right -->
+          <g transform="translate(860, 45)">
+            <rect x="0" y="0" width="380" height="80" rx="12" fill="#07090E" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+            <text x="20" y="32" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#94A3B8" letter-spacing="0.08em">THEORETICAL DERIVATION:</text>
+            <text x="20" y="58" font-family="JetBrains Mono, monospace" font-size="13" font-weight="500" fill="#8B5CF6">I(x) = I₁ + I₂ + 2√(I₁I₂) cos(Δφ)</text>
+          </g>
+        </g>
+        
+
+        <g transform="translate(0, 495)">
+          <rect x="0" y="0" width="1280" height="170" rx="20" fill="#0D111B" fill-opacity="0.8" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+          <!-- Accent Line / Slit Refraction Indicator -->
+          <rect x="0" y="20" width="5" height="130" rx="2.5" fill="#FF5E3A" filter="url(#subtle-glow)" />
+          
+          <!-- Tag & Title -->
+          <text x="40" y="44" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#FF5E3A">03 // SUPPRESSION</text>
+          <text x="40" y="80" font-family="Syne, sans-serif" font-size="22" font-weight="700" fill="#F1F5F9">Zero-Noise Transpilation</text>
+          <text x="40" y="112" font-family="Inter, sans-serif" font-size="14" font-weight="400" fill="#94A3B8" width="720">
+            Master cutting-edge quantum error mitigation techniques: Zero-Noise Extrapolation (ZNE), Probabilistic Error Cancellation (PEC), and Pauli twirling.
+          </text>
+          
+          <!-- Mathematical Optical Formula Tag on right -->
+          <g transform="translate(860, 45)">
+            <rect x="0" y="0" width="380" height="80" rx="12" fill="#07090E" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+            <text x="20" y="32" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#94A3B8" letter-spacing="0.08em">THEORETICAL DERIVATION:</text>
+            <text x="20" y="58" font-family="JetBrains Mono, monospace" font-size="13" font-weight="500" fill="#FF5E3A">⟨O⟩_mitigated = lim_{λ→0} E[O(λ)]</text>
+          </g>
+        </g>
+        
+</g>
+
+      <!-- BOTTOM CALL TO ACTION BANNER -->
+      <g id="CTA-Banner" transform="translate(80, 1630)">
+        <rect x="0" y="0" width="1280" height="130" rx="24" fill="url(#bg-obsidian-grad)" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+        <circle cx="200" cy="65" r="120" fill="url(#indigo-glow)" opacity="0.4" />
+        <circle cx="1080" cy="65" r="140" fill="url(#paprika-glow)" opacity="0.4" />
+        
+        <text x="50" y="55" font-family="Syne, sans-serif" font-size="28" font-weight="800" fill="#F1F5F9">Ready to compute in quantum phase space?</text>
+        <text x="50" y="90" font-family="Inter, sans-serif" font-size="15" fill="#94A3B8">Registration grants full IBM Quantum lab credentials and discord gateway credentials.</text>
+        
+        <!-- Action Button -->
+        <g transform="translate(1000, 38)">
+          <rect x="0" y="0" width="230" height="54" rx="27" fill="url(#btn-primary-grad)" filter="url(#subtle-glow)" />
+          <text x="115" y="33" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+            Claim QPU Pass →
+          </text>
+        </g>
+      </g>
+    </g>
+    
+
+    <!-- TAB 2: EVENT SCHEDULE ARTBOARD -->
+    <g id="Artboard-Tab2-Schedule" transform="translate(1540, 0)">
+      <!-- Base Background -->
+      <rect x="0" y="0" width="1440" height="1800" fill="url(#bg-obsidian-grad)" />
+      <rect x="0" y="0" width="1440" height="1800" fill="url(#quantum-grid)" opacity="0.7" />
+      
+      <!-- Ambient Glows -->
+      <circle cx="200" cy="300" r="400" fill="url(#aurora-teal-glow)" />
+      <circle cx="1200" cy="800" r="500" fill="url(#indigo-glow)" />
+      <circle cx="500" cy="1400" r="450" fill="url(#paprika-glow)" />
+    
+
+    <!-- Floating Glassmorphic Nav Dock -->
+    <g id="Navbar" transform="translate(0, 0)">
+      <!-- Outer Glow -->
+      <rect x="356" y="36" width="728" height="72" rx="36" fill="none" stroke="rgba(0, 242, 254, 0.15)" stroke-width="1.5" filter="url(#subtle-glow)" />
+      <!-- Glass Background -->
+      <rect x="360" y="40" width="720" height="64" rx="32" fill="#0D111B" fill-opacity="0.8" stroke="url(#glass-card-stroke-subtle)" stroke-width="1.5" />
+      
+      <!-- Logo / QFF Quantum Glyph -->
+      <g transform="translate(388, 58)">
+        <circle cx="14" cy="14" r="14" fill="#07090E" stroke="#00F2FE" stroke-width="1.5" />
+        <circle cx="14" cy="14" r="6" fill="#FF5E3A" />
+        <ellipse cx="14" cy="14" rx="12" ry="4" fill="none" stroke="#8B5CF6" stroke-width="1" transform="rotate(45 14 14)" />
+        <text x="36" y="18" font-family="Syne, sans-serif" font-size="15" font-weight="800" fill="#F1F5F9" letter-spacing="0.05em">QFF<tspan fill="#00F2FE">.26</tspan></text>
+      </g>
+
+      <!-- Active Tab Indicator Pill -->
+      <rect x="560" y="52" width="160" height="40" rx="20" fill="url(#btn-indigo-grad)" opacity="0.9" filter="url(#subtle-glow)" />
+      
+      <!-- Nav Links -->
+      <g font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" text-anchor="middle">
+        <text x="475.0" y="77" fill="#94A3B8">Home</text>
+        <text x="640.0" y="77" fill="#FFFFFF">Schedule</text>
+        <text x="805.0" y="77" fill="#94A3B8">Hackathon</text>
+        <text x="955.0" y="77" fill="#94A3B8">Community</text>
+      </g>
+
+      <!-- Top Right QPU Live Status Tag -->
+      <g transform="translate(1150, 56)">
+        <rect x="0" y="0" width="210" height="32" rx="16" fill="#07090E" stroke="rgba(0, 242, 254, 0.3)" stroke-width="1" />
+        <circle cx="16" cy="16" r="4" fill="#00F2FE" filter="url(#subtle-glow)" />
+        <text x="28" y="20" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#00F2FE" letter-spacing="0.05em">QPU ONLINE // 127-Q</text>
+      </g>
+    </g>
+    
+
+      <!-- SCHEDULE HEADER -->
+      <g id="Schedule-Header" transform="translate(80, 140)">
+        <text x="0" y="24" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#00F2FE" letter-spacing="0.1em">CHRONOLOGICAL PHASE PROGRESSION</text>
+        <text x="0" y="70" font-family="Syne, sans-serif" font-size="44" font-weight="800" fill="#F1F5F9">Diffraction-Slit Schedule Matrix</text>
+        <text x="0" y="105" font-family="Inter, sans-serif" font-size="16" fill="#94A3B8">
+          Follow the interference pattern of keynotes, pulse workshops, and hackathon synchronization nodes.
+        </text>
+        
+        <!-- Continuum Filter Pills -->
+        <g transform="translate(0, 135)">
+          <!-- Pill 1 (Active) -->
+          <rect x="0" y="0" width="130" height="40" rx="20" fill="url(#btn-indigo-grad)" filter="url(#subtle-glow)" />
+          <text x="65" y="25" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">All Phases</text>
+          
+          <!-- Pill 2 -->
+          <rect x="145" y="0" width="130" height="40" rx="20" fill="#0D111B" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+          <text x="210" y="25" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="500" fill="#94A3B8" text-anchor="middle">Keynotes</text>
+          
+          <!-- Pill 3 -->
+          <rect x="290" y="0" width="140" height="40" rx="20" fill="#0D111B" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+          <text x="360" y="25" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="500" fill="#94A3B8" text-anchor="middle">Workshops</text>
+          
+          <!-- Pill 4 -->
+          <rect x="445" y="0" width="160" height="40" rx="20" fill="#0D111B" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+          <text x="525" y="25" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="500" fill="#94A3B8" text-anchor="middle">Hardware Labs</text>
+
+          <!-- Pill 5 -->
+          <rect x="620" y="0" width="170" height="40" rx="20" fill="#0D111B" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+          <text x="705" y="25" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="500" fill="#94A3B8" text-anchor="middle">Hackathon Nodes</text>
+        </g>
+      </g>
+    
+
+      <!-- LASER DIFFRACTION VERTICAL BEAM -->
+      <g id="Diffraction-Spine" transform="translate(260, 360)">
+        <!-- Continuous background glow beam -->
+        <rect x="0" y="0" width="4" height="1300" rx="2" fill="url(#slit-laser-grad)" filter="url(#subtle-glow)" />
+      </g>
+    
+<g id="Schedule-Cards">
+
+        <g transform="translate(80, 380)">
+          <!-- Left Phase Node Indicator -->
+          <g transform="translate(130, 30)">
+            <circle cx="50" cy="20" r="16" fill="#07090E" stroke="#00F2FE" stroke-width="2" filter="url(#subtle-glow)" />
+            <circle cx="50" cy="20" r="6" fill="#00F2FE" />
+            <text x="25" y="-12" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#00F2FE" text-anchor="middle">φ = 0.00π</text>
+            <text x="25" y="55" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#94A3B8" text-anchor="middle">OCT 14 // 14:00 UTC</text>
+          </g>
+
+          <!-- Right Event Glass Card -->
+          <g transform="translate(230, 0)">
+            <!-- Glass Card Body -->
+            <rect x="0" y="0" width="1050" height="230" rx="18" fill="#0D111B" fill-opacity="0.85" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+            <!-- Inner Corner Glow -->
+            <line x1="0" y1="20" x2="0" y2="210" stroke="#00F2FE" stroke-width="3" filter="url(#subtle-glow)" />
+
+            <!-- Category & Badge -->
+            <text x="35" y="38" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#00F2FE" letter-spacing="0.08em">KEYNOTE // THEORETICAL FOUNDATION</text>
+            <g transform="translate(820, 22)">
+              <rect x="0" y="0" width="190" height="26" rx="13" fill="#07090E" stroke="#00F2FE" stroke-width="1" />
+              <text x="95" y="17" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#00F2FE" text-anchor="middle">LIVE STREAM // AUDITORIUM ALPHA</text>
+            </g>
+
+            <!-- Event Title -->
+            <text x="35" y="78" font-family="Syne, sans-serif" font-size="22" font-weight="700" fill="#F1F5F9">Quantum Utility in the NISQ and Fault-Tolerant Horizon</text>
+            
+            <!-- Speakers -->
+            <text x="35" y="112" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="#00F2FE">Speakers: <tspan fill="#F1F5F9" font-weight="400">Dr. Alistair Vance (IBM Quantum Fellow) & Prof. Elena Rostova</tspan></text>
+            
+            <!-- Description -->
+            <text x="35" y="145" font-family="Inter, sans-serif" font-size="13" font-weight="400" fill="#94A3B8" width="700">
+              Exploring multi-qubit entanglement verification, dynamical decoupling sequences, and the 10,000+ gate depth threshold.
+            </text>
+
+            <!-- Card Bottom Bar: Calendar Sync / Lab Note -->
+            <g transform="translate(35, 175)">
+              <rect x="0" y="0" width="140" height="34" rx="17" fill="#07090E" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+              <text x="70" y="21" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#F1F5F9" text-anchor="middle">+ Add to Calendar</text>
+              
+              <rect x="155" y="0" width="150" height="34" rx="17" fill="#07090E" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+              <text x="230" y="21" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#94A3B8" text-anchor="middle">View Prerequisites</text>
+            </g>
+          </g>
+        </g>
+        
+
+        <g transform="translate(80, 640)">
+          <!-- Left Phase Node Indicator -->
+          <g transform="translate(130, 30)">
+            <circle cx="50" cy="20" r="16" fill="#07090E" stroke="#4F46E5" stroke-width="2" filter="url(#subtle-glow)" />
+            <circle cx="50" cy="20" r="6" fill="#4F46E5" />
+            <text x="25" y="-12" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#4F46E5" text-anchor="middle">φ = 0.50π</text>
+            <text x="25" y="55" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#94A3B8" text-anchor="middle">OCT 17 // 16:30 UTC</text>
+          </g>
+
+          <!-- Right Event Glass Card -->
+          <g transform="translate(230, 0)">
+            <!-- Glass Card Body -->
+            <rect x="0" y="0" width="1050" height="230" rx="18" fill="#0D111B" fill-opacity="0.85" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+            <!-- Inner Corner Glow -->
+            <line x1="0" y1="20" x2="0" y2="210" stroke="#4F46E5" stroke-width="3" filter="url(#subtle-glow)" />
+
+            <!-- Category & Badge -->
+            <text x="35" y="38" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#4F46E5" letter-spacing="0.08em">HANDS-ON WORKSHOP // RUNTIME PRIMITIVES</text>
+            <g transform="translate(820, 22)">
+              <rect x="0" y="0" width="190" height="26" rx="13" fill="#07090E" stroke="#4F46E5" stroke-width="1" />
+              <text x="95" y="17" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#4F46E5" text-anchor="middle">INTERACTIVE LAB NOTEBOOK</text>
+            </g>
+
+            <!-- Event Title -->
+            <text x="35" y="78" font-family="Syne, sans-serif" font-size="22" font-weight="700" fill="#F1F5F9">Mastering Qiskit Runtime Primitives: Sampler & Estimator V2</text>
+            
+            <!-- Speakers -->
+            <text x="35" y="112" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="#00F2FE">Speakers: <tspan fill="#F1F5F9" font-weight="400">Qiskit SDK Core Architecture Team</tspan></text>
+            
+            <!-- Description -->
+            <text x="35" y="145" font-family="Inter, sans-serif" font-size="13" font-weight="400" fill="#94A3B8" width="700">
+              Deep dive into isa circuit compilation, resilience levels 0-2, and zero-noise extrapolation pipelines on cloud backend.
+            </text>
+
+            <!-- Card Bottom Bar: Calendar Sync / Lab Note -->
+            <g transform="translate(35, 175)">
+              <rect x="0" y="0" width="140" height="34" rx="17" fill="#07090E" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+              <text x="70" y="21" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#F1F5F9" text-anchor="middle">+ Add to Calendar</text>
+              
+              <rect x="155" y="0" width="150" height="34" rx="17" fill="#07090E" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+              <text x="230" y="21" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#94A3B8" text-anchor="middle">View Prerequisites</text>
+            </g>
+          </g>
+        </g>
+        
+
+        <g transform="translate(80, 900)">
+          <!-- Left Phase Node Indicator -->
+          <g transform="translate(130, 30)">
+            <circle cx="50" cy="20" r="16" fill="#07090E" stroke="#8B5CF6" stroke-width="2" filter="url(#subtle-glow)" />
+            <circle cx="50" cy="20" r="6" fill="#8B5CF6" />
+            <text x="25" y="-12" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#8B5CF6" text-anchor="middle">φ = 1.00π</text>
+            <text x="25" y="55" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#94A3B8" text-anchor="middle">OCT 20 // 18:00 UTC</text>
+          </g>
+
+          <!-- Right Event Glass Card -->
+          <g transform="translate(230, 0)">
+            <!-- Glass Card Body -->
+            <rect x="0" y="0" width="1050" height="230" rx="18" fill="#0D111B" fill-opacity="0.85" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+            <!-- Inner Corner Glow -->
+            <line x1="0" y1="20" x2="0" y2="210" stroke="#8B5CF6" stroke-width="3" filter="url(#subtle-glow)" />
+
+            <!-- Category & Badge -->
+            <text x="35" y="38" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#8B5CF6" letter-spacing="0.08em">PULSE CONTROL LAB // HARDWARE CALIBRATION</text>
+            <g transform="translate(820, 22)">
+              <rect x="0" y="0" width="190" height="26" rx="13" fill="#07090E" stroke="#8B5CF6" stroke-width="1" />
+              <text x="95" y="17" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#8B5CF6" text-anchor="middle">QPU BACKEND ACCESS</text>
+            </g>
+
+            <!-- Event Title -->
+            <text x="35" y="78" font-family="Syne, sans-serif" font-size="22" font-weight="700" fill="#F1F5F9">Direct Pulse-Level Control & Qubit Hamiltonian Characterization</text>
+            
+            <!-- Speakers -->
+            <text x="35" y="112" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="#00F2FE">Speakers: <tspan fill="#F1F5F9" font-weight="400">Quantum Hardware Engineering Guild</tspan></text>
+            
+            <!-- Description -->
+            <text x="35" y="145" font-family="Inter, sans-serif" font-size="13" font-weight="400" fill="#94A3B8" width="700">
+              Calibrate microwave DRAG pulses, measure Rabi oscillations, and extract T₁/T₂ relaxation times on real transmon qubits.
+            </text>
+
+            <!-- Card Bottom Bar: Calendar Sync / Lab Note -->
+            <g transform="translate(35, 175)">
+              <rect x="0" y="0" width="140" height="34" rx="17" fill="#07090E" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+              <text x="70" y="21" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#F1F5F9" text-anchor="middle">+ Add to Calendar</text>
+              
+              <rect x="155" y="0" width="150" height="34" rx="17" fill="#07090E" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+              <text x="230" y="21" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#94A3B8" text-anchor="middle">View Prerequisites</text>
+            </g>
+          </g>
+        </g>
+        
+
+        <g transform="translate(80, 1160)">
+          <!-- Left Phase Node Indicator -->
+          <g transform="translate(130, 30)">
+            <circle cx="50" cy="20" r="16" fill="#07090E" stroke="#FF5E3A" stroke-width="2" filter="url(#subtle-glow)" />
+            <circle cx="50" cy="20" r="6" fill="#FF5E3A" />
+            <text x="25" y="-12" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FF5E3A" text-anchor="middle">φ = 1.50π</text>
+            <text x="25" y="55" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#94A3B8" text-anchor="middle">OCT 24 // 15:00 UTC</text>
+          </g>
+
+          <!-- Right Event Glass Card -->
+          <g transform="translate(230, 0)">
+            <!-- Glass Card Body -->
+            <rect x="0" y="0" width="1050" height="230" rx="18" fill="#0D111B" fill-opacity="0.85" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+            <!-- Inner Corner Glow -->
+            <line x1="0" y1="20" x2="0" y2="210" stroke="#FF5E3A" stroke-width="3" filter="url(#subtle-glow)" />
+
+            <!-- Category & Badge -->
+            <text x="35" y="38" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#FF5E3A" letter-spacing="0.08em">HACKATHON KICKOFF // PROBLEM STATEMENTS</text>
+            <g transform="translate(820, 22)">
+              <rect x="0" y="0" width="190" height="26" rx="13" fill="#07090E" stroke="#FF5E3A" stroke-width="1" />
+              <text x="95" y="17" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#FF5E3A" text-anchor="middle">GLOBAL TEAMS FORMATION</text>
+            </g>
+
+            <!-- Event Title -->
+            <text x="35" y="78" font-family="Syne, sans-serif" font-size="22" font-weight="700" fill="#F1F5F9">Global Hackathon Challenge Reveal & Team Formation</text>
+            
+            <!-- Speakers -->
+            <text x="35" y="112" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="#00F2FE">Speakers: <tspan fill="#F1F5F9" font-weight="400">Hackathon Committee & Track Mentors</tspan></text>
+            
+            <!-- Description -->
+            <text x="35" y="145" font-family="Inter, sans-serif" font-size="13" font-weight="400" fill="#94A3B8" width="700">
+              Unveiling problem statements across 3 core tracks: Algorithms, Error Mitigation, and Pedagogical Visualizations.
+            </text>
+
+            <!-- Card Bottom Bar: Calendar Sync / Lab Note -->
+            <g transform="translate(35, 175)">
+              <rect x="0" y="0" width="140" height="34" rx="17" fill="#07090E" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+              <text x="70" y="21" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#F1F5F9" text-anchor="middle">+ Add to Calendar</text>
+              
+              <rect x="155" y="0" width="150" height="34" rx="17" fill="#07090E" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+              <text x="230" y="21" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#94A3B8" text-anchor="middle">View Prerequisites</text>
+            </g>
+          </g>
+        </g>
+        
+
+        <g transform="translate(80, 1420)">
+          <!-- Left Phase Node Indicator -->
+          <g transform="translate(130, 30)">
+            <circle cx="50" cy="20" r="16" fill="#07090E" stroke="#FBBF24" stroke-width="2" filter="url(#subtle-glow)" />
+            <circle cx="50" cy="20" r="6" fill="#FBBF24" />
+            <text x="25" y="-12" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#FBBF24" text-anchor="middle">φ = 2.00π</text>
+            <text x="25" y="55" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#94A3B8" text-anchor="middle">NOV 02 // 19:00 UTC</text>
+          </g>
+
+          <!-- Right Event Glass Card -->
+          <g transform="translate(230, 0)">
+            <!-- Glass Card Body -->
+            <rect x="0" y="0" width="1050" height="230" rx="18" fill="#0D111B" fill-opacity="0.85" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+            <!-- Inner Corner Glow -->
+            <line x1="0" y1="20" x2="0" y2="210" stroke="#FBBF24" stroke-width="3" filter="url(#subtle-glow)" />
+
+            <!-- Category & Badge -->
+            <text x="35" y="38" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#FBBF24" letter-spacing="0.08em">SYNCHRONIZATION // FINALS & AWARDS</text>
+            <g transform="translate(820, 22)">
+              <rect x="0" y="0" width="190" height="26" rx="13" fill="#07090E" stroke="#FBBF24" stroke-width="1" />
+              <text x="95" y="17" font-family="JetBrains Mono, monospace" font-size="9" font-weight="600" fill="#FBBF24" text-anchor="middle">GRAND FINALE CEREMONY</text>
+            </g>
+
+            <!-- Event Title -->
+            <text x="35" y="78" font-family="Syne, sans-serif" font-size="22" font-weight="700" fill="#F1F5F9">Global Finalists Demo & Award Ceremony</text>
+            
+            <!-- Speakers -->
+            <text x="35" y="112" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="#00F2FE">Speakers: <tspan fill="#F1F5F9" font-weight="400">Keynote Jury & Quantum Community Leaders</tspan></text>
+            
+            <!-- Description -->
+            <text x="35" y="145" font-family="Inter, sans-serif" font-size="13" font-weight="400" fill="#94A3B8" width="700">
+              Top 12 finalist project presentations, live jury deliberation, hardware compute grant announcements, and closing gala.
+            </text>
+
+            <!-- Card Bottom Bar: Calendar Sync / Lab Note -->
+            <g transform="translate(35, 175)">
+              <rect x="0" y="0" width="140" height="34" rx="17" fill="#07090E" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+              <text x="70" y="21" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#F1F5F9" text-anchor="middle">+ Add to Calendar</text>
+              
+              <rect x="155" y="0" width="150" height="34" rx="17" fill="#07090E" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+              <text x="230" y="21" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#94A3B8" text-anchor="middle">View Prerequisites</text>
+            </g>
+          </g>
+        </g>
+        
+</g>
+</g>
+
+    <!-- TAB 3: HACKATHON DETAILS ARTBOARD -->
+    <g id="Artboard-Tab3-Hackathon" transform="translate(3080, 0)">
+      <!-- Base Background -->
+      <rect x="0" y="0" width="1440" height="1800" fill="url(#bg-obsidian-grad)" />
+      <rect x="0" y="0" width="1440" height="1800" fill="url(#quantum-grid)" opacity="0.7" />
+      
+      <!-- Ambient Glows -->
+      <circle cx="250" cy="400" r="450" fill="url(#paprika-glow)" />
+      <circle cx="1150" cy="500" r="500" fill="url(#aurora-teal-glow)" />
+      <circle cx="700" cy="1300" r="550" fill="url(#indigo-glow)" />
+    
+
+    <!-- Floating Glassmorphic Nav Dock -->
+    <g id="Navbar" transform="translate(0, 0)">
+      <!-- Outer Glow -->
+      <rect x="356" y="36" width="728" height="72" rx="36" fill="none" stroke="rgba(0, 242, 254, 0.15)" stroke-width="1.5" filter="url(#subtle-glow)" />
+      <!-- Glass Background -->
+      <rect x="360" y="40" width="720" height="64" rx="32" fill="#0D111B" fill-opacity="0.8" stroke="url(#glass-card-stroke-subtle)" stroke-width="1.5" />
+      
+      <!-- Logo / QFF Quantum Glyph -->
+      <g transform="translate(388, 58)">
+        <circle cx="14" cy="14" r="14" fill="#07090E" stroke="#00F2FE" stroke-width="1.5" />
+        <circle cx="14" cy="14" r="6" fill="#FF5E3A" />
+        <ellipse cx="14" cy="14" rx="12" ry="4" fill="none" stroke="#8B5CF6" stroke-width="1" transform="rotate(45 14 14)" />
+        <text x="36" y="18" font-family="Syne, sans-serif" font-size="15" font-weight="800" fill="#F1F5F9" letter-spacing="0.05em">QFF<tspan fill="#00F2FE">.26</tspan></text>
+      </g>
+
+      <!-- Active Tab Indicator Pill -->
+      <rect x="725" y="52" width="160" height="40" rx="20" fill="url(#btn-indigo-grad)" opacity="0.9" filter="url(#subtle-glow)" />
+      
+      <!-- Nav Links -->
+      <g font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" text-anchor="middle">
+        <text x="475.0" y="77" fill="#94A3B8">Home</text>
+        <text x="640.0" y="77" fill="#94A3B8">Schedule</text>
+        <text x="805.0" y="77" fill="#FFFFFF">Hackathon</text>
+        <text x="955.0" y="77" fill="#94A3B8">Community</text>
+      </g>
+
+      <!-- Top Right QPU Live Status Tag -->
+      <g transform="translate(1150, 56)">
+        <rect x="0" y="0" width="210" height="32" rx="16" fill="#07090E" stroke="rgba(0, 242, 254, 0.3)" stroke-width="1" />
+        <circle cx="16" cy="16" r="4" fill="#00F2FE" filter="url(#subtle-glow)" />
+        <text x="28" y="20" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#00F2FE" letter-spacing="0.05em">QPU ONLINE // 127-Q</text>
+      </g>
+    </g>
+    
+
+      <!-- HACKATHON HEADER -->
+      <g id="Hackathon-Header" transform="translate(80, 140)">
+        <text x="0" y="24" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#FF5E3A" letter-spacing="0.1em">QUANTUM COMPUTATION COMPETITION</text>
+        <text x="0" y="70" font-family="Syne, sans-serif" font-size="44" font-weight="800" fill="#F1F5F9">Hackathon Tracks &amp; QPU Grants</text>
+        <text x="0" y="105" font-family="Inter, sans-serif" font-size="16" fill="#94A3B8">
+          Build utility-scale quantum applications, invent novel error suppression protocols, or craft visual pedagogical tools.
+        </text>
+      </g>
+    
+<g id="Track-Columns" transform="translate(80, 270)">
+
+        <g transform="translate(0, 0)">
+          <!-- Glass Card -->
+          <rect x="0" y="0" width="410" height="490" rx="20" fill="#0D111B" fill-opacity="0.8" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+          <line x1="20" y1="0" x2="160" y2="0" stroke="#00F2FE" stroke-width="3" filter="url(#subtle-glow)" />
+
+          <!-- Track Badge & Prize -->
+          <text x="24" y="42" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#00F2FE">TRACK A // ALGORITHMS</text>
+          <g transform="translate(250, 24)">
+            <rect x="0" y="0" width="135" height="26" rx="13" fill="#07090E" stroke="#00F2FE" stroke-width="1" />
+            <text x="67" y="17" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#00F2FE" text-anchor="middle">$18,000 POOL</text>
+          </g>
+
+          <!-- Title -->
+          <text x="24" y="85" font-family="Syne, sans-serif" font-size="20" font-weight="700" fill="#F1F5F9" width="360">
+            <tspan x="24" dy="0">Quantum Algorithms &amp;</tspan>
+            <tspan x="24" dy="26"> Circuit Synthesis</tspan>
+          </text>
+
+          <!-- Description -->
+          <text x="24" y="155" font-family="Inter, sans-serif" font-size="13" font-weight="400" fill="#94A3B8" width="360">
+            <tspan x="24" dy="0">Focus on VQE, QAOA, Quantum Machine Learning (QML), and</tspan>
+            <tspan x="24" dy="20"> Hamiltonian ground-state simulation. Maximize circuit </tspan>
+            <tspan x="24" dy="20">depth efficiency and fidelity.</tspan>
+          </text>
+
+          <!-- Topic Chips -->
+          <g transform="translate(24, 250)">
+            <text x="0" y="0" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#64748B" letter-spacing="0.08em">SUGGESTED PROBLEM VECTORS:</text>
+        
+
+            <g transform="translate(0, 18)">
+              <rect x="0" y="0" width="360" height="28" rx="6" fill="#07090E" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <circle cx="12" cy="14" r="3" fill="#00F2FE" />
+              <text x="26" y="18" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="500" fill="#F1F5F9">Variational Eigensolvers</text>
+            </g>
+            
+
+            <g transform="translate(0, 54)">
+              <rect x="0" y="0" width="360" height="28" rx="6" fill="#07090E" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <circle cx="12" cy="14" r="3" fill="#00F2FE" />
+              <text x="26" y="18" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="500" fill="#F1F5F9">Clifford + T Decomposition</text>
+            </g>
+            
+
+            <g transform="translate(0, 90)">
+              <rect x="0" y="0" width="360" height="28" rx="6" fill="#07090E" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <circle cx="12" cy="14" r="3" fill="#00F2FE" />
+              <text x="26" y="18" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="500" fill="#F1F5F9">Quantum Neural Networks</text>
+            </g>
+            
+
+            <g transform="translate(0, 126)">
+              <rect x="0" y="0" width="360" height="28" rx="6" fill="#07090E" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <circle cx="12" cy="14" r="3" fill="#00F2FE" />
+              <text x="26" y="18" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="500" fill="#F1F5F9">Hamiltonian Simulation</text>
+            </g>
+            
+
+          </g>
+          
+          <!-- Card Action Button -->
+          <g transform="translate(24, 425)">
+            <rect x="0" y="0" width="360" height="42" rx="21" fill="#07090E" stroke="#00F2FE" stroke-width="1.2" />
+            <text x="180" y="26" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="#00F2FE" text-anchor="middle">Select Track A &amp; Form Team →</text>
+          </g>
+        </g>
+        
+
+        <g transform="translate(435, 0)">
+          <!-- Glass Card -->
+          <rect x="0" y="0" width="410" height="490" rx="20" fill="#0D111B" fill-opacity="0.8" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+          <line x1="20" y1="0" x2="160" y2="0" stroke="#FF5E3A" stroke-width="3" filter="url(#subtle-glow)" />
+
+          <!-- Track Badge & Prize -->
+          <text x="24" y="42" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#FF5E3A">TRACK B // MITIGATION</text>
+          <g transform="translate(250, 24)">
+            <rect x="0" y="0" width="135" height="26" rx="13" fill="#07090E" stroke="#FF5E3A" stroke-width="1" />
+            <text x="67" y="17" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#FF5E3A" text-anchor="middle">$15,000 POOL</text>
+          </g>
+
+          <!-- Title -->
+          <text x="24" y="85" font-family="Syne, sans-serif" font-size="20" font-weight="700" fill="#F1F5F9" width="360">
+            <tspan x="24" dy="0">Error Suppression &amp;</tspan>
+            <tspan x="24" dy="26"> Noise Characterization</tspan>
+          </text>
+
+          <!-- Description -->
+          <text x="24" y="155" font-family="Inter, sans-serif" font-size="13" font-weight="400" fill="#94A3B8" width="360">
+            <tspan x="24" dy="0">Tackle physical noise on utility-scale QPUs. Design cus</tspan>
+            <tspan x="24" dy="20">tom Zero-Noise Extrapolation (ZNE), probabilistic error</tspan>
+            <tspan x="24" dy="20"> cancellation (PEC), and dynamic decoupling sequences.</tspan>
+          </text>
+
+          <!-- Topic Chips -->
+          <g transform="translate(24, 250)">
+            <text x="0" y="0" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#64748B" letter-spacing="0.08em">SUGGESTED PROBLEM VECTORS:</text>
+        
+
+            <g transform="translate(0, 18)">
+              <rect x="0" y="0" width="360" height="28" rx="6" fill="#07090E" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <circle cx="12" cy="14" r="3" fill="#FF5E3A" />
+              <text x="26" y="18" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="500" fill="#F1F5F9">ZNE Polynomial Fitting</text>
+            </g>
+            
+
+            <g transform="translate(0, 54)">
+              <rect x="0" y="0" width="360" height="28" rx="6" fill="#07090E" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <circle cx="12" cy="14" r="3" fill="#FF5E3A" />
+              <text x="26" y="18" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="500" fill="#F1F5F9">Probabilistic Cancellation</text>
+            </g>
+            
+
+            <g transform="translate(0, 90)">
+              <rect x="0" y="0" width="360" height="28" rx="6" fill="#07090E" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <circle cx="12" cy="14" r="3" fill="#FF5E3A" />
+              <text x="26" y="18" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="500" fill="#F1F5F9">Pauli Twirling Protocols</text>
+            </g>
+            
+
+            <g transform="translate(0, 126)">
+              <rect x="0" y="0" width="360" height="28" rx="6" fill="#07090E" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <circle cx="12" cy="14" r="3" fill="#FF5E3A" />
+              <text x="26" y="18" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="500" fill="#F1F5F9">Dynamical Decoupling</text>
+            </g>
+            
+
+          </g>
+          
+          <!-- Card Action Button -->
+          <g transform="translate(24, 425)">
+            <rect x="0" y="0" width="360" height="42" rx="21" fill="#07090E" stroke="#FF5E3A" stroke-width="1.2" />
+            <text x="180" y="26" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="#FF5E3A" text-anchor="middle">Select Track A &amp; Form Team →</text>
+          </g>
+        </g>
+        
+
+        <g transform="translate(870, 0)">
+          <!-- Glass Card -->
+          <rect x="0" y="0" width="410" height="490" rx="20" fill="#0D111B" fill-opacity="0.8" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+          <line x1="20" y1="0" x2="160" y2="0" stroke="#8B5CF6" stroke-width="3" filter="url(#subtle-glow)" />
+
+          <!-- Track Badge & Prize -->
+          <text x="24" y="42" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#8B5CF6">TRACK C // PEDAGOGY</text>
+          <g transform="translate(250, 24)">
+            <rect x="0" y="0" width="135" height="26" rx="13" fill="#07090E" stroke="#8B5CF6" stroke-width="1" />
+            <text x="67" y="17" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#8B5CF6" text-anchor="middle">$12,000 POOL</text>
+          </g>
+
+          <!-- Title -->
+          <text x="24" y="85" font-family="Syne, sans-serif" font-size="20" font-weight="700" fill="#F1F5F9" width="360">
+            <tspan x="24" dy="0">Interactive Visualization &amp;</tspan>
+            <tspan x="24" dy="26"> Education</tspan>
+          </text>
+
+          <!-- Description -->
+          <text x="24" y="155" font-family="Inter, sans-serif" font-size="13" font-weight="400" fill="#94A3B8" width="360">
+            <tspan x="24" dy="0">Develop open-source interactive Bloch sphere tools, wav</tspan>
+            <tspan x="24" dy="20">e-packet interference simulators, quantum game mechanic</tspan>
+            <tspan x="24" dy="20">s, or educational web widgets using Qiskit.</tspan>
+          </text>
+
+          <!-- Topic Chips -->
+          <g transform="translate(24, 250)">
+            <text x="0" y="0" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#64748B" letter-spacing="0.08em">SUGGESTED PROBLEM VECTORS:</text>
+        
+
+            <g transform="translate(0, 18)">
+              <rect x="0" y="0" width="360" height="28" rx="6" fill="#07090E" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <circle cx="12" cy="14" r="3" fill="#8B5CF6" />
+              <text x="26" y="18" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="500" fill="#F1F5F9">WebAssembly Simulators</text>
+            </g>
+            
+
+            <g transform="translate(0, 54)">
+              <rect x="0" y="0" width="360" height="28" rx="6" fill="#07090E" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <circle cx="12" cy="14" r="3" fill="#8B5CF6" />
+              <text x="26" y="18" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="500" fill="#F1F5F9">3D State Visualizers</text>
+            </g>
+            
+
+            <g transform="translate(0, 90)">
+              <rect x="0" y="0" width="360" height="28" rx="6" fill="#07090E" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <circle cx="12" cy="14" r="3" fill="#8B5CF6" />
+              <text x="26" y="18" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="500" fill="#F1F5F9">Gamified Circuit Builders</text>
+            </g>
+            
+
+            <g transform="translate(0, 126)">
+              <rect x="0" y="0" width="360" height="28" rx="6" fill="#07090E" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <circle cx="12" cy="14" r="3" fill="#8B5CF6" />
+              <text x="26" y="18" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="500" fill="#F1F5F9">Open Educational Tools</text>
+            </g>
+            
+
+          </g>
+          
+          <!-- Card Action Button -->
+          <g transform="translate(24, 425)">
+            <rect x="0" y="0" width="360" height="42" rx="21" fill="#07090E" stroke="#8B5CF6" stroke-width="1.2" />
+            <text x="180" y="26" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="#8B5CF6" text-anchor="middle">Select Track A &amp; Form Team →</text>
+          </g>
+        </g>
+        
+</g>
+
+      <!-- QPU ALLOCATION & HARDWARE ACCESS -->
+      <g id="QPU-Access-Section" transform="translate(80, 790)">
+        <rect x="0" y="0" width="1280" height="340" rx="20" fill="#0D111B" fill-opacity="0.85" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+        <circle cx="100" cy="170" r="140" fill="url(#indigo-glow)" opacity="0.3" />
+        
+        <text x="40" y="44" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#00F2FE" letter-spacing="0.1em">DEDICATED QUANTUM HARDWARE ALLOCATION</text>
+        <text x="40" y="82" font-family="Syne, sans-serif" font-size="28" font-weight="800" fill="#F1F5F9">Utility-Scale QPU &amp; Tensor Simulator Access</text>
+        <text x="40" y="112" font-family="Inter, sans-serif" font-size="14" fill="#94A3B8">
+          Every accepted team receives instant cloud API credentials for direct physical hardware execution.
+        </text>
+
+        <!-- 3 Hardware Tier Cards -->
+        <g transform="translate(40, 140)">
+          <!-- Hardware Tier 1 -->
+          <g transform="translate(0, 0)">
+            <rect x="0" y="0" width="380" height="160" rx="12" fill="#07090E" stroke="rgba(0, 242, 254, 0.3)" stroke-width="1" />
+            <text x="20" y="32" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#00F2FE">IBM HERON // 133 QUBITS</text>
+            <text x="20" y="60" font-family="Syne, sans-serif" font-size="18" font-weight="700" fill="#F1F5F9">Tunable Coupler Architecture</text>
+            <text x="20" y="88" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">2-qubit error rate &lt; 0.003, CLOPS 5,000+</text>
+            <text x="20" y="115" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" fill="#00F2FE">Allocation: 2,500 Execution Secs / Team</text>
+            <rect x="20" y="130" width="340" height="4" rx="2" fill="rgba(255,255,255,0.1)" />
+            <rect x="20" y="130" width="280" height="4" rx="2" fill="#00F2FE" />
+          </g>
+
+          <!-- Hardware Tier 2 -->
+          <g transform="translate(410, 0)">
+            <rect x="0" y="0" width="380" height="160" rx="12" fill="#07090E" stroke="rgba(139, 92, 246, 0.3)" stroke-width="1" />
+            <text x="20" y="32" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#8B5CF6">IBM EAGLE // 127 QUBITS</text>
+            <text x="20" y="60" font-family="Syne, sans-serif" font-size="18" font-weight="700" fill="#F1F5F9">Heavy-Hex Lattice Layout</text>
+            <text x="20" y="88" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">Pulse-level OpenPulse direct microwave control</text>
+            <text x="20" y="115" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" fill="#8B5CF6">Allocation: 5,000 Execution Secs / Team</text>
+            <rect x="20" y="130" width="340" height="4" rx="2" fill="rgba(255,255,255,0.1)" />
+            <rect x="20" y="130" width="310" height="4" rx="2" fill="#8B5CF6" />
+          </g>
+
+          <!-- Hardware Tier 3 -->
+          <g transform="translate(820, 0)">
+            <rect x="0" y="0" width="380" height="160" rx="12" fill="#07090E" stroke="rgba(255, 94, 58, 0.3)" stroke-width="1" />
+            <text x="20" y="32" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#FF5E3A">GPU AER MATRIX SIMULATOR</text>
+            <text x="20" y="60" font-family="Syne, sans-serif" font-size="18" font-weight="700" fill="#F1F5F9">NVIDIA cuQuantum MPS Cluster</text>
+            <text x="20" y="88" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">Up to 100-qubit low-entanglement tensor simulation</text>
+            <text x="20" y="115" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" fill="#FF5E3A">Allocation: Unlimited Local &amp; Cloud GPUs</text>
+            <rect x="20" y="130" width="340" height="4" rx="2" fill="rgba(255,255,255,0.1)" />
+            <rect x="20" y="130" width="340" height="4" rx="2" fill="#FF5E3A" />
+          </g>
+        </g>
+      </g>
+    
+
+      <!-- RULES & PRIZES MATRIX -->
+      <g id="Rules-Prizes-Section" transform="translate(80, 1160)">
+        <!-- Rules of Coherence (Left 620px) -->
+        <g transform="translate(0, 0)">
+          <rect x="0" y="0" width="620" height="440" rx="20" fill="#0D111B" stroke="url(#glass-card-stroke-subtle)" stroke-width="1.5" />
+          <text x="35" y="44" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#00F2FE">RULES OF COHERENCE</text>
+          <text x="35" y="80" font-family="Syne, sans-serif" font-size="24" font-weight="800" fill="#F1F5F9">Submission Protocol</text>
+
+          <g transform="translate(35, 110)">
+            <!-- Rule 1 -->
+            <circle cx="12" cy="12" r="12" fill="#07090E" stroke="#00F2FE" stroke-width="1" />
+            <text x="12" y="16" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#00F2FE" text-anchor="middle">1</text>
+            <text x="36" y="12" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" fill="#F1F5F9">Team Size Constraints</text>
+            <text x="36" y="32" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">Teams may consist of 1 to 4 researchers. Solo submissions are fully welcomed.</text>
+
+            <!-- Rule 2 -->
+            <g transform="translate(0, 65)">
+              <circle cx="12" cy="12" r="12" fill="#07090E" stroke="#8B5CF6" stroke-width="1" />
+              <text x="12" y="16" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#8B5CF6" text-anchor="middle">2</text>
+              <text x="36" y="12" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" fill="#F1F5F9">Open Source Licensing</text>
+              <text x="36" y="32" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">All code must be public on GitHub with Apache 2.0 or MIT license before deadline.</text>
+            </g>
+
+            <!-- Rule 3 -->
+            <g transform="translate(0, 130)">
+              <circle cx="12" cy="12" r="12" fill="#07090E" stroke="#FF5E3A" stroke-width="1" />
+              <text x="12" y="16" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#FF5E3A" text-anchor="middle">3</text>
+              <text x="36" y="12" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" fill="#F1F5F9">Qiskit 1.x &amp; Runtime Primitives</text>
+              <text x="36" y="32" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">Must use modern Qiskit 1.x syntax and Sampler/Estimator V2 primitives.</text>
+            </g>
+
+            <!-- Rule 4 -->
+            <g transform="translate(0, 195)">
+              <circle cx="12" cy="12" r="12" fill="#07090E" stroke="#FBBF24" stroke-width="1" />
+              <text x="12" y="16" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#FBBF24" text-anchor="middle">4</text>
+              <text x="36" y="12" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" fill="#F1F5F9">Reproducible Jupyter Notebooks</text>
+              <text x="36" y="32" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">Include end-to-end execution cells and clear theoretical markdown narrative.</text>
+            </g>
+          </g>
+        </g>
+
+        <!-- Prize Breakdown (Right 620px) -->
+        <g transform="translate(660, 0)">
+          <rect x="0" y="0" width="620" height="440" rx="20" fill="#0D111B" stroke="url(#glass-card-stroke-subtle)" stroke-width="1.5" />
+          <text x="35" y="44" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#FF5E3A">GLOBAL PRIZE PURSE</text>
+          <text x="35" y="80" font-family="Syne, sans-serif" font-size="24" font-weight="800" fill="#F1F5F9">$45,000 Total Allocation</text>
+
+          <g transform="translate(35, 110)">
+            <!-- 1st Place Global -->
+            <rect x="0" y="0" width="550" height="65" rx="10" fill="#07090E" stroke="rgba(251, 191, 36, 0.4)" stroke-width="1" />
+            <text x="20" y="38" font-family="Syne, sans-serif" font-size="20" font-weight="800" fill="#FBBF24">1ST PLACE GRAND CHAMPION</text>
+            <text x="420" y="38" font-family="JetBrains Mono, monospace" font-size="18" font-weight="700" fill="#FBBF24">$15,000</text>
+            <text x="20" y="55" font-family="Inter, sans-serif" font-size="10" fill="#94A3B8">+ 10,000 QPU Secs &amp; IBM Quantum Lab Residency</text>
+
+            <!-- Track 1sts -->
+            <g transform="translate(0, 80)">
+              <rect x="0" y="0" width="550" height="60" rx="10" fill="#07090E" stroke="rgba(0, 242, 254, 0.3)" stroke-width="1" />
+              <text x="20" y="36" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#00F2FE">Track Winner: Algorithms &amp; Synthesis</text>
+              <text x="440" y="36" font-family="JetBrains Mono, monospace" font-size="16" font-weight="700" fill="#00F2FE">$7,500</text>
+            </g>
+
+            <g transform="translate(0, 155)">
+              <rect x="0" y="0" width="550" height="60" rx="10" fill="#07090E" stroke="rgba(255, 94, 58, 0.3)" stroke-width="1" />
+              <text x="20" y="36" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#FF5E3A">Track Winner: Error Mitigation</text>
+              <text x="440" y="36" font-family="JetBrains Mono, monospace" font-size="16" font-weight="700" fill="#FF5E3A">$7,500</text>
+            </g>
+
+            <g transform="translate(0, 230)">
+              <rect x="0" y="0" width="550" height="60" rx="10" fill="#07090E" stroke="rgba(139, 92, 246, 0.3)" stroke-width="1" />
+              <text x="20" y="36" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#8B5CF6">Track Winner: Pedagogy &amp; Visualization</text>
+              <text x="440" y="36" font-family="JetBrains Mono, monospace" font-size="16" font-weight="700" fill="#8B5CF6">$5,000</text>
+            </g>
+          </g>
+        </g>
+      </g>
+    
+
+      <!-- BOTTOM SUBMIT CTA -->
+      <g id="Hackathon-Bottom-CTA" transform="translate(80, 1630)">
+        <rect x="0" y="0" width="1280" height="130" rx="24" fill="url(#bg-obsidian-grad)" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+        <circle cx="200" cy="65" r="120" fill="url(#paprika-glow)" opacity="0.4" />
+        <circle cx="1080" cy="65" r="140" fill="url(#aurora-teal-glow)" opacity="0.4" />
+        
+        <text x="50" y="55" font-family="Syne, sans-serif" font-size="28" font-weight="800" fill="#F1F5F9">Register Your Hackathon Team Now</text>
+        <text x="50" y="90" font-family="Inter, sans-serif" font-size="15" fill="#94A3B8">Instant hardware API key generation upon GitHub repository linkage.</text>
+        
+        <g transform="translate(1000, 38)">
+          <rect x="0" y="0" width="230" height="54" rx="27" fill="url(#btn-primary-grad)" filter="url(#subtle-glow)" />
+          <text x="115" y="33" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+            Create Team Workspace →
+          </text>
+        </g>
+      </g>
+    </g>
+    
+
+    <!-- TAB 4: JOIN COMMUNITY ARTBOARD -->
+    <g id="Artboard-Tab4-Community" transform="translate(4620, 0)">
+      <!-- Base Background -->
+      <rect x="0" y="0" width="1440" height="1800" fill="url(#bg-obsidian-grad)" />
+      <rect x="0" y="0" width="1440" height="1800" fill="url(#quantum-grid)" opacity="0.7" />
+      
+      <!-- Ambient Glows -->
+      <circle cx="300" cy="400" r="450" fill="url(#indigo-glow)" />
+      <circle cx="1150" cy="600" r="500" fill="url(#aurora-teal-glow)" />
+      <circle cx="600" cy="1300" r="500" fill="url(#paprika-glow)" />
+    
+
+    <!-- Floating Glassmorphic Nav Dock -->
+    <g id="Navbar" transform="translate(0, 0)">
+      <!-- Outer Glow -->
+      <rect x="356" y="36" width="728" height="72" rx="36" fill="none" stroke="rgba(0, 242, 254, 0.15)" stroke-width="1.5" filter="url(#subtle-glow)" />
+      <!-- Glass Background -->
+      <rect x="360" y="40" width="720" height="64" rx="32" fill="#0D111B" fill-opacity="0.8" stroke="url(#glass-card-stroke-subtle)" stroke-width="1.5" />
+      
+      <!-- Logo / QFF Quantum Glyph -->
+      <g transform="translate(388, 58)">
+        <circle cx="14" cy="14" r="14" fill="#07090E" stroke="#00F2FE" stroke-width="1.5" />
+        <circle cx="14" cy="14" r="6" fill="#FF5E3A" />
+        <ellipse cx="14" cy="14" rx="12" ry="4" fill="none" stroke="#8B5CF6" stroke-width="1" transform="rotate(45 14 14)" />
+        <text x="36" y="18" font-family="Syne, sans-serif" font-size="15" font-weight="800" fill="#F1F5F9" letter-spacing="0.05em">QFF<tspan fill="#00F2FE">.26</tspan></text>
+      </g>
+
+      <!-- Active Tab Indicator Pill -->
+      <rect x="890" y="52" width="160" height="40" rx="20" fill="url(#btn-indigo-grad)" opacity="0.9" filter="url(#subtle-glow)" />
+      
+      <!-- Nav Links -->
+      <g font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" text-anchor="middle">
+        <text x="475.0" y="77" fill="#94A3B8">Home</text>
+        <text x="640.0" y="77" fill="#94A3B8">Schedule</text>
+        <text x="805.0" y="77" fill="#94A3B8">Hackathon</text>
+        <text x="955.0" y="77" fill="#FFFFFF">Community</text>
+      </g>
+
+      <!-- Top Right QPU Live Status Tag -->
+      <g transform="translate(1150, 56)">
+        <rect x="0" y="0" width="210" height="32" rx="16" fill="#07090E" stroke="rgba(0, 242, 254, 0.3)" stroke-width="1" />
+        <circle cx="16" cy="16" r="4" fill="#00F2FE" filter="url(#subtle-glow)" />
+        <text x="28" y="20" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600" fill="#00F2FE" letter-spacing="0.05em">QPU ONLINE // 127-Q</text>
+      </g>
+    </g>
+    
+
+      <!-- COMMUNITY HEADER -->
+      <g id="Community-Header" transform="translate(80, 140)">
+        <text x="0" y="24" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#00F2FE" letter-spacing="0.1em">GLOBAL QUANTUM COMMUNITY &amp; MENTOR MATRIX</text>
+        <text x="0" y="70" font-family="Syne, sans-serif" font-size="44" font-weight="800" fill="#F1F5F9">Join the Coherent Network</text>
+        <text x="0" y="105" font-family="Inter, sans-serif" font-size="16" fill="#94A3B8">
+          Sync with 4,280+ active quantum researchers, join dedicated track Discord/Slack channels, and pair with IBM mentors.
+        </text>
+      </g>
+    
+
+      <!-- COMMUNITY PORTAL MAIN SECTION -->
+      <g id="Portal-Section" transform="translate(80, 260)">
+        <!-- Discord / Terminal Client Window Simulation (Left 760px) -->
+        <g transform="translate(0, 0)">
+          <rect x="0" y="0" width="760" height="520" rx="20" fill="#0D111B" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+          
+          <!-- Window Titlebar -->
+          <rect x="0" y="0" width="760" height="48" rx="20" fill="#07090E" />
+          <line x1="0" y1="48" x2="760" y2="48" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+          <circle cx="24" cy="24" r="6" fill="#FF5E3A" />
+          <circle cx="44" cy="24" r="6" fill="#FBBF24" />
+          <circle cx="64" cy="24" r="6" fill="#00F2FE" />
+          <text x="380" y="30" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#94A3B8" text-anchor="middle">qff-2026 // discord-quantum-mesh.sh</text>
+
+          <!-- Sidebar Channels (Left 220px) -->
+          <rect x="0" y="48" width="220" height="472" fill="#0A0E18" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+          <text x="20" y="80" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#64748B" letter-spacing="0.08em">QUANTUM CHANNELS</text>
+          
+          <!-- Channel items -->
+          <g transform="translate(15, 95)">
+            <rect x="0" y="0" width="190" height="32" rx="6" fill="#4F46E5" fill-opacity="0.3" stroke="#4F46E5" stroke-width="1" />
+            <text x="12" y="20" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#00F2FE"># ⚡ announcements</text>
+            
+            <text x="12" y="55" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="500" fill="#94A3B8"># 🔬 track-a-algorithms</text>
+            <text x="12" y="90" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="500" fill="#94A3B8"># 🛡️ track-b-error-mit</text>
+            <text x="12" y="125" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="500" fill="#94A3B8"># 🎨 track-c-pedagogy</text>
+            <text x="12" y="160" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="500" fill="#94A3B8"># 💻 qpu-hardware-helpdesk</text>
+            <text x="12" y="195" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="500" fill="#94A3B8"># 🤝 find-a-teammate</text>
+            <text x="12" y="230" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="500" fill="#94A3B8"># ☕ quantum-cafe-lounge</text>
+          </g>
+
+          <!-- Chat Stream Area (Right 540px) -->
+          <g transform="translate(240, 65)">
+            <!-- Message 1 -->
+            <circle cx="18" cy="18" r="14" fill="#00F2FE" />
+            <text x="18" y="22" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#07090E" text-anchor="middle">AV</text>
+            <text x="44" y="18" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="700" fill="#00F2FE">Dr. Alistair Vance <tspan font-family="JetBrains Mono, monospace" font-size="10" font-weight="400" fill="#64748B">[IBM Fellow] • 14:02</tspan></text>
+            <text x="44" y="38" font-family="Inter, sans-serif" font-size="12" fill="#F1F5F9">Welcome everyone to QFF 2026! Heron QPUs are calibrated and runtime tokens are active.</text>
+
+            <!-- Message 2 -->
+            <g transform="translate(0, 65)">
+              <circle cx="18" cy="18" r="14" fill="#8B5CF6" />
+              <text x="18" y="22" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#07090E" text-anchor="middle">ER</text>
+              <text x="44" y="18" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="700" fill="#8B5CF6">Elena Rostova <tspan font-family="JetBrains Mono, monospace" font-size="10" font-weight="400" fill="#64748B">[Mentor / MIT] • 14:05</tspan></text>
+              <text x="44" y="38" font-family="Inter, sans-serif" font-size="12" fill="#F1F5F9">If anyone needs help formulating the Pauli twirling pipeline in Qiskit 1.x, ping me in #track-b!</text>
+            </g>
+
+            <!-- Message 3 -->
+            <g transform="translate(0, 130)">
+              <circle cx="18" cy="18" r="14" fill="#FF5E3A" />
+              <text x="18" y="22" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#07090E" text-anchor="middle">QK</text>
+              <text x="44" y="18" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="700" fill="#FF5E3A">Quantum Bot <tspan font-family="JetBrains Mono, monospace" font-size="10" font-weight="400" fill="#64748B">[BOT] • 14:07</tspan></text>
+              <text x="44" y="38" font-family="Inter, sans-serif" font-size="12" fill="#00F2FE">⚡ 48 new teams formed in the last 60 minutes. 320 mentors currently online.</text>
+            </g>
+            
+            <!-- Code Block Demo -->
+            <g transform="translate(44, 195)">
+              <rect x="0" y="0" width="440" height="85" rx="8" fill="#07090E" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <text x="15" y="25" font-family="JetBrains Mono, monospace" font-size="11" fill="#94A3B8"># Auto-join terminal command:</text>
+              <text x="15" y="45" font-family="JetBrains Mono, monospace" font-size="12" fill="#00F2FE">$ qiskit-fest join --server qff-mesh-2026</text>
+              <text x="15" y="65" font-family="JetBrains Mono, monospace" font-size="11" fill="#FF5E3A">[SUCCESS] Attached to quantum channel node: OK</text>
+            </g>
+          </g>
+
+          <!-- Chat Input Bar -->
+          <g transform="translate(240, 455)">
+            <rect x="0" y="0" width="490" height="42" rx="8" fill="#07090E" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+            <text x="16" y="26" font-family="Inter, sans-serif" font-size="13" fill="#64748B">Message #announcements or ask a mentor...</text>
+          </g>
+        </g>
+
+        <!-- Right Side: Live Community Resonance Card (480px) -->
+        <g transform="translate(800, 0)">
+          <rect x="0" y="0" width="480" height="520" rx="20" fill="#0D111B" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+          <circle cx="240" cy="180" r="140" fill="url(#paprika-glow)" opacity="0.35" />
+
+          <text x="35" y="44" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#00F2FE">COMMUNITY RESONANCE</text>
+          <text x="35" y="80" font-family="Syne, sans-serif" font-size="26" font-weight="800" fill="#F1F5F9">Global Node Metrics</text>
+
+          <!-- Metric 1 -->
+          <g transform="translate(35, 115)">
+            <text x="0" y="32" font-family="Syne, sans-serif" font-size="36" font-weight="800" fill="#00F2FE">4,280</text>
+            <text x="0" y="55" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="#F1F5F9">Active Quantum Researchers Online</text>
+            <text x="0" y="75" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">Across 42 countries and 120+ quantum labs</text>
+          </g>
+
+          <!-- Metric 2 -->
+          <g transform="translate(35, 215)">
+            <text x="0" y="32" font-family="Syne, sans-serif" font-size="36" font-weight="800" fill="#8B5CF6">140+</text>
+            <text x="0" y="55" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="#F1F5F9">IBM &amp; Academic Verified Mentors</text>
+            <text x="0" y="75" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">Specialists in pulse control, error mitigation &amp; algorithms</text>
+          </g>
+
+          <!-- Direct Join Buttons -->
+          <g transform="translate(35, 335)">
+            <rect x="0" y="0" width="410" height="54" rx="27" fill="url(#btn-indigo-grad)" filter="url(#subtle-glow)" />
+            <text x="205" y="33" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+              Launch Discord Gateway →
+            </text>
+
+            <g transform="translate(0, 68)">
+              <rect x="0" y="0" width="410" height="50" rx="25" fill="#07090E" stroke="rgba(255,255,255,0.15)" stroke-width="1.2" />
+              <text x="205" y="31" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600" fill="#F1F5F9" text-anchor="middle">
+                Join Slack Workspace
+              </text>
+            </g>
+          </g>
+        </g>
+      </g>
+    
+
+      <!-- MENTOR PAIRING & STUDY GROUPS -->
+      <g id="Mentor-Section" transform="translate(80, 830)">
+        <text x="0" y="30" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#8B5CF6" letter-spacing="0.1em">QUANTUM EXPERT MENTOR ROSTER</text>
+        <text x="0" y="70" font-family="Syne, sans-serif" font-size="34" font-weight="800" fill="#F1F5F9">1-on-1 Office Hours &amp; Code Reviews</text>
+        
+        <g transform="translate(0, 100)">
+          <!-- Mentor 1 -->
+          <g transform="translate(0, 0)">
+            <rect x="0" y="0" width="400" height="230" rx="16" fill="#0D111B" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+            <circle cx="50" cy="50" r="28" fill="#07090E" stroke="#00F2FE" stroke-width="2" />
+            <text x="50" y="56" font-family="JetBrains Mono, monospace" font-size="16" font-weight="700" fill="#00F2FE" text-anchor="middle">AV</text>
+            <text x="95" y="44" font-family="Syne, sans-serif" font-size="18" font-weight="700" fill="#F1F5F9">Dr. Alistair Vance</text>
+            <text x="95" y="65" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#00F2FE">IBM Quantum Fellow</text>
+            
+            <text x="24" y="115" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">
+              Specializes in heavy-hex transpilation, pulse scheduling, and VQE energy convergence.
+            </text>
+            
+            <g transform="translate(24, 155)">
+              <rect x="0" y="0" width="352" height="34" rx="17" fill="#07090E" stroke="#00F2FE" stroke-width="1" />
+              <text x="176" y="21" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#00F2FE" text-anchor="middle">Book Office Hours Slot (3 Open)</text>
+            </g>
+          </g>
+
+          <!-- Mentor 2 -->
+          <g transform="translate(440, 0)">
+            <rect x="0" y="0" width="400" height="230" rx="16" fill="#0D111B" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+            <circle cx="50" cy="50" r="28" fill="#07090E" stroke="#8B5CF6" stroke-width="2" />
+            <text x="50" y="56" font-family="JetBrains Mono, monospace" font-size="16" font-weight="700" fill="#8B5CF6" text-anchor="middle">ER</text>
+            <text x="95" y="44" font-family="Syne, sans-serif" font-size="18" font-weight="700" fill="#F1F5F9">Prof. Elena Rostova</text>
+            <text x="95" y="65" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#8B5CF6">Quantum Information Lab, MIT</text>
+            
+            <text x="24" y="115" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">
+              Expertise in Zero-Noise Extrapolation, Probabilistic Error Cancellation, and MPS simulators.
+            </text>
+            
+            <g transform="translate(24, 155)">
+              <rect x="0" y="0" width="352" height="34" rx="17" fill="#07090E" stroke="#8B5CF6" stroke-width="1" />
+              <text x="176" y="21" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#8B5CF6" text-anchor="middle">Book Office Hours Slot (5 Open)</text>
+            </g>
+          </g>
+
+          <!-- Mentor 3 -->
+          <g transform="translate(880, 0)">
+            <rect x="0" y="0" width="400" height="230" rx="16" fill="#0D111B" stroke="url(#glass-card-stroke)" stroke-width="1.5" />
+            <circle cx="50" cy="50" r="28" fill="#07090E" stroke="#FF5E3A" stroke-width="2" />
+            <text x="50" y="56" font-family="JetBrains Mono, monospace" font-size="16" font-weight="700" fill="#FF5E3A" text-anchor="middle">KL</text>
+            <text x="95" y="44" font-family="Syne, sans-serif" font-size="18" font-weight="700" fill="#F1F5F9">Kai-Lin Chen</text>
+            <text x="95" y="65" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#FF5E3A">Qiskit SDK Core Engineer</text>
+            
+            <text x="24" y="115" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">
+              Core contributor to Estimator V2, Qiskit Aer GPU backends, and WebAssembly visualization.
+            </text>
+            
+            <g transform="translate(24, 155)">
+              <rect x="0" y="0" width="352" height="34" rx="17" fill="#07090E" stroke="#FF5E3A" stroke-width="1" />
+              <text x="176" y="21" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600" fill="#FF5E3A" text-anchor="middle">Book Office Hours Slot (2 Open)</text>
+            </g>
+          </g>
+        </g>
+      </g>
+    
+
+      <!-- GLOBAL HUBS & FOOTER -->
+      <g id="Community-Footer" transform="translate(80, 1220)">
+        <rect x="0" y="0" width="1280" height="360" rx="20" fill="#0D111B" stroke="url(#glass-card-stroke-subtle)" stroke-width="1.5" />
+        
+        <text x="40" y="44" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600" fill="#00F2FE">GLOBAL UNIVERSITY CHAPTER HUBS</text>
+        <text x="40" y="80" font-family="Syne, sans-serif" font-size="24" font-weight="800" fill="#F1F5F9">85+ Host Universities Worldwide</text>
+
+        <!-- 4 Global Hub Pillars -->
+        <g transform="translate(40, 115)">
+          <g transform="translate(0, 0)">
+            <text x="0" y="0" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" fill="#00F2FE">North America (32 Hubs)</text>
+            <text x="0" y="25" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">MIT • Stanford • Berkeley</text>
+            <text x="0" y="45" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">UT Austin • Waterloo • UIUC</text>
+            <text x="0" y="65" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">Georgia Tech • Toronto</text>
+          </g>
+
+          <g transform="translate(300, 0)">
+            <text x="0" y="0" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" fill="#8B5CF6">Europe &amp; UK (26 Hubs)</text>
+            <text x="0" y="25" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">Oxford • Cambridge • ETH Zurich</text>
+            <text x="0" y="45" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">TU Munich • TU Delft • EPFL</text>
+            <text x="0" y="65" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">Imperial College • Sorbonne</text>
+          </g>
+
+          <g transform="translate(600, 0)">
+            <text x="0" y="0" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" fill="#FF5E3A">Asia-Pacific (20 Hubs)</text>
+            <text x="0" y="25" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">Univ of Tokyo • NUS Singapore</text>
+            <text x="0" y="45" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">KAIST • IIT Madras • Tsinghua</text>
+            <text x="0" y="65" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">Univ of Sydney • HKUST</text>
+          </g>
+
+          <g transform="translate(900, 0)">
+            <text x="0" y="0" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" fill="#FBBF24">Latin America &amp; MEA (12 Hubs)</text>
+            <text x="0" y="25" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">USP São Paulo • UNAM Mexico</text>
+            <text x="0" y="45" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">KAUST • Wits University</text>
+            <text x="0" y="65" font-family="Inter, sans-serif" font-size="12" fill="#94A3B8">Univ of Buenos Aires</text>
+          </g>
+        </g>
+
+        <!-- Bottom Line -->
+        <line x1="40" y1="260" x2="1240" y2="260" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+        <text x="40" y="300" font-family="JetBrains Mono, monospace" font-size="11" fill="#64748B">QISKIT FALL FEST 2026 // OPEN QUANTUM SCIENCE FOUNDATION // APACHE 2.0 LICENSE</text>
+        <text x="1060" y="300" font-family="JetBrains Mono, monospace" font-size="11" fill="#00F2FE">|ψ⟩ = 1/√2 (|00⟩ + |11⟩)</text>
+      </g>
+    </g>
+    
+</svg>
