@@ -47,13 +47,19 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
+  background: rgba(4, 5, 8, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.header-inner {
+  max-width: 1240px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 48px;
-  background: rgba(4, 5, 8, 0.6);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-glass);
+  padding: 16px 24px;
 }
 
 .brand-title {
@@ -104,6 +110,7 @@ body {
   border-radius: 99px;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
 }
 
 .glass-pill-btn:hover {
@@ -111,6 +118,41 @@ body {
   box-shadow: 0 0 24px rgba(0, 245, 212, 0.5);
 }
 
+/* Mobile Menu Hamburger */
+.mobile-menu-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border-glass);
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+}
+
+.mobile-menu-toggle .bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: #FFF;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+
+.mobile-menu-toggle.active .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
 /* MAIN CONTENT */
 .mesh-main {
   position: relative;
@@ -440,16 +482,137 @@ body {
   padding: 24px 48px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 13px;
   color: var(--text-dim);
   position: relative;
   z-index: 10;
 }
 
-@media (max-width: 900px) {
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 992px) {
   .cards-trio, .track-cards-grid, .community-box {
     grid-template-columns: 1fr;
   }
-  .hero-title { font-size: 46px; }
-  .mesh-header { padding: 16px 24px; }
+  
+  .hero-title {
+    font-size: 56px;
+  }
+  
+  .mesh-main {
+    padding: 40px 20px 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .mesh-cta {
+    display: none;
+  }
+  
+  .mesh-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(8, 11, 18, 0.96);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-radius: 0 0 16px 16px;
+    border: none;
+    border-bottom: 1px solid var(--border-glass);
+    flex-direction: column;
+    padding: 16px 20px 20px;
+    gap: 8px;
+    display: none;
+  }
+  
+  .mesh-nav.open {
+    display: flex;
+  }
+  
+  .nav-link {
+    text-align: left;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .hero-center {
+    margin: 20px auto 48px;
+  }
+  
+  .hero-title {
+    font-size: 42px;
+    letter-spacing: -0.02em;
+  }
+  
+  .hero-lead {
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+  
+  .hero-btns {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .btn-solid, .btn-glass {
+    width: 100%;
+    padding: 14px 20px;
+  }
+  
+  .glass-event {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 20px;
+  }
+  
+  .date-tag {
+    min-width: unset;
+    font-size: 16px;
+  }
+  
+  .view-header h2 {
+    font-size: 32px;
+  }
+  
+  .comm-inner-card, .track-glass-card, .trio-card {
+    padding: 24px 20px;
+  }
+  
+  .input-row {
+    flex-direction: column;
+  }
+  
+  .input-row input, .input-row button {
+    width: 100%;
+  }
+  
+  .mesh-footer {
+    padding: 20px;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 34px;
+  }
+  
+  .brand-title {
+    font-size: 14px;
+  }
+  
+  .pill-badge {
+    font-size: 10px;
+    padding: 5px 12px;
+  }
 }

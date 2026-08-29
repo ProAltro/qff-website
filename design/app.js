@@ -35,12 +35,18 @@ function initWaveMesh() {
   planeMesh = new THREE.Mesh(geometry, material);
   waveScene.add(planeMesh);
 
-  // Mouse move listener
+  // Mouse move & Touch listeners for wave disturbance
   window.addEventListener('mousemove', (e) => {
     targetMouseX = (e.clientX / window.innerWidth) * 2 - 1;
     targetMouseY = -(e.clientY / window.innerHeight) * 2 + 1;
   });
 
+  window.addEventListener('touchmove', (e) => {
+    if (e.touches.length > 0) {
+      targetMouseX = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
+      targetMouseY = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
+    }
+  }, { passive: true });
   // Resize listener
   window.addEventListener('resize', () => {
     const nw = window.innerWidth;
@@ -106,8 +112,29 @@ function resetCard(card) {
   card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
 }
 
+// Mobile Menu Toggle
+function toggleMobileMenu() {
+  const nav = document.getElementById('mainNav');
+  const toggle = document.getElementById('menuToggle');
+  if (nav && toggle) {
+    nav.classList.toggle('open');
+    toggle.classList.toggle('active');
+  }
+}
+
+function closeMobileMenu() {
+  const nav = document.getElementById('mainNav');
+  const toggle = document.getElementById('menuToggle');
+  if (nav && toggle) {
+    nav.classList.remove('open');
+    toggle.classList.remove('active');
+  }
+}
+
 // Tab Switching
 function switchWaveTab(tabName) {
+  closeMobileMenu();
+
   const links = document.querySelectorAll('.nav-link');
   links.forEach(l => l.classList.remove('active'));
 
@@ -126,7 +153,6 @@ function switchWaveTab(tabName) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
-
 // Registration
 function handleWaveRegister() {
   const input = document.getElementById('waveEmail');

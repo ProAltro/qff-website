@@ -16,19 +16,27 @@
 
   <!-- Header -->
   <header class="mesh-header">
-    <div class="brand">
-      <span class="brand-title">QISKIT FALL FEST <strong>2026</strong></span>
-    </div>
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-title">QISKIT FALL FEST <strong>2026</strong></span>
+      </div>
 
-    <nav class="mesh-nav">
-      <button class="nav-link active" onclick="switchWaveTab('home')">Home</button>
-      <button class="nav-link" onclick="switchWaveTab('schedule')">Schedule</button>
-      <button class="nav-link" onclick="switchWaveTab('hackathon')">Hackathon</button>
-      <button class="nav-link" onclick="switchWaveTab('community')">Community</button>
-    </nav>
+      <nav class="mesh-nav" id="mainNav">
+        <button class="nav-link active" onclick="switchWaveTab('home')">Home</button>
+        <button class="nav-link" onclick="switchWaveTab('schedule')">Schedule</button>
+        <button class="nav-link" onclick="switchWaveTab('hackathon')">Hackathon</button>
+        <button class="nav-link" onclick="switchWaveTab('community')">Community</button>
+      </nav>
 
-    <div class="mesh-cta">
-      <button class="glass-pill-btn" onclick="switchWaveTab('community')">Join Event ↗</button>
+      <div class="mesh-cta">
+        <button class="glass-pill-btn" onclick="switchWaveTab('community')">Join Event ↗</button>
+      </div>
+
+      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" onclick="toggleMobileMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
     </div>
   </header>
 
@@ -46,9 +54,8 @@
         </div>
 
         <div class="wave-interact-tip">
-          <span>~ MOVE CURSOR TO DISTURB 3D WAVE MESH ~</span>
+          <span>~ MOVE CURSOR OR TOUCH SCREEN TO DISTURB 3D WAVE MESH ~</span>
         </div>
-      </div>
 
       <div class="cards-trio">
         <div class="trio-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCard(this)">
