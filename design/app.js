@@ -1,106 +1,149 @@
-// BRUTALIST TERMINAL INTERACTIVE ENGINE
+// 3D WAVE INTERFERENCE MESH ENGINE (THREE.JS)
 
-function switchTermTab(tabId) {
-  const tabs = document.querySelectorAll('.term-tab');
-  tabs.forEach(tab => tab.classList.remove('active'));
+let waveScene, waveCamera, waveRenderer, planeMesh;
+let mouseX = 0, mouseY = 0;
+let targetMouseX = 0, targetMouseY = 0;
 
-  const tabMap = ['home', 'schedule', 'hackathon', 'comm'];
-  const index = tabMap.indexOf(tabId);
-  if (index !== -1 && tabs[index]) {
-    tabs[index].classList.add('active');
+function initWaveMesh() {
+  const container = document.getElementById('wave-canvas-container');
+  if (!container) return;
+
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+
+  waveScene = new THREE.Scene();
+  waveCamera = new THREE.PerspectiveCamera(60, w / h, 0.1, 1000);
+  waveCamera.position.set(0, -6, 8);
+  waveCamera.lookAt(0, 0, 0);
+
+  waveRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  waveRenderer.setSize(w, h);
+  waveRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  container.appendChild(waveRenderer.domElement);
+
+  // Plane Geometry with high density vertices
+  const geometry = new THREE.PlaneGeometry(28, 20, 70, 50);
+
+  // Wireframe material with custom vertex color / glow
+  const material = new THREE.MeshBasicMaterial({
+    color: 0x00F5D4,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.28
+  });
+
+  planeMesh = new THREE.Mesh(geometry, material);
+  waveScene.add(planeMesh);
+
+  // Mouse move listener
+  window.addEventListener('mousemove', (e) => {
+    targetMouseX = (e.clientX / window.innerWidth) * 2 - 1;
+    targetMouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+  });
+
+  // Resize listener
+  window.addEventListener('resize', () => {
+    const nw = window.innerWidth;
+    const nh = window.innerHeight;
+    waveCamera.aspect = nw / nh;
+    waveCamera.updateProjectionMatrix();
+    waveRenderer.setSize(nw, nh);
+  });
+
+  animateWave();
+}
+
+let clock = new THREE.Clock();
+
+function animateWave() {
+  requestAnimationFrame(animateWave);
+
+  const t = clock.getElapsedTime() * 1.5;
+
+  // Smooth mouse lerping
+  mouseX += (targetMouseX - mouseX) * 0.05;
+  mouseY += (targetMouseY - mouseY) * 0.05;
+
+  // Deform plane vertices based on sinusoidal wave + mouse distance
+  const pos = planeMesh.geometry.attributes.position;
+  for (let i = 0; i < pos.count; i++) {
+    const x = pos.getX(i);
+    const y = pos.getY(i);
+
+    // Distance to cursor in 3D plane projection
+    const dist = Math.sqrt((x - mouseX * 10) ** 2 + (y - mouseY * 8) ** 2);
+    
+    // Wave ripple formula
+    const z = Math.sin(x * 0.5 + t) * 0.4 +
+              Math.cos(y * 0.5 + t * 1.2) * 0.4 +
+              Math.sin(dist * 0.8 - t * 2) * Math.max(0, (1.8 - dist * 0.15));
+
+    pos.setZ(i, z);
+  }
+  pos.needsUpdate = true;
+
+  // Subtle camera tilt
+  waveCamera.position.x = mouseX * 1.2;
+  waveCamera.position.y = -6 + mouseY * 0.8;
+  waveCamera.lookAt(0, 0, 0);
+
+  waveRenderer.render(waveScene, waveCamera);
+}
+
+// 3D Card Perspective Tilt
+function tiltCard(event, card) {
+  const rect = card.getBoundingClientRect();
+  const x = event.clientX - rect.left - rect.width / 2;
+  const y = event.clientY - rect.top - rect.height / 2;
+
+  const tiltX = (y / (rect.height / 2)) * -8;
+  const tiltY = (x / (rect.width / 2)) * 8;
+
+  card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-4px)`;
+}
+
+function resetCard(card) {
+  card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+}
+
+// Tab Switching
+function switchWaveTab(tabName) {
+  const links = document.querySelectorAll('.nav-link');
+  links.forEach(l => l.classList.remove('active'));
+
+  const tabNames = ['home', 'schedule', 'hackathon', 'community'];
+  const index = tabNames.indexOf(tabName);
+  if (index !== -1 && links[index]) {
+    links[index].classList.add('active');
   }
 
-  const panels = document.querySelectorAll('.term-panel');
-  panels.forEach(p => p.classList.remove('active'));
+  const tabs = document.querySelectorAll('.wave-tab');
+  tabs.forEach(t => t.classList.remove('active'));
 
-  const target = document.getElementById(`tab-${tabId}`);
+  const target = document.getElementById(`tab-${tabName}`);
   if (target) {
     target.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
 
-// Keyboard shortcuts: 1, 2, 3, 4
-window.addEventListener('keydown', (e) => {
-  if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
-  if (e.key === '1') switchTermTab('home');
-  if (e.key === '2') switchTermTab('schedule');
-  if (e.key === '3') switchTermTab('hackathon');
-  if (e.key === '4') switchTermTab('comm');
-});
-
-// Gate toggle simulation
-let termGates = { H: true, X: false, Rz: false };
-
-function toggleTermGate(gate) {
-  if (gate === 'H') termGates.H = !termGates.H;
-  if (gate === 'X') termGates.X = !termGates.X;
-  if (gate === 'Rz') termGates.Rz = !termGates.Rz;
-
-  const buttons = document.querySelectorAll('.gate-btn');
-  buttons.forEach(btn => {
-    if (btn.textContent.includes('H')) btn.classList.toggle('active', termGates.H);
-    if (btn.textContent.includes('X')) btn.classList.toggle('active', termGates.X);
-    if (btn.textContent.includes('Rz')) btn.classList.toggle('active', termGates.Rz);
-  });
-
-  const stateEl = document.getElementById('term-state');
-  if (termGates.H && !termGates.X) {
-    stateEl.textContent = '|ψ⟩ = 1/√2 |00⟩ + 1/√2 |11⟩ (BELL_PHI_PLUS)';
-  } else if (!termGates.H && termGates.X) {
-    stateEl.textContent = '|ψ⟩ = |01⟩ (COMPUTATIONAL_BASIS)';
-  } else if (termGates.H && termGates.X) {
-    stateEl.textContent = '|ψ⟩ = 1/√2 |01⟩ + 1/√2 |10⟩ (BELL_PSI_PLUS)';
-  } else {
-    stateEl.textContent = '|ψ⟩ = |00⟩ (GROUND_STATE)';
-  }
-}
-
-// Schedule filtering
-function filterTermSchedule(type) {
-  const btns = document.querySelectorAll('.cron-btn');
-  btns.forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-
-  const rows = document.querySelectorAll('.cron-table tbody tr');
-  rows.forEach(r => {
-    if (type === 'ALL' || r.getAttribute('data-type') === type) {
-      r.style.display = '';
-    } else {
-      r.style.display = 'none';
-    }
-  });
-}
-
-// Terminal IRC Input
-function handleTermInput(event) {
-  if (event.key === 'Enter') {
-    submitTermInput();
-  }
-}
-
-function submitTermInput() {
-  const input = document.getElementById('term-input');
-  const log = document.getElementById('irc-output');
+// Registration
+function handleWaveRegister() {
+  const input = document.getElementById('waveEmail');
+  const feedback = document.getElementById('waveFeedback');
   const val = input.value.trim();
 
-  if (!val) return;
-
-  const userRow = document.createElement('div');
-  userRow.className = 'log-row';
-  userRow.innerHTML = `<span class="log-time">[${new Date().toISOString().substring(11, 19)}]</span> <span class="log-user">&lt;YOU&gt;</span> ${val}`;
-  log.appendChild(userRow);
-
-  const botRow = document.createElement('div');
-  botRow.className = 'log-row';
-  
-  if (val.includes('@')) {
-    botRow.innerHTML = `<span class="log-time">[${new Date().toISOString().substring(11, 19)}]</span> <span class="log-bot">&lt;QFF_BOT&gt;</span> Verification token generated for [${val}]. Discord invite: <strong>https://discord.gg/qff-2026-auth</strong>. Welcome to the cluster.`;
-  } else {
-    botRow.innerHTML = `<span class="log-time">[${new Date().toISOString().substring(11, 19)}]</span> <span class="log-bot">&lt;QFF_BOT&gt;</span> Command received: '${val}'. To receive guild invite, provide your university email.`;
+  if (!val || !val.includes('@')) {
+    feedback.style.display = 'block';
+    feedback.style.color = '#FF6B6B';
+    feedback.textContent = 'Please provide a valid institutional email address.';
+    return;
   }
-  
-  log.appendChild(botRow);
-  log.scrollTop = log.scrollHeight;
+
+  feedback.style.display = 'block';
+  feedback.style.color = '#00F5D4';
+  feedback.textContent = 'Welcome! Invitation link and hardware credits sent to ' + val;
   input.value = '';
 }
+
+window.addEventListener('DOMContentLoaded', initWaveMesh);
