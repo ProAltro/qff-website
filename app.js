@@ -117,24 +117,30 @@ function renderSchedule() {
     </li>`).join('');
 }
 
+
 /* ── the flock: a superposition of flight paths ─────────────
-   Each bird carries GHOSTS — alternate trajectories it could
-   have flown, drawn faintly behind it. The pointer is a
-   measurement gate: birds that pass through it collapse to a
-   single path, which draws solid, then decohere back.
+   A bird here is not one bird. Each carries BRANCHES paths it
+   might be flying, and they breathe: converging to a single
+   point, fanning apart, converging again — so the trails draw
+   the branch point over and over. The pointer is a measurement
+   gate: whichever path is nearest the cursor is the one that
+   happened, so the others fold onto it and it draws solid.
+   Move away and the bird decoheres back into a fan.
    ───────────────────────────────────────────────────────── */
 
 const canvas = document.getElementById('flock');
 const ctx = canvas.getContext('2d');
 
-const INK      = '49, 19, 94';
-const PURPLE   = '139, 63, 252';
-const MAGENTA  = '238, 83, 150';
+const INK     = '49, 19, 94';
+const PURPLE  = '139, 63, 252';
+const MAGENTA = '238, 83, 150';
 
-const N_BIRDS  = 22;
-const N_GHOSTS = 3;
-const TRAIL    = 58;
-const GATE_R   = 140;
+const N_BIRDS  = 15;
+const BRANCHES = 3;     // paths held in superposition per bird
+const TRAIL    = 56;
+const GATE_R   = 160;
+const FAN_MAX  = 56;    // px of lateral spread at full divergence
+const TRACK    = 0.14;  // how tightly a path tracks its target offset
 
 let W = 0, H = 0, birds = [], flockRunning = true, last = 0;
 const pointer = { x: -9999, y: -9999, live: false };
@@ -148,56 +154,63 @@ function resize() {
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 }
 
-function makeGhost(b, spread) {
-  return {
-    x: b.x, y: b.y,
-    vx: b.vx + (Math.random() - 0.5) * spread,
-    vy: b.vy + (Math.random() - 0.5) * spread,
-    trail: [],
-    life: 0,
-    span: 2800 + Math.random() * 2600,
-    // a persistent curl, so each alternate path arcs away from the others
-    curl: (Math.random() - 0.5) * 0.011,
-  };
-}
-
 function seed() {
   birds = [];
   for (let i = 0; i < N_BIRDS; i++) {
     const b = {
-      x: ((i * 197) % 100) / 100 * W + (Math.random() - 0.5) * 40,
-      y: H * 0.05 + ((i * 61) % 100) / 100 * H * 0.55 + (Math.random() - 0.5) * 30,
-      vx: 0.85 + Math.random() * 0.35,
-      vy: (Math.random() - 0.5) * 0.25,
-      z: 0.62 + Math.random() * 0.78,
+      // the core is the bird's expectation value: it does the flocking,
+      // and the branches hang off it.
+      x: ((i * 173) % 100) / 100 * W + (Math.random() - 0.5) * 40,
+      y: H * 0.05 + ((i * 57) % 100) / 100 * H * 0.55 + (Math.random() - 0.5) * 30,
+      vx: 0.95 + Math.random() * 0.2,
+      vy: (Math.random() - 0.5) * 0.2,
+      z: 0.66 + Math.random() * 0.72,
       phase: Math.random() * Math.PI * 2,
       flap: 0.13 + Math.random() * 0.07,
-      trail: [],
       measured: 0,
+      chosen: (BRANCHES - 1) >> 1,
+      // each bird breathes on its own clock, so the flock never
+      // converges in unison
+      cyc: 0.00072 + Math.random() * 0.00058,
+      cycP: Math.random() * Math.PI * 2,
+      branches: [],
     };
-    b.ghosts = Array.from({ length: N_GHOSTS }, () => makeGhost(b, 1.5));
-    b.ghosts.forEach(g => { g.life = Math.random() * g.span; });
+    for (let k = 0; k < BRANCHES; k++) {
+      b.branches.push({
+        // a symmetric fan reads as alternatives; random scatter reads as noise
+        fan: k - (BRANCHES - 1) / 2,
+        x: b.x, y: b.y, px: b.x - b.vx, py: b.y - b.vy,
+        trail: [],
+        w: 0.00055 + Math.random() * 0.00045,
+        p: Math.random() * Math.PI * 2,
+      });
+    }
     birds.push(b);
   }
 }
 
-function wrap(p) {
-  let jumped = false;
-  if (p.x > W + 60)  { p.x = -60; jumped = true; }
-  if (p.x < -60)     { p.x = W + 60; jumped = true; }
-  if (p.y > H + 60)  { p.y = -60; jumped = true; }
-  if (p.y < -60)     { p.y = H + 60; jumped = true; }
-  return jumped;
+function pushTrail(s, cut) {
+  s.trail.push({ x: s.x, y: s.y, cut: !!cut });
+  if (s.trail.length > TRAIL) s.trail.shift();
 }
 
-function pushTrail(p, jumped) {
-  p.trail.push({ x: p.x, y: p.y, cut: jumped });
-  if (p.trail.length > TRAIL) p.trail.shift();
+/* Wrapping moves the whole bird, branches included — otherwise one
+   path crosses the edge and the fan tears across the sky. */
+function wrapBird(b) {
+  let ox = 0, oy = 0;
+  if (b.x > W + 70) ox = -(W + 140);
+  else if (b.x < -70) ox = W + 140;
+  if (b.y > H + 70) oy = -(H + 140);
+  else if (b.y < -70) oy = H + 140;
+  if (!ox && !oy) return false;
+  b.x += ox; b.y += oy;
+  for (const s of b.branches) { s.x += ox; s.y += oy; s.px += ox; s.py += oy; }
+  return true;   // caller marks the next trail point as a cut
 }
 
 function flockForces(b) {
   let ax = 0, ay = 0, sx = 0, sy = 0, cx = 0, cy = 0, n = 0;
-  const NEAR = 240, PERSONAL = 135;
+  const NEAR = 250, PERSONAL = 155;
   for (const o of birds) {
     if (o === b) continue;
     const dx = o.x - b.x, dy = o.y - b.y;
@@ -208,7 +221,7 @@ function flockForces(b) {
     cx += o.x; cy += o.y;
     ax += o.vx; ay += o.vy;
     if (d < PERSONAL) {
-      const f = (1 - d / PERSONAL) * 0.048;
+      const f = (1 - d / PERSONAL) * 0.05;
       sx -= dx / d * f;
       sy -= dy / d * f;
     }
@@ -216,53 +229,43 @@ function flockForces(b) {
   if (n) {
     cx = (cx / n - b.x) * 0.00016;
     cy = (cy / n - b.y) * 0.00030;
-    ax = (ax / n - b.vx) * 0.022;
-    ay = (ay / n - b.vy) * 0.022;
+    ax = (ax / n - b.vx) * 0.020;
+    ay = (ay / n - b.vy) * 0.020;
   }
   return { fx: cx + ax + sx, fy: cy + ay + sy };
 }
 
-function advance(p, fx, fy, t, wob, curl) {
+function advanceCore(b, fx, fy, t) {
   // a steady glide to the right, plus a slow thermal wander
-  p.vx += fx + 0.009;
-  p.vy += fy + Math.sin(t * 0.0004 + wob) * 0.005;
+  b.vx += fx + 0.009;
+  b.vy += fy + Math.sin(t * 0.0004 + b.phase) * 0.005;
   // altitude preference: the flock rides the upper sky
-  p.vy += (H * 0.30 - p.y) * 0.00004;
+  b.vy += (H * 0.30 - b.y) * 0.00004;
 
-  if (curl) {
-    const c = Math.cos(curl), sn = Math.sin(curl);
-    const nvx = p.vx * c - p.vy * sn;
-    p.vy = p.vx * sn + p.vy * c;
-    p.vx = nvx;
-  }
+  const sp = Math.hypot(b.vx, b.vy) || 1;
+  const eased = Math.min(Math.max(sp * 0.88 + 0.126, 0.8), 1.6);
+  b.vx = b.vx / sp * eased;
+  b.vy = b.vy / sp * eased;
 
-  const sp = Math.hypot(p.vx, p.vy) || 1;
-  const eased = Math.min(Math.max(sp * 0.88 + 1.05 * 0.12, 0.8), 1.6);
-  p.vx = p.vx / sp * eased;
-  p.vy = p.vy / sp * eased;
-
-  p.x += p.vx; p.y += p.vy;
-  return wrap(p);
+  b.x += b.vx; b.y += b.vy;
 }
 
 /* Legibility mask: the hero copy occupies the lower-left of the sky.
    Birds still fly through it — they just go quiet there. */
-function clarity(p) {
+function clarity(b) {
   const right = W * 0.62, top = H * 0.24, soft = 110;
-  const insideX = (right - p.x) / soft;
-  const insideY = (p.y - top) / soft;
-  const d = Math.min(insideX, insideY);
+  const d = Math.min((right - b.x) / soft, (b.y - top) / soft);
   if (d <= 0) return 1;
   if (d >= 1) return 0.10;
   return 1 - 0.90 * (d * d * (3 - 2 * d));
 }
 
 /* One stroke per fade band rather than one per segment: same taper,
-   ~15x fewer draw calls, which matters with 22 birds x 3 ghost paths. */
+   far fewer draw calls, which matters with 15 birds x 3 paths. */
 const BANDS = 4;
 
-function drawTrail(p, rgb, alpha, width) {
-  const n = p.trail.length;
+function drawTrail(s, rgb, alpha, width) {
+  const n = s.trail.length;
   if (n < 3 || alpha <= 0.004) return;
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
@@ -272,14 +275,13 @@ function drawTrail(p, rgb, alpha, width) {
     const from = band * per;
     const to = Math.min(n - 1, from + per);
     if (to - from < 1) continue;
-
-    const t = (band + 1) / BANDS;
-    ctx.strokeStyle = `rgba(${rgb}, ${(alpha * t * t).toFixed(3)})`;
-    ctx.lineWidth = width * (0.45 + 0.55 * t);
+    const f = (band + 1) / BANDS;
+    ctx.strokeStyle = `rgba(${rgb}, ${(alpha * f * f).toFixed(3)})`;
+    ctx.lineWidth = width * (0.45 + 0.55 * f);
     ctx.beginPath();
     let open = false;
     for (let i = from; i <= to; i++) {
-      const pt = p.trail[i];
+      const pt = s.trail[i];
       if (pt.cut) { open = false; continue; }
       if (!open) { ctx.moveTo(pt.x, pt.y); open = true; }
       else ctx.lineTo(pt.x, pt.y);
@@ -288,13 +290,15 @@ function drawTrail(p, rgb, alpha, width) {
   }
 }
 
-function drawBird(p, scale, rgb, alpha, spread) {
-  const ang = Math.max(-0.62, Math.min(0.62, Math.atan2(p.vy, p.vx)));
+function drawBird(s, scale, rgb, alpha, spread) {
+  if (alpha <= 0.012) return;
+  const dx = s.x - s.px, dy = s.y - s.py;
+  const ang = Math.max(-0.62, Math.min(0.62, Math.atan2(dy, dx)));
   ctx.save();
-  ctx.translate(p.x, p.y);
+  ctx.translate(s.x, s.y);
   ctx.rotate(ang);
   ctx.scale(scale, scale);
-  ctx.fillStyle = `rgba(${rgb}, ${alpha})`;
+  ctx.fillStyle = `rgba(${rgb}, ${alpha.toFixed(3)})`;
   ctx.beginPath();
   ctx.moveTo(2.6, 0);
   ctx.quadraticCurveTo(0.4, -spread * 0.42, -5.6, -spread);
@@ -310,56 +314,82 @@ function frame(t, dt) {
   ctx.clearRect(0, 0, W, H);
 
   for (const b of birds) {
-    // measurement gate
     const near = pointer.live &&
       Math.hypot(b.x - pointer.x, b.y - pointer.y) < GATE_R;
-    b.measured += ((near ? 1 : 0) - b.measured) * (near ? 0.14 : 0.018);
 
+    // on the leading edge of measurement, the path nearest the cursor
+    // is the one that turns out to have happened
+    if (near && b.measured < 0.03) {
+      let best = b.chosen, bd = Infinity;
+      for (let k = 0; k < b.branches.length; k++) {
+        const d = Math.hypot(b.branches[k].x - pointer.x,
+                             b.branches[k].y - pointer.y);
+        if (d < bd) { bd = d; best = k; }
+      }
+      b.chosen = best;
+    }
+    b.measured += ((near ? 1 : 0) - b.measured) * (near ? 0.09 : 0.012);
+
+    const cut = wrapBird(b);
     const { fx, fy } = flockForces(b);
-    pushTrail(b, advance(b, fx, fy, t, b.phase));
+    advanceCore(b, fx, fy, t);
 
-    // ghosts: alternate paths, pulled home as measurement rises
-    for (const g of b.ghosts) {
-      g.life += dt;
-      if (g.life > g.span) {
-        Object.assign(g, makeGhost(b, 1.6));
-      }
-      const collapse = b.measured * 0.16;
-      pushTrail(g, advance(
-        g,
-        fx + (g.x - b.x) * -collapse * 0.02,
-        fy + (g.y - b.y) * -collapse * 0.02,
-        t, g.span,
-        g.curl * (1 - b.measured)
-      ));
-      if (b.measured > 0.02) {
-        g.x += (b.x - g.x) * collapse;
-        g.y += (b.y - g.y) * collapse;
-      }
+    // 0 = the paths are one, 1 = fully fanned. Passing through zero is
+    // what draws the branch point.
+    b.open = Math.pow(0.5 - 0.5 * Math.cos(t * b.cyc + b.cycP), 1.35);
+
+    const sp = Math.hypot(b.vx, b.vy) || 1;
+    const nx = -b.vy / sp, ny = b.vx / sp;   // unit normal to the heading
+    const width = FAN_MAX * b.open;
+    const m = b.measured;
+    const winFan = b.branches[b.chosen].fan;
+
+    for (const s of b.branches) {
+      // a measured bird has one history: every path takes the winner's offset
+      const fan = s.fan * (1 - m) + winFan * m;
+      const wob = 1 + 0.14 * Math.sin(t * s.w + s.p);
+      const lat = fan * width * wob;
+      const lon = fan * width * 0.30;        // stagger the heads along the heading too
+
+      // Ease onto the target offset rather than snapping to it. Snapping
+      // makes the geometry visible as kinks in the trail; easing turns the
+      // same motion into arcs.
+      const tx = b.x + nx * lat + (b.vx / sp) * lon;
+      const ty = b.y + ny * lat + (b.vy / sp) * lon;
+      s.px = s.x; s.py = s.y;
+      s.x += (tx - s.x) * TRACK;
+      s.y += (ty - s.y) * TRACK;
+      pushTrail(s, cut);
     }
   }
 
-  // the paths it might have taken — drawn first, so the measured one reads on top
+  // paths first, so a collapsed one reads on top of its alternatives
   for (const b of birds) {
-    const ga = (1 - b.measured) * 0.40 * b.z * clarity(b);
-    for (const g of b.ghosts) drawTrail(g, PURPLE, ga, 1.1);
+    const cl = clarity(b), depth = 0.68 + b.z * 0.32;
+    for (let k = 0; k < b.branches.length; k++) {
+      const won = k === b.chosen;
+      const a = won ? 0.24 + b.measured * 0.48 : 0.24 * (1 - b.measured);
+      drawTrail(b.branches[k],
+        won && b.measured > 0.35 ? MAGENTA : PURPLE,
+        a * cl * depth, won ? 1.5 : 1);
+    }
   }
 
   for (const b of birds) {
-    const flapSpread = 5.6 + Math.sin(t * b.flap * 0.012 + b.phase) * 3.4;
-    const solid = b.measured;
-    const cl = clarity(b);
-    drawTrail(b, INK, 0.24 * cl, 1.3);
-    if (solid > 0.02) drawTrail(b, MAGENTA, solid * 0.72 * cl, 2);
-    drawBird(
-      b,
-      b.z * 2.5,
-      solid > 0.5 ? MAGENTA : INK,
-      ((0.50 + b.z * 0.20) * (1 - solid) + solid * 0.95) * cl,
-      flapSpread
-    );
+    const cl = clarity(b), depth = 0.7 + b.z * 0.3;
+    const spread = 5.6 + Math.sin(t * b.flap * 0.012 + b.phase) * 3.4;
+    for (let k = 0; k < b.branches.length; k++) {
+      const won = k === b.chosen;
+      // converged paths stack, so keep each one light enough that three
+      // on top of each other read as a single bird
+      const a = won ? 0.34 + b.measured * 0.60 : 0.34 * (1 - b.measured);
+      drawBird(b.branches[k], b.z * 2.5 * (won ? 1 : 0.94),
+        won && b.measured > 0.4 ? MAGENTA : INK,
+        a * cl * depth, spread);
+    }
   }
 }
+
 
 function step(now) {
   if (!flockRunning || reduceMotion) return;
