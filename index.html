@@ -3,281 +3,273 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Qiskit Fall Fest 2026 — BITS Pilani × IBM Quantum</title>
+  <title>Qiskit Fall Fest 2026 — BITS Pilani, with IBM Quantum</title>
+  <meta name="description" content="An eight-day quantum computing programme at BITS Pilani, Pilani Campus. 21–28 October 2026, part of Qiskit Fall Fest 2026 with IBM Quantum.">
+  <link rel="icon" href="/stickers/pictogram-purple.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Fullscreen 3D Wave Mesh Background -->
-  <div id="wave-canvas-container"></div>
 
-  <!-- Header -->
-  <header class="mesh-header">
-    <div class="header-inner">
-      <div class="brand">
-        <img src="/stickers/qiskit-pictogram.svg" alt="Qiskit Pictogram" class="brand-logo-icon">
-        <span class="brand-title">QISKIT FALL FEST <strong>2026</strong></span>
-      </div>
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="wordmark" href="#" onclick="showTab('home');return false">
+      <img src="/stickers/pictogram-purple.svg" alt="" class="wordmark-mark">
+      <span class="wordmark-text">Qiskit Fall Fest <b>2026</b></span>
+    </a>
 
-      <nav class="mesh-nav" id="mainNav">
-        <button class="nav-link active" onclick="switchWaveTab('home')">Home</button>
-        <button class="nav-link" onclick="switchWaveTab('about')">About</button>
-        <button class="nav-link" onclick="switchWaveTab('schedule')">Schedule</button>
-        <button class="nav-link" onclick="switchWaveTab('hackathon')">Hackathon</button>
-        <button class="nav-link" onclick="switchWaveTab('community')">Community</button>
-      </nav>
+    <nav class="tabs" id="tabs" aria-label="Sections">
+      <button class="tab is-active" data-tab="home" onclick="showTab('home')">Home</button>
+      <button class="tab" data-tab="about" onclick="showTab('about')">About</button>
+      <button class="tab" data-tab="schedule" onclick="showTab('schedule')">Schedule</button>
+      <button class="tab" data-tab="hackathon" onclick="showTab('hackathon')">Hackathon</button>
+      <button class="tab" data-tab="join" onclick="showTab('join')">Join</button>
+    </nav>
 
-      <div class="header-right-group">
-        <img src="/brand/ibm-quantum-white.png" alt="IBM Quantum" class="ibm-header-logo">
-        <div class="mesh-cta">
-          <button class="glass-pill-btn" onclick="switchWaveTab('community')">Join Event ↗</button>
-        </div>
-      </div>
-
-      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" onclick="toggleMobileMenu()">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+    <div class="masthead-end">
+      <img src="/brand/ibm-quantum-dark.png" alt="IBM Quantum" class="ibm-logo">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
       </button>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main class="mesh-main">
-    <!-- TAB 1: HOME -->
-    <section id="tab-home" class="wave-tab active">
-      <div class="hero-center">
-        <img src="/illustrations/badge-pink.svg" alt="Qiskit Fall Fest 2026 Badge" class="hero-emblem">
-        <div class="pill-badge">GLOBAL STUDENT QUANTUM HACKATHON</div>
-        <h1 class="hero-title">DISCOVER<br><span id="quantum-word" class="gradient-text">SUPERPOSITION</span></h1>
-        <p class="hero-lead">An open 3-week quantum computing festival for collegiate builders. Write real code, explore quantum algorithms, and compete for $15,000 in prizes.</p>
-        <p class="host-line">Hosted by <strong>BITS Pilani</strong>, Pilani Campus</p>
+<main>
 
-        <div class="hero-btns">
-          <button class="btn-solid" onclick="switchWaveTab('community')">Register Free ↗</button>
-          <button class="btn-glass" onclick="switchWaveTab('schedule')">View Schedule</button>
-        </div>
+<!-- ─────────────  HOME  ───────────── -->
+<section id="tab-home" class="tab-panel is-active">
 
-        <div class="wave-interact-tip">
-          <span>~ MOVE CURSOR OR TOUCH SCREEN TO DISTURB 3D WAVE MESH ~</span>
-        </div>
+  <div class="sky">
+    <canvas id="flock" aria-hidden="true"></canvas>
+    <img src="/stickers/cloud1.svg" alt="" class="cloud cloud-a">
+    <img src="/stickers/cloud2.svg" alt="" class="cloud cloud-b">
+    <img src="/stickers/cloud1.svg" alt="" class="cloud cloud-c">
+
+    <div class="hero">
+      <div class="pill-row">
+        <img src="/stickers/pill-qiskit-purple.svg" alt="Qiskit" class="pill-sticker">
+        <img src="/stickers/pill-fallfest-magenta.svg" alt="Fall Fest" class="pill-sticker">
+        <img src="/stickers/pill-2026.svg" alt="2026" class="pill-sticker pill-light">
       </div>
 
-      <div class="cards-trio">
-        <div class="trio-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCard(this)">
-          <div class="card-num">01</div>
-          <h3>Learn with Experts</h3>
-          <p>Interactive workshops led by IBM Quantum researchers covering algorithms, error mitigation, and Qiskit 1.0.</p>
-        </div>
-        <div class="trio-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCard(this)">
-          <div class="card-num">02</div>
-          <h3>133-Qubit Access</h3>
-          <p>Execute your final hackathon circuits on real superconducting hardware via dedicated cloud queues.</p>
-        </div>
-        <div class="trio-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCard(this)">
-          <div class="card-num">03</div>
-          <h3>$15k Prize Pool</h3>
-          <p>Win cash awards, research compute grants, and mentorship fast-tracks across three challenge tracks.</p>
-        </div>
+      <h1 class="hero-title">Eight days<br>inside quantum<br>computing.</h1>
+
+      <p class="hero-lead">Lectures, hands-on workshops, guest talks and a closing hackathon — from linear algebra to photonics, in one week at Pilani.</p>
+
+      <p class="hero-meta">
+        <span class="date-range">21–28 October 2026</span>
+        <span class="meta-sep"></span>
+        BITS Pilani, Pilani Campus
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="showTab('schedule')">See the schedule</button>
+        <button class="btn btn-ghost" onclick="showTab('join')">Register</button>
       </div>
-    </section>
-
-    <!-- TAB: ABOUT -->
-    <section id="tab-about" class="wave-tab">
-      <div class="view-header">
-        <div class="pill-badge">ABOUT THE FESTIVAL</div>
-        <h2>THE QUANTUM FRONTIER</h2>
-        <p>Empowering the next generation of quantum researchers and algorithmic architects.</p>
-      </div>
-
-      <!-- Quick Metrics Grid -->
-      <div class="stats-matrix">
-        <div class="stat-box">
-          <div class="stat-number">133</div>
-          <div class="stat-label">Qubits on IBM Heron</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-number">3 Weeks</div>
-          <div class="stat-label">Sprints & Mentorship</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-number">$15,000</div>
-          <div class="stat-label">Prize & Compute Pool</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-number">1,500+</div>
-          <div class="stat-label">Global Participants</div>
-        </div>
-      </div>
-
-      <!-- Two-Column Narrative Cards -->
-      <div class="about-grid-duo">
-        <div class="about-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCard(this)">
-          <span class="card-tag">GLOBAL INITIATIVE</span>
-          <h3>What is Qiskit Fall Fest?</h3>
-          <p><strong>Qiskit Fall Fest</strong> is an international celebration of quantum computation sponsored by <strong>IBM Quantum</strong>. Designed for undergraduate, graduate, and high-school innovators, it delivers a university-tailored festival format featuring hands-on technical workshops, direct access to cloud quantum hardware, and real-world algorithmic challenges.</p>
-          <p>Participants explore the cutting edge with <strong>Qiskit 1.0</strong> and Qiskit Runtime Primitives (Estimator & Sampler), learning how to write scalable quantum circuits that mitigate noise and prepare for quantum utility.</p>
-        </div>
-
-        <div class="about-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCard(this)">
-          <span class="card-tag">INSTITUTE OF EMINENCE</span>
-          <h3>Hosted by BITS Pilani</h3>
-          <p><strong>Birla Institute of Technology and Science, Pilani</strong> (Pilani Campus) is recognized as one of India's premier technological and research universities with an illustrious history of engineering excellence.</p>
-          <p>The Pilani campus spearheads interdisciplinary quantum research across theoretical physics, quantum information, and high-performance quantum algorithms. By hosting Qiskit Fall Fest 2026, BITS Pilani connects collegiate developers across the globe with IBM Quantum scientists and hardware backends.</p>
-        </div>
-      </div>
-
-      <!-- BITS Pilani Quantum Ecosystem Spotlight -->
-      <div class="bits-spotlight-card">
-        <span class="card-tag">CAMPUS SPOTLIGHT</span>
-        <h3>Quantum Computing at BITS Pilani</h3>
-        <p>
-          The Department of Physics and Computer Science at BITS Pilani fosters a vibrant quantum ecosystem. From student-led research in fault-tolerant quantum error correction to tensor network simulations and quantum machine learning, the institute provides a launchpad for deep-tech innovation.
-        </p>
-
-        <div class="bits-topics-grid">
-          <div class="topic-chip">
-            <strong>Quantum Information Theory</strong>
-            <span>Investigating entanglement witnesses, quantum discord, and non-local correlations.</span>
-          </div>
-          <div class="topic-chip">
-            <strong>Superconducting Hardware Control</strong>
-            <span>Optimizing microwave pulse sequences and dynamic circuit execution on IBM QPUs.</span>
-          </div>
-          <div class="topic-chip">
-            <strong>Quantum Machine Learning</strong>
-            <span>Exploring parameterized variational quantum circuits for chemistry and optimization.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 2: SCHEDULE -->
-    <section id="tab-schedule" class="wave-tab">
-      <div class="view-header">
-        <h2>SCHEDULE OF EVENTS</h2>
-        <p>Three weeks of keynotes, live tutorials, and project sprint milestones.</p>
-      </div>
-
-      <div class="glass-timeline">
-        <div class="glass-event">
-          <div class="date-tag">OCT 14</div>
-          <div class="event-info">
-            <span class="event-badge">OPENING</span>
-            <h3>Global Kickoff Keynote & Hardware Briefing</h3>
-            <p>Welcome address and walkthrough of available quantum backends.</p>
-          </div>
-        </div>
-
-        <div class="glass-event">
-          <div class="date-tag">OCT 17</div>
-          <div class="event-info">
-            <span class="event-badge">WORKSHOP</span>
-            <h3>Hands-on Quantum Algorithm Design</h3>
-            <p>Interactive Jupyter lab on crafting circuits using Qiskit Runtime Primitives.</p>
-          </div>
-        </div>
-
-        <div class="glass-event">
-          <div class="date-tag">OCT 23</div>
-          <div class="event-info">
-            <span class="event-badge">HACKATHON</span>
-            <h3>Problem Statements Released</h3>
-            <p>Hackathon opens globally. Teams start building and submitting circuits to QPU queues.</p>
-          </div>
-        </div>
-
-        <div class="glass-event">
-          <div class="date-tag">NOV 01</div>
-          <div class="event-info">
-            <span class="event-badge">DEADLINE</span>
-            <h3>Project Submissions Lock</h3>
-            <p>GitHub repository and demonstration video submissions close.</p>
-          </div>
-        </div>
-
-        <div class="glass-event">
-          <div class="date-tag">NOV 04</div>
-          <div class="event-info">
-            <span class="event-badge">FINALE</span>
-            <h3>Awards Ceremony & Showcase</h3>
-            <p>Top teams present live benchmarks and winners are announced.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 3: HACKATHON -->
-    <section id="tab-hackathon" class="wave-tab">
-      <div class="view-header">
-        <h2>HACKATHON TRACKS</h2>
-        <p>Choose your direction and build with teams of up to 4 students.</p>
-      </div>
-
-      <div class="track-cards-grid">
-        <div class="track-glass-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCard(this)">
-          <div class="track-price">$5,000 PRIZE</div>
-          <h3>Quantum Algorithms</h3>
-          <p>Design algorithms that solve complex optimization, chemistry, or mathematics challenges with optimal circuit depth.</p>
-        </div>
-
-        <div class="track-glass-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCard(this)">
-          <div class="track-price">$5,000 PRIZE</div>
-          <h3>Error Mitigation</h3>
-          <p>Implement innovative zero-noise extrapolation and twirling techniques to boost fidelity on noisy quantum processors.</p>
-        </div>
-
-        <div class="track-glass-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCard(this)">
-          <div class="track-price">$5,000 PRIZE</div>
-          <h3>Developer Tools</h3>
-          <p>Create visual simulators, interactive developer tools, or open-source educational games for the quantum ecosystem.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 4: COMMUNITY -->
-    <section id="tab-community" class="wave-tab">
-      <div class="view-header">
-        <h2>COMMUNITY GATEWAY</h2>
-        <p>Join our Discord server to connect with participants and find teammates.</p>
-      </div>
-
-      <div class="community-banner">
-        <img src="/illustrations/hero-illustration.svg" alt="Qiskit Fall Fest quantum wildlife key art">
-      </div>
-
-      <div class="community-box">
-        <div class="comm-inner-card">
-          <h3>Qiskit Discord Hub</h3>
-          <p>Over 1,500 students and researchers are already sharing ideas and forming teams.</p>
-          <a href="https://discord.gg" target="_blank" class="btn-solid" style="display:inline-block; text-decoration:none;">Open Discord Server ↗</a>
-        </div>
-
-        <div class="comm-inner-card">
-          <h3>Fast Email Registration</h3>
-          <p>Enter your student email to claim your participant badge and access key.</p>
-          <div class="input-row">
-            <input type="email" id="waveEmail" placeholder="student@university.edu">
-            <button class="btn-solid" onclick="handleWaveRegister()">Register</button>
-          </div>
-          <div id="waveFeedback" class="feedback-text"></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="mesh-footer">
-    <div class="footer-left">
-      <span>Qiskit Fall Fest 2026</span>
     </div>
-    <div class="footer-right">
-      <span>Hosted by BITS Pilani, Pilani Campus</span>
-      <span class="footer-sponsor">In collaboration with IBM Quantum</span>
-    </div>
-  </footer>
 
-  <script src="app.js"></script>
+    <p class="flock-caption">
+      <span class="flock-caption-key" aria-hidden="true"></span>
+      Each bird trails the paths it might have taken. Move your cursor through the flock to measure one.
+    </p>
+  </div>
+
+  <div class="wrap">
+    <div class="counts">
+      <div class="count"><b>8</b><span>days</span></div>
+      <div class="count"><b>16</b><span>sessions</span></div>
+      <div class="count"><b>27</b><span>hours taught</span></div>
+      <div class="count"><b>1</b><span>hackathon</span></div>
+    </div>
+
+    <div class="strands">
+      <article class="strand">
+        <img src="/stickers/bird-pair.svg" alt="" class="strand-medallion">
+        <h3>Lectures</h3>
+        <p>Six sessions building from the maths you need — linear algebra, probability, quantum mechanics — up through qubits, Bell states, circuits and algorithms.</p>
+      </article>
+      <article class="strand">
+        <img src="/stickers/bird-hummingbirds.svg" alt="" class="strand-medallion">
+        <h3>Workshops &amp; guest talks</h3>
+        <p>Hands-on sessions on quantum machine learning and quantum key distribution, plus faculty and guest lectures across the week.</p>
+      </article>
+      <article class="strand">
+        <img src="/stickers/bird-flamingo.svg" alt="" class="strand-medallion">
+        <h3>Hackathon</h3>
+        <p>Briefed on 25 October, built through the closing days, judged at the wrap-up on 28 October.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────  ABOUT  ───────────── -->
+<section id="tab-about" class="tab-panel">
+  <div class="wrap">
+    <div class="page-head">
+      <p class="eyebrow">About</p>
+      <h2>A university-run week inside a global festival.</h2>
+      <p class="page-lead">Qiskit Fall Fest is an annual season of student-run quantum computing events supported by IBM Quantum. This is the BITS Pilani edition.</p>
+    </div>
+
+    <div class="prose-duo">
+      <article class="panel">
+        <p class="panel-tag">The festival</p>
+        <h3>What Qiskit Fall Fest is</h3>
+        <p>Each autumn, IBM Quantum backs student organisers at universities around the world to run their own quantum computing events — workshops, lectures, hackathons — using a shared identity and a shared set of teaching materials.</p>
+        <p>There is no single central event. Every campus builds its own programme, which is why this one is shaped around what BITS Pilani teaches and who is here to teach it.</p>
+      </article>
+
+      <article class="panel">
+        <p class="panel-tag">The host</p>
+        <h3>Why Pilani</h3>
+        <p>Birla Institute of Technology and Science, Pilani sits at the intersection this programme needs: physics and computer science departments that already share students, and faculty working on quantum information.</p>
+        <p>The week is written for undergraduates who can code but have not yet met a qubit. It starts at the prerequisites and does not assume a physics major.</p>
+      </article>
+    </div>
+
+    <div class="syllabus">
+      <p class="panel-tag">What the week covers</p>
+      <h3>Six threads, in order</h3>
+      <ul class="thread-list">
+        <li><span class="thread-name">Foundations</span><span class="thread-detail">Linear algebra, probability and statistics, quantum mechanics</span></li>
+        <li><span class="thread-name">Qubits</span><span class="thread-detail">Single-qubit states, measurement, Bell states and entanglement</span></li>
+        <li><span class="thread-name">Circuits &amp; algorithms</span><span class="thread-detail">Gate-level circuit construction, Grover's and friends</span></li>
+        <li><span class="thread-name">Variational &amp; QML</span><span class="thread-detail">Variational quantum circuits, then a full quantum machine learning workshop</span></li>
+        <li><span class="thread-name">Cryptography</span><span class="thread-detail">Classical crypto foundations, then quantum key distribution hands-on</span></li>
+        <li><span class="thread-name">Photonics</span><span class="thread-detail">Photonic approaches to quantum information, with a guest lecture</span></li>
+      </ul>
+    </div>
+
+    <figure class="keyart">
+      <img src="/illustrations/keyart-untitled.svg" alt="Qiskit Fall Fest 2026 key art: flat-illustrated birds in flight across a pale sky">
+      <figcaption>Qiskit Fall Fest 2026 key art, IBM Quantum.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ─────────────  SCHEDULE  ───────────── -->
+<section id="tab-schedule" class="tab-panel">
+  <div class="wrap">
+    <div class="page-head">
+      <p class="eyebrow">Schedule</p>
+      <h2>Eight days, 21 to 28 October.</h2>
+      <p class="page-lead">Bars are drawn to length: one hour of teaching is one unit of width. Saturday is the heaviest day of the week.</p>
+    </div>
+
+    <div class="legend">
+      <span class="legend-item" data-kind="lecture">Lecture</span>
+      <span class="legend-item" data-kind="workshop">Workshop</span>
+      <span class="legend-item" data-kind="guest">Guest lecture</span>
+      <span class="legend-item" data-kind="milestone">Milestone</span>
+    </div>
+
+    <ol class="days" id="days"></ol>
+
+    <p class="footnote">Session times within each day will be published closer to the event. Total teaching time: 27 hours across 16 sessions.</p>
+  </div>
+</section>
+
+<!-- ─────────────  HACKATHON  ───────────── -->
+<section id="tab-hackathon" class="tab-panel">
+  <div class="wrap">
+    <div class="page-head">
+      <p class="eyebrow">Hackathon</p>
+      <h2>You build with what the week taught you.</h2>
+      <p class="page-lead">The hackathon is the last thread of the programme, not a separate contest. It is briefed once the teaching is nearly done and judged on the final day.</p>
+    </div>
+
+    <div class="hack-arc">
+      <div class="arc-step">
+        <p class="arc-when">Sun 25 Oct</p>
+        <h3>Briefing</h3>
+        <p>Problem statements are released at the end of the QML day, alongside team formation.</p>
+      </div>
+      <div class="arc-step">
+        <p class="arc-when">Mon 26 – Tue 27 Oct</p>
+        <h3>Build</h3>
+        <p>You work alongside the cryptography and photonics sessions. Mentors are on hand between lectures.</p>
+      </div>
+      <div class="arc-step">
+        <p class="arc-when">Wed 28 Oct</p>
+        <h3>Results</h3>
+        <p>Projects are presented at the wrap-up session and winners announced.</p>
+      </div>
+    </div>
+
+    <div class="readiness">
+      <img src="/stickers/tile-loop.svg" alt="" class="readiness-tile">
+      <div class="readiness-body">
+        <p class="panel-tag">Where you'll be starting from</p>
+        <h3>By briefing day you will have covered</h3>
+        <p>Circuit construction in Qiskit, Grover's algorithm, variational quantum circuits and a full quantum machine learning workshop. That is the toolkit the problem statements are written against.</p>
+        <p class="tba">Team size, tracks and prizes are set by the organising committee and will be announced with the problem statements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────  JOIN  ───────────── -->
+<section id="tab-join" class="tab-panel">
+  <div class="wrap">
+    <div class="page-head">
+      <p class="eyebrow">Join</p>
+      <h2>Register, then read two things.</h2>
+      <p class="page-lead">Open to BITS Pilani students. No quantum background needed — bring Python.</p>
+    </div>
+
+    <div class="join-grid">
+      <form class="panel join-form" onsubmit="return register(event)">
+        <p class="panel-tag">Step one</p>
+        <h3>Register</h3>
+        <label for="email">Campus email</label>
+        <div class="field-row">
+          <input type="email" id="email" name="email" placeholder="f2023xxxx@pilani.bits-pilani.ac.in" required autocomplete="email">
+          <button class="btn btn-primary" type="submit">Register</button>
+        </div>
+        <p class="form-note" id="formNote" role="status"></p>
+        <p class="form-privacy">We use your address for two things: sending the prep notebook and telling you which room to turn up to.</p>
+      </form>
+
+      <article class="panel">
+        <p class="panel-tag">Step two</p>
+        <h3>Prep before day one</h3>
+        <p>Two short things, circulated in advance. Both are optional, and both make Wednesday easier.</p>
+        <ul class="prep-list">
+          <li>
+            <span class="prep-label">Notebook</span>
+            <span class="prep-name">Intro to Qiskit</span>
+            <span class="prep-note">Circulated to registered participants before orientation.</span>
+          </li>
+          <li>
+            <span class="prep-label">Video</span>
+            <span class="prep-name">3Blue1Brown on Grover's algorithm</span>
+            <span class="prep-note">Watch before day two, when circuits and algorithms begin.</span>
+          </li>
+        </ul>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="footer-block">
+      <img src="/stickers/pill-qiskit-purple.svg" alt="Qiskit" class="footer-pill">
+      <p>Qiskit Fall Fest 2026, BITS Pilani edition. 21–28 October 2026, Pilani Campus.</p>
+    </div>
+    <div class="footer-block footer-credit">
+      <p>Identity and illustration by IBM Quantum, used under the Qiskit Fall Fest organiser kit.</p>
+      <img src="/brand/ibm-quantum-dark.png" alt="IBM Quantum" class="footer-ibm">
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
 </body>
 </html>

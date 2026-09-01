@@ -1,236 +1,436 @@
-// 3D WAVE INTERFERENCE MESH ENGINE (THREE.JS)
+/* ============================================================
+   Qiskit Fall Fest 2026 — BITS Pilani edition
+   ============================================================ */
 
-let waveScene, waveCamera, waveRenderer, planeMesh;
-let mouseX = 0, mouseY = 0;
-let targetMouseX = 0, targetMouseY = 0;
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-function initWaveMesh() {
-  const container = document.getElementById('wave-canvas-container');
-  if (!container) return;
+/* ── tabs ──────────────────────────────────────────────── */
 
-  const w = window.innerWidth;
-  const h = window.innerHeight;
+const TABS = ['home', 'about', 'schedule', 'hackathon', 'join'];
 
-  waveScene = new THREE.Scene();
-  waveCamera = new THREE.PerspectiveCamera(60, w / h, 0.1, 1000);
-  waveCamera.position.set(0, -6, 8);
-  waveCamera.lookAt(0, 0, 0);
-
-  waveRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-  waveRenderer.setSize(w, h);
-  waveRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  container.appendChild(waveRenderer.domElement);
-
-  // Plane Geometry with high density vertices
-  const geometry = new THREE.PlaneGeometry(28, 20, 70, 50);
-
-  // Wireframe material with restrained Heron accent
-  const material = new THREE.MeshBasicMaterial({
-    color: 0x00F5D4,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.28
+function showTab(name, fromHash) {
+  if (!TABS.includes(name)) name = 'home';
+  if (!fromHash) {
+    history.replaceState(null, '', name === 'home' ? '#' : '#' + name);
+  }
+  document.querySelectorAll('.tab-panel').forEach(p => {
+    p.classList.toggle('is-active', p.id === 'tab-' + name);
   });
-
-  planeMesh = new THREE.Mesh(geometry, material);
-  waveScene.add(planeMesh);
-
-  // Mouse move & Touch listeners for wave disturbance
-  window.addEventListener('mousemove', (e) => {
-    targetMouseX = (e.clientX / window.innerWidth) * 2 - 1;
-    targetMouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+  document.querySelectorAll('.tab').forEach(t => {
+    const on = t.dataset.tab === name;
+    t.classList.toggle('is-active', on);
+    t.setAttribute('aria-current', on ? 'page' : 'false');
   });
-
-  window.addEventListener('touchmove', (e) => {
-    if (e.touches.length > 0) {
-      targetMouseX = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
-      targetMouseY = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
-    }
-  }, { passive: true });
-  // Resize listener
-  window.addEventListener('resize', () => {
-    const nw = window.innerWidth;
-    const nh = window.innerHeight;
-    waveCamera.aspect = nw / nh;
-    waveCamera.updateProjectionMatrix();
-    waveRenderer.setSize(nw, nh);
-  });
-
-  animateWave();
+  document.getElementById('tabs').classList.remove('is-open');
+  document.title = name === 'home'
+    ? 'Qiskit Fall Fest 2026 — BITS Pilani, with IBM Quantum'
+    : name.charAt(0).toUpperCase() + name.slice(1) +
+      ' — Qiskit Fall Fest 2026, BITS Pilani';
+  document.getElementById('menuToggle').setAttribute('aria-expanded', 'false');
+  window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+  flockRunning = (name === 'home');
+  if (flockRunning && !reduceMotion) requestAnimationFrame(step);
 }
 
-let clock = new THREE.Clock();
-
-function animateWave() {
-  requestAnimationFrame(animateWave);
-
-  const t = clock.getElapsedTime() * 1.5;
-
-  // Smooth mouse lerping
-  mouseX += (targetMouseX - mouseX) * 0.05;
-  mouseY += (targetMouseY - mouseY) * 0.05;
-
-  // Deform plane vertices based on sinusoidal wave + mouse distance
-  const pos = planeMesh.geometry.attributes.position;
-  for (let i = 0; i < pos.count; i++) {
-    const x = pos.getX(i);
-    const y = pos.getY(i);
-
-    // Distance to cursor in 3D plane projection
-    const dist = Math.sqrt((x - mouseX * 10) ** 2 + (y - mouseY * 8) ** 2);
-    
-    // Wave ripple formula
-    const z = Math.sin(x * 0.5 + t) * 0.4 +
-              Math.cos(y * 0.5 + t * 1.2) * 0.4 +
-              Math.sin(dist * 0.8 - t * 2) * Math.max(0, (1.8 - dist * 0.15));
-
-    pos.setZ(i, z);
-  }
-  pos.needsUpdate = true;
-
-  // Subtle camera tilt
-  waveCamera.position.x = mouseX * 1.2;
-  waveCamera.position.y = -6 + mouseY * 0.8;
-  waveCamera.lookAt(0, 0, 0);
-
-  waveRenderer.render(waveScene, waveCamera);
+function toggleMenu() {
+  const tabs = document.getElementById('tabs');
+  const btn = document.getElementById('menuToggle');
+  const open = tabs.classList.toggle('is-open');
+  btn.setAttribute('aria-expanded', String(open));
 }
 
-// 3D Card Perspective Tilt
-function tiltCard(event, card) {
-  const rect = card.getBoundingClientRect();
-  const x = event.clientX - rect.left - rect.width / 2;
-  const y = event.clientY - rect.top - rect.height / 2;
+/* ── registration ──────────────────────────────────────── */
 
-  const tiltX = (y / (rect.height / 2)) * -8;
-  const tiltY = (x / (rect.width / 2)) * 8;
+function register(e) {
+  e.preventDefault();
+  const input = document.getElementById('email');
+  const note = document.getElementById('formNote');
+  const value = input.value.trim();
 
-  card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-4px)`;
-}
-
-function resetCard(card) {
-  card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
-}
-
-// Mobile Menu Toggle
-function toggleMobileMenu() {
-  const nav = document.getElementById('mainNav');
-  const toggle = document.getElementById('menuToggle');
-  if (nav && toggle) {
-    nav.classList.toggle('open');
-    toggle.classList.toggle('open');
-    toggle.classList.toggle('active');
-  }
-}
-
-function closeMobileMenu() {
-  const nav = document.getElementById('mainNav');
-  const toggle = document.getElementById('menuToggle');
-  if (nav && toggle) {
-    nav.classList.remove('open');
-    toggle.classList.remove('open');
-    toggle.classList.remove('active');
-  }
-}
-
-// Tab Switching
-function switchWaveTab(tabName) {
-  closeMobileMenu();
-
-  const links = document.querySelectorAll('.nav-link');
-  links.forEach(l => l.classList.remove('active'));
-
-  const tabNames = ['home', 'about', 'schedule', 'hackathon', 'community'];
-  const index = tabNames.indexOf(tabName);
-  if (index !== -1 && links[index]) {
-    links[index].classList.add('active');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+    note.dataset.state = 'error';
+    note.textContent = 'That does not look like an email address. Check and try again.';
+    return false;
   }
 
-  const tabs = document.querySelectorAll('.wave-tab');
-  tabs.forEach(t => t.classList.remove('active'));
-
-  const target = document.getElementById(`tab-${tabName}`);
-  if (target) {
-    target.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-}
-
-// DYNAMIC QUANTUM HERO WORD CYCLER
-const QUANTUM_WORDS = [
-  'SUPERPOSITION',
-  'ENTANGLEMENT',
-  'INTERFERENCE'
-];
-// Every placeholder is one character wide, keeping the headline footprint stable while it cycles.
-const GLITCH_CHARS = ['0', '1', 'Ψ', 'Φ', '⊗', 'Δ', 'Ω', 'Σ', 'ħ', 'ψ'];
-
-let currentWordIndex = 0;
-let isCycling = false;
-
-function initQuantumWordCycler() {
-  const el = document.getElementById('quantum-word');
-  if (!el) return;
-
-  setInterval(() => {
-    if (isCycling) return;
-    isCycling = true;
-    currentWordIndex = (currentWordIndex + 1) % QUANTUM_WORDS.length;
-    const targetWord = QUANTUM_WORDS[currentWordIndex];
-
-    // Slide left briefly, then return while the letters resolve into their new state.
-    el.classList.add('cycle-exit');
-
-    setTimeout(() => {
-      let frame = 0;
-      const totalFrames = 18;
-      el.classList.remove('cycle-exit');
-      el.classList.add('scramble');
-
-      const scrambleInterval = setInterval(() => {
-        frame++;
-        if (frame >= totalFrames) {
-          clearInterval(scrambleInterval);
-          el.textContent = targetWord;
-          el.classList.remove('scramble');
-          isCycling = false;
-        } else {
-          const settledCharacters = Math.floor((frame / totalFrames) * targetWord.length);
-          let scrambled = '';
-          for (let i = 0; i < targetWord.length; i++) {
-            if (i < settledCharacters) {
-              scrambled += targetWord[i];
-            } else {
-              scrambled += GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
-            }
-          }
-          el.textContent = scrambled;
-        }
-      }, 42);
-    }, 280);
-  }, 3200);
-}
-
-// Registration
-function handleWaveRegister() {
-  const input = document.getElementById('waveEmail');
-  const feedback = document.getElementById('waveFeedback');
-  const val = input.value.trim();
-
-  if (!val || !val.includes('@')) {
-    feedback.style.display = 'block';
-    feedback.style.color = '#FF6B6B';
-    feedback.textContent = 'Please provide a valid institutional email address.';
-    return;
-  }
-
-  feedback.style.display = 'block';
-  feedback.style.color = '#00F5D4';
-  feedback.textContent = 'Welcome! Invitation link and hardware credits sent to ' + val;
+  note.dataset.state = 'ok';
+  note.textContent = 'Registered. Look for the Intro to Qiskit notebook before 21 October.';
   input.value = '';
+  return false;
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  initWaveMesh();
-  initQuantumWordCycler();
-});
+/* ── schedule ──────────────────────────────────────────────
+   Source of truth: organiser timetable, 21–28 October 2026.
+   `h` is teaching hours; bar widths are drawn against the
+   heaviest day (6 h) so days are comparable to each other.
+   ───────────────────────────────────────────────────────── */
+
+const SCHEDULE = [
+  { date: '21 Oct', day: 'Wed', sessions: [
+    { name: 'Orientation',                     h: 0.75, kind: 'milestone' },
+    { name: 'Intro to quantum computing I',    h: 2,    kind: 'lecture', short: 'Intro to QC I'   } ] },
+  { date: '22 Oct', day: 'Thu', sessions: [
+    { name: 'Intro to quantum computing II',   h: 1,    kind: 'lecture', short: 'Intro to QC II'  },
+    { name: 'BITS faculty lecture',            h: 2,    kind: 'guest'     } ] },
+  { date: '23 Oct', day: 'Fri', sessions: [
+    { name: 'Intro to quantum computing III',  h: 3,    kind: 'lecture', short: 'Intro to QC III' } ] },
+  { date: '24 Oct', day: 'Sat', sessions: [
+    { name: 'Algorithms & variational circuits', h: 2,  kind: 'lecture', short: 'Algorithms & VQC' },
+    { name: 'Intro to QML',                    h: 2,    kind: 'lecture'   },
+    { name: 'Guest lecture',                   h: 2,    kind: 'guest'     } ] },
+  { date: '25 Oct', day: 'Sun', sessions: [
+    { name: 'QML workshop',                    h: 3,    kind: 'workshop'  },
+    { name: 'Guest lecture',                   h: 1,    kind: 'guest'     },
+    { name: 'Hackathon briefing',              h: 1,    kind: 'milestone' } ] },
+  { date: '26 Oct', day: 'Mon', sessions: [
+    { name: 'Intro to cryptography',           h: 1.5,  kind: 'lecture'   },
+    { name: 'QKD workshop',                    h: 1.5,  kind: 'workshop'  } ] },
+  { date: '27 Oct', day: 'Tue', sessions: [
+    { name: 'Intro to photonics',              h: 1.5,  kind: 'lecture'   },
+    { name: 'Guest lecture',                   h: 1.5,  kind: 'guest'     } ] },
+  { date: '28 Oct', day: 'Wed', sessions: [
+    { name: 'Wrap-up & results',               h: 1,    kind: 'milestone' } ] },
+];
+
+const SCALE_HOURS = Math.max(...SCHEDULE.map(d => d.sessions.reduce((s, x) => s + x.h, 0)));
+
+function hoursLabel(h) {
+  return h < 1 ? `${Math.round(h * 60)} min` : `${h} h`;
+}
+
+function renderSchedule() {
+  const list = document.getElementById('days');
+  if (!list) return;
+  list.innerHTML = SCHEDULE.map((d, i) => `
+    <li class="day">
+      <span class="day-n">Day ${i + 1}</span>
+      <span class="day-date"><b>${d.date}</b><span>${d.day}</span></span>
+      <div class="day-bar">
+        ${d.sessions.map(s => `
+          <div class="block" data-kind="${s.kind}"
+               style="flex: 0 1 ${(s.h / SCALE_HOURS * 100).toFixed(2)}%"
+               title="${s.name} — ${hoursLabel(s.h)}">
+            <span class="block-name">${s.short || s.name}</span>
+            <span class="block-hrs">${hoursLabel(s.h)}</span>
+          </div>`).join('')}
+      </div>
+    </li>`).join('');
+}
+
+/* ── the flock: a superposition of flight paths ─────────────
+   Each bird carries GHOSTS — alternate trajectories it could
+   have flown, drawn faintly behind it. The pointer is a
+   measurement gate: birds that pass through it collapse to a
+   single path, which draws solid, then decohere back.
+   ───────────────────────────────────────────────────────── */
+
+const canvas = document.getElementById('flock');
+const ctx = canvas.getContext('2d');
+
+const INK      = '49, 19, 94';
+const PURPLE   = '139, 63, 252';
+const MAGENTA  = '238, 83, 150';
+
+const N_BIRDS  = 22;
+const N_GHOSTS = 3;
+const TRAIL    = 58;
+const GATE_R   = 140;
+
+let W = 0, H = 0, birds = [], flockRunning = true, last = 0;
+const pointer = { x: -9999, y: -9999, live: false };
+
+function resize() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const rect = canvas.getBoundingClientRect();
+  W = rect.width; H = rect.height;
+  canvas.width = Math.round(W * dpr);
+  canvas.height = Math.round(H * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+function makeGhost(b, spread) {
+  return {
+    x: b.x, y: b.y,
+    vx: b.vx + (Math.random() - 0.5) * spread,
+    vy: b.vy + (Math.random() - 0.5) * spread,
+    trail: [],
+    life: 0,
+    span: 2800 + Math.random() * 2600,
+    // a persistent curl, so each alternate path arcs away from the others
+    curl: (Math.random() - 0.5) * 0.011,
+  };
+}
+
+function seed() {
+  birds = [];
+  for (let i = 0; i < N_BIRDS; i++) {
+    const b = {
+      x: ((i * 197) % 100) / 100 * W + (Math.random() - 0.5) * 40,
+      y: H * 0.05 + ((i * 61) % 100) / 100 * H * 0.55 + (Math.random() - 0.5) * 30,
+      vx: 0.85 + Math.random() * 0.35,
+      vy: (Math.random() - 0.5) * 0.25,
+      z: 0.62 + Math.random() * 0.78,
+      phase: Math.random() * Math.PI * 2,
+      flap: 0.13 + Math.random() * 0.07,
+      trail: [],
+      measured: 0,
+    };
+    b.ghosts = Array.from({ length: N_GHOSTS }, () => makeGhost(b, 1.5));
+    b.ghosts.forEach(g => { g.life = Math.random() * g.span; });
+    birds.push(b);
+  }
+}
+
+function wrap(p) {
+  let jumped = false;
+  if (p.x > W + 60)  { p.x = -60; jumped = true; }
+  if (p.x < -60)     { p.x = W + 60; jumped = true; }
+  if (p.y > H + 60)  { p.y = -60; jumped = true; }
+  if (p.y < -60)     { p.y = H + 60; jumped = true; }
+  return jumped;
+}
+
+function pushTrail(p, jumped) {
+  p.trail.push({ x: p.x, y: p.y, cut: jumped });
+  if (p.trail.length > TRAIL) p.trail.shift();
+}
+
+function flockForces(b) {
+  let ax = 0, ay = 0, sx = 0, sy = 0, cx = 0, cy = 0, n = 0;
+  const NEAR = 240, PERSONAL = 135;
+  for (const o of birds) {
+    if (o === b) continue;
+    const dx = o.x - b.x, dy = o.y - b.y;
+    const d2 = dx * dx + dy * dy;
+    if (d2 > NEAR * NEAR || d2 === 0) continue;
+    const d = Math.sqrt(d2);
+    n++;
+    cx += o.x; cy += o.y;
+    ax += o.vx; ay += o.vy;
+    if (d < PERSONAL) {
+      const f = (1 - d / PERSONAL) * 0.048;
+      sx -= dx / d * f;
+      sy -= dy / d * f;
+    }
+  }
+  if (n) {
+    cx = (cx / n - b.x) * 0.00016;
+    cy = (cy / n - b.y) * 0.00030;
+    ax = (ax / n - b.vx) * 0.022;
+    ay = (ay / n - b.vy) * 0.022;
+  }
+  return { fx: cx + ax + sx, fy: cy + ay + sy };
+}
+
+function advance(p, fx, fy, t, wob, curl) {
+  // a steady glide to the right, plus a slow thermal wander
+  p.vx += fx + 0.009;
+  p.vy += fy + Math.sin(t * 0.0004 + wob) * 0.005;
+  // altitude preference: the flock rides the upper sky
+  p.vy += (H * 0.30 - p.y) * 0.00004;
+
+  if (curl) {
+    const c = Math.cos(curl), sn = Math.sin(curl);
+    const nvx = p.vx * c - p.vy * sn;
+    p.vy = p.vx * sn + p.vy * c;
+    p.vx = nvx;
+  }
+
+  const sp = Math.hypot(p.vx, p.vy) || 1;
+  const eased = Math.min(Math.max(sp * 0.88 + 1.05 * 0.12, 0.8), 1.6);
+  p.vx = p.vx / sp * eased;
+  p.vy = p.vy / sp * eased;
+
+  p.x += p.vx; p.y += p.vy;
+  return wrap(p);
+}
+
+/* Legibility mask: the hero copy occupies the lower-left of the sky.
+   Birds still fly through it — they just go quiet there. */
+function clarity(p) {
+  const right = W * 0.62, top = H * 0.24, soft = 110;
+  const insideX = (right - p.x) / soft;
+  const insideY = (p.y - top) / soft;
+  const d = Math.min(insideX, insideY);
+  if (d <= 0) return 1;
+  if (d >= 1) return 0.10;
+  return 1 - 0.90 * (d * d * (3 - 2 * d));
+}
+
+/* One stroke per fade band rather than one per segment: same taper,
+   ~15x fewer draw calls, which matters with 22 birds x 3 ghost paths. */
+const BANDS = 4;
+
+function drawTrail(p, rgb, alpha, width) {
+  const n = p.trail.length;
+  if (n < 3 || alpha <= 0.004) return;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  const per = Math.ceil(n / BANDS);
+
+  for (let band = 0; band < BANDS; band++) {
+    const from = band * per;
+    const to = Math.min(n - 1, from + per);
+    if (to - from < 1) continue;
+
+    const t = (band + 1) / BANDS;
+    ctx.strokeStyle = `rgba(${rgb}, ${(alpha * t * t).toFixed(3)})`;
+    ctx.lineWidth = width * (0.45 + 0.55 * t);
+    ctx.beginPath();
+    let open = false;
+    for (let i = from; i <= to; i++) {
+      const pt = p.trail[i];
+      if (pt.cut) { open = false; continue; }
+      if (!open) { ctx.moveTo(pt.x, pt.y); open = true; }
+      else ctx.lineTo(pt.x, pt.y);
+    }
+    ctx.stroke();
+  }
+}
+
+function drawBird(p, scale, rgb, alpha, spread) {
+  const ang = Math.max(-0.62, Math.min(0.62, Math.atan2(p.vy, p.vx)));
+  ctx.save();
+  ctx.translate(p.x, p.y);
+  ctx.rotate(ang);
+  ctx.scale(scale, scale);
+  ctx.fillStyle = `rgba(${rgb}, ${alpha})`;
+  ctx.beginPath();
+  ctx.moveTo(2.6, 0);
+  ctx.quadraticCurveTo(0.4, -spread * 0.42, -5.6, -spread);
+  ctx.quadraticCurveTo(-2.4, -spread * 0.26, -1.2, 0);
+  ctx.quadraticCurveTo(-2.4, spread * 0.26, -5.6, spread);
+  ctx.quadraticCurveTo(0.4, spread * 0.42, 2.6, 0);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+function frame(t, dt) {
+  ctx.clearRect(0, 0, W, H);
+
+  for (const b of birds) {
+    // measurement gate
+    const near = pointer.live &&
+      Math.hypot(b.x - pointer.x, b.y - pointer.y) < GATE_R;
+    b.measured += ((near ? 1 : 0) - b.measured) * (near ? 0.14 : 0.018);
+
+    const { fx, fy } = flockForces(b);
+    pushTrail(b, advance(b, fx, fy, t, b.phase));
+
+    // ghosts: alternate paths, pulled home as measurement rises
+    for (const g of b.ghosts) {
+      g.life += dt;
+      if (g.life > g.span) {
+        Object.assign(g, makeGhost(b, 1.6));
+      }
+      const collapse = b.measured * 0.16;
+      pushTrail(g, advance(
+        g,
+        fx + (g.x - b.x) * -collapse * 0.02,
+        fy + (g.y - b.y) * -collapse * 0.02,
+        t, g.span,
+        g.curl * (1 - b.measured)
+      ));
+      if (b.measured > 0.02) {
+        g.x += (b.x - g.x) * collapse;
+        g.y += (b.y - g.y) * collapse;
+      }
+    }
+  }
+
+  // the paths it might have taken — drawn first, so the measured one reads on top
+  for (const b of birds) {
+    const ga = (1 - b.measured) * 0.40 * b.z * clarity(b);
+    for (const g of b.ghosts) drawTrail(g, PURPLE, ga, 1.1);
+  }
+
+  for (const b of birds) {
+    const flapSpread = 5.6 + Math.sin(t * b.flap * 0.012 + b.phase) * 3.4;
+    const solid = b.measured;
+    const cl = clarity(b);
+    drawTrail(b, INK, 0.24 * cl, 1.3);
+    if (solid > 0.02) drawTrail(b, MAGENTA, solid * 0.72 * cl, 2);
+    drawBird(
+      b,
+      b.z * 2.5,
+      solid > 0.5 ? MAGENTA : INK,
+      ((0.50 + b.z * 0.20) * (1 - solid) + solid * 0.95) * cl,
+      flapSpread
+    );
+  }
+}
+
+function step(now) {
+  if (!flockRunning || reduceMotion) return;
+  const dt = Math.min(now - last, 48) || 16;
+  last = now;
+  frame(now, dt);
+  requestAnimationFrame(step);
+}
+
+/* ── pointer ───────────────────────────────────────────── */
+
+function trackPointer(e) {
+  const r = canvas.getBoundingClientRect();
+  const src = e.touches ? e.touches[0] : e;
+  pointer.x = src.clientX - r.left;
+  pointer.y = src.clientY - r.top;
+  pointer.live = pointer.x > 0 && pointer.x < r.width &&
+                 pointer.y > 0 && pointer.y < r.height;
+}
+
+/* ── boot ──────────────────────────────────────────────── */
+
+/* Run the simulation silently before the first paint, so the sky opens on a
+   flock already in flight with trails behind it rather than a blank field. */
+function warmUp(steps) {
+  const saved = ctx.globalAlpha;
+  ctx.globalAlpha = 0;
+  for (let i = 0; i < steps; i++) frame(i * 16, 16);
+  ctx.globalAlpha = saved;
+  ctx.clearRect(0, 0, W, H);
+}
+
+function init() {
+  renderSchedule();
+  resize();
+  seed();
+  warmUp(150);
+
+  const fromUrl = location.hash.replace('#', '');
+  if (fromUrl && TABS.includes(fromUrl)) showTab(fromUrl, true);
+
+  window.addEventListener('hashchange', () => {
+    showTab(location.hash.replace('#', '') || 'home', true);
+  });
+
+  if (reduceMotion) {
+    frame(0, 16);
+  } else {
+    requestAnimationFrame(step);
+  }
+
+  window.addEventListener('resize', () => {
+    const prev = W;
+    resize();
+    if (Math.abs(W - prev) > 80) { seed(); warmUp(150); }
+    if (reduceMotion) frame(0, 16);
+  });
+
+  window.addEventListener('pointermove', trackPointer, { passive: true });
+  window.addEventListener('touchmove', trackPointer, { passive: true });
+  window.addEventListener('pointerleave', () => { pointer.live = false; });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      flockRunning = false;
+    } else if (document.getElementById('tab-home').classList.contains('is-active')) {
+      flockRunning = true;
+      last = performance.now();
+      if (!reduceMotion) requestAnimationFrame(step);
+    }
+  });
+}
+
+init();
