@@ -6,7 +6,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 
 /* ── tabs ──────────────────────────────────────────────── */
 
-const TABS = ['home', 'about', 'schedule', 'hackathon', 'join'];
+const TABS = ['home', 'about', 'team', 'schedule', 'hackathon', 'join'];
 
 function showTab(name, fromHash) {
   if (!TABS.includes(name)) name = 'home';
@@ -37,26 +37,6 @@ function toggleMenu() {
   const btn = document.getElementById('menuToggle');
   const open = tabs.classList.toggle('is-open');
   btn.setAttribute('aria-expanded', String(open));
-}
-
-/* ── registration ──────────────────────────────────────── */
-
-function register(e) {
-  e.preventDefault();
-  const input = document.getElementById('email');
-  const note = document.getElementById('formNote');
-  const value = input.value.trim();
-
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-    note.dataset.state = 'error';
-    note.textContent = 'That does not look like an email address. Check and try again.';
-    return false;
-  }
-
-  note.dataset.state = 'ok';
-  note.textContent = 'Registered. Look for the Intro to Qiskit notebook before 21 October.';
-  input.value = '';
-  return false;
 }
 
 /* ── schedule ──────────────────────────────────────────────
