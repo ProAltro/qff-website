@@ -333,6 +333,47 @@ img { max-width: 100%; display: block; }
   background: var(--magenta-deep);
 }
 
+/* ── event partners ─────────────────────────────────────── */
+
+.partner-band {
+  background: var(--white);
+  border-bottom: 1px solid var(--haze);
+}
+.partner-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(2rem, 7vw, 6rem);
+  align-items: start;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.partner-label {
+  margin: 0 0 1rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.partner-physics-logo {
+  width: 136px;
+  height: 136px;
+  overflow: hidden;
+  border-radius: var(--tile-r);
+  background: #1e1e1e;
+}
+.partner-physics-logo img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  transform: scale(1.25);
+}
+.partner-qtrl-logo {
+  width: min(100%, 470px);
+  height: auto;
+}
+
 /* ── real counts ────────────────────────────────────────── */
 
 .counts {
@@ -771,6 +812,8 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 760px) {
+  .partner-grid { grid-template-columns: 1fr; gap: 2rem; padding-top: 2.5rem; padding-bottom: 2.5rem; }
+  .partner-physics-logo { width: 116px; height: 116px; }
   .ibm-logo { display: none; }
   .menu-toggle { display: flex; }
   .masthead-end { margin-left: auto; }
