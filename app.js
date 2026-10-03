@@ -53,7 +53,8 @@ const SCHEDULE = [
     { name: 'Intro to quantum computing II',   h: 1,    kind: 'lecture', short: 'Intro to QC II'  },
     { name: 'BITS faculty lecture',            h: 2,    kind: 'guest'     } ] },
   { date: '23 Oct', day: 'Fri', sessions: [
-    { name: 'Intro to quantum computing III',  h: 3,    kind: 'lecture', short: 'Intro to QC III' } ] },
+    { name: 'Intro to quantum computing III',  h: 3,    kind: 'lecture', short: 'Intro to QC III' },
+    { name: 'Guest lecture',                   h: 1,    kind: 'guest'     } ] },
   { date: '24 Oct', day: 'Sat', sessions: [
     { name: 'Algorithms & variational circuits', h: 2,  kind: 'lecture', short: 'Algorithms & VQC' },
     { name: 'Intro to QML',                    h: 2,    kind: 'lecture'   },
@@ -64,7 +65,8 @@ const SCHEDULE = [
     { name: 'Hackathon briefing',              h: 1,    kind: 'milestone' } ] },
   { date: '26 Oct', day: 'Mon', sessions: [
     { name: 'Intro to cryptography',           h: 1.5,  kind: 'lecture'   },
-    { name: 'QKD workshop',                    h: 1.5,  kind: 'workshop'  } ] },
+    { name: 'QKD workshop',                    h: 1.5,  kind: 'workshop'  },
+    { name: 'Guest lecture',                   h: 1,    kind: 'guest'     } ] },
   { date: '27 Oct', day: 'Tue', sessions: [
     { name: 'Intro to photonics',              h: 1.5,  kind: 'lecture'   },
     { name: 'Guest lecture',                   h: 1.5,  kind: 'guest'     } ] },
