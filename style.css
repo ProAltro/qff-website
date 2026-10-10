@@ -431,7 +431,7 @@ img { max-width: 100%; display: block; }
 }
 .eyebrow {
   font-family: var(--mono);
-  font-size: 0.8125rem;
+  font-size: 1.25rem;
   color: var(--magenta-ink);
   margin: 0 0 1rem;
 }
