@@ -487,6 +487,7 @@ img { max-width: 100%; display: block; }
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.25rem;
   padding-bottom: 6rem;
+  align-items: start;
 }
 .team-card {
   overflow: hidden;
