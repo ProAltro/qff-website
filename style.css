@@ -480,7 +480,7 @@ img { max-width: 100%; display: block; }
   align-items: start;
 }
 
-/* ── team ─────────────────────────────────────────────── */
+/* ── team ───────────────────────────────────────────────
 
 .team-grid {
   display: grid;
@@ -550,8 +550,82 @@ img { max-width: 100%; display: block; }
 }
 .team-card-info a:hover {
   color: var(--ink-mid);
+} */
+/* ── team ─────────────────────────────────────────────── */
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  padding-bottom: 6rem;
+  /* Removed align-items: start so cards in the same row naturally match height */
 }
 
+.team-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--cloud);
+  border: 1px solid var(--haze);
+  border-radius: var(--tile-r);
+  height: 100%; /* Ensures equal card height in every row */
+}
+
+.team-photo-frame {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: linear-gradient(135deg, #EEF2FE, #D8E3FB);
+  flex-shrink: 0;
+}
+
+.team-photo {
+  display: block; /* Changed from grid to block for image tags */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.team-photo-portrait { object-position: center 15%; }
+.team-photo-soham { object-position: right center; }
+.team-photo-pramit { object-position: center 30%; }
+
+.team-card-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 1.1rem 1.15rem 1.2rem;
+  flex-grow: 1; /* Pushes card content to fill remaining space cleanly */
+}
+
+.team-card h3 {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.team-card-info a {
+  display: inline-flex;
+  align-items: center;
+  min-height: auto; /* Removed 2.75rem to avoid unnecessary whitespace under links */
+  margin-top: auto; /* Keeps the LinkedIn link pinned cleanly to the bottom of the card */
+  color: var(--blue);
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.25;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  white-space: nowrap;
+  transition: color 0.16s;
+}
+
+.team-card-info a:hover {
+  color: var(--ink-mid);
+}
 /* ── syllabus threads ──────────────────────────────────── */
 
 .syllabus { padding: 4rem 0 0; }
