@@ -40,38 +40,37 @@ function toggleMenu() {
 }
 
 /* ── schedule ──────────────────────────────────────────────
-   Source of truth: organiser timetable, 21–28 October 2026.
-   `h` is teaching hours; bar widths are drawn against the
-   heaviest day (6 h) so days are comparable to each other.
+   Source of truth: organiser timetable (updated 21 Oct 2026).
+   `h` is hours; bar widths are drawn against the heaviest day
+   so days are comparable. `time` is the day's slot; `label`
+   replaces "Day N" for entries outside the eight teaching days.
    ───────────────────────────────────────────────────────── */
 
 const SCHEDULE = [
-  { date: '21 Oct', day: 'Wed', sessions: [
+  { date: '21 Oct', day: 'Wed', time: '6–7 pm · 7:30–9 pm', sessions: [
     { name: 'Orientation',                     h: 0.75, kind: 'milestone' },
-    { name: 'Intro to quantum computing I',    h: 2,    kind: 'lecture', short: 'Intro to QC I'   } ] },
-  { date: '22 Oct', day: 'Thu', sessions: [
+    { name: 'Intro to quantum computing I',    h: 1.5,  kind: 'lecture', short: 'Intro to QC I'   } ] },
+  { date: '22 Oct', day: 'Thu', time: '6–9 pm', sessions: [
     { name: 'Intro to quantum computing II',   h: 1,    kind: 'lecture', short: 'Intro to QC II'  },
-    { name: 'BITS faculty lecture',            h: 2,    kind: 'guest'     } ] },
-  { date: '23 Oct', day: 'Fri', sessions: [
-    { name: 'Intro to quantum computing III',  h: 3,    kind: 'lecture', short: 'Intro to QC III' },
-    { name: 'Guest lecture',                   h: 1,    kind: 'guest'     } ] },
-  { date: '24 Oct', day: 'Sat', sessions: [
-    { name: 'Algorithms & variational circuits', h: 2,  kind: 'lecture', short: 'Algorithms & VQC' },
-    { name: 'Intro to QML',                    h: 2,    kind: 'lecture'   },
     { name: 'Guest lecture',                   h: 2,    kind: 'guest'     } ] },
-  { date: '25 Oct', day: 'Sun', sessions: [
-    { name: 'QML workshop',                    h: 3,    kind: 'workshop'  },
-    { name: 'Guest lecture',                   h: 1,    kind: 'guest'     },
-    { name: 'Hackathon briefing',              h: 1,    kind: 'milestone' } ] },
-  { date: '26 Oct', day: 'Mon', sessions: [
-    { name: 'Intro to cryptography',           h: 1.5,  kind: 'lecture'   },
-    { name: 'QKD workshop',                    h: 1.5,  kind: 'workshop'  },
+  { date: '23 Oct', day: 'Fri', time: '7–9 pm', sessions: [
+    { name: 'Intro to quantum computing III',  h: 2,    kind: 'lecture', short: 'Intro to QC III' } ] },
+  { date: '24 Oct', day: 'Sat', time: '2–5 pm', sessions: [
+    { name: 'Quantum algorithms',              h: 2,    kind: 'lecture', short: 'Algorithms'      },
+    { name: 'Hackathon intro',                 h: 1,    kind: 'milestone' } ] },
+  { date: '25 Oct', day: 'Sun', time: '2–5 pm', sessions: [
+    { name: 'QML: variational circuits, lecture + workshop', h: 3, kind: 'workshop', short: 'QML & VQC workshop' },
     { name: 'Guest lecture',                   h: 1,    kind: 'guest'     } ] },
-  { date: '27 Oct', day: 'Tue', sessions: [
-    { name: 'Intro to photonics',              h: 1.5,  kind: 'lecture'   },
-    { name: 'Guest lecture',                   h: 1.5,  kind: 'guest'     } ] },
-  { date: '28 Oct', day: 'Wed', sessions: [
-    { name: 'Wrap-up & results',               h: 1,    kind: 'milestone' } ] },
+  { date: '26 Oct', day: 'Mon', time: '6–9 pm', sessions: [
+    { name: 'Intro to cryptography',           h: 1.5,  kind: 'lecture'   },
+    { name: 'QKD workshop',                    h: 1.5,  kind: 'workshop'  } ] },
+  { date: '27 Oct', day: 'Tue', time: 'Time TBA', sessions: [
+    { name: 'Intro to photonics',              h: 1,    kind: 'lecture'   },
+    { name: 'Guest lecture',                   h: 1,    kind: 'guest'     } ] },
+  { date: '28 Oct', day: 'Wed', time: 'Time TBA', sessions: [
+    { name: 'Wrap-up',                         h: 1,    kind: 'milestone' } ] },
+  { date: '4 Nov',  day: 'Wed', label: 'Results', sessions: [
+    { name: 'Hackathon results',               h: 1,    kind: 'milestone', note: 'Announced' } ] },
 ];
 
 const SCALE_HOURS = Math.max(...SCHEDULE.map(d => d.sessions.reduce((s, x) => s + x.h, 0)));
@@ -83,20 +82,27 @@ function hoursLabel(h) {
 function renderSchedule() {
   const list = document.getElementById('days');
   if (!list) return;
-  list.innerHTML = SCHEDULE.map((d, i) => `
+  let n = 0;
+  list.innerHTML = SCHEDULE.map(d => `
     <li class="day">
-      <span class="day-n">Day ${i + 1}</span>
-      <span class="day-date"><b>${d.date}</b><span>${d.day}</span></span>
+      <span class="day-n">${d.label || 'Day ' + (++n)}</span>
+      <span class="day-date"><b>${d.date}</b><span>${d.day}${d.time ? ' · ' + d.time : ''}</span></span>
       <div class="day-bar">
         ${d.sessions.map(s => `
           <div class="block" data-kind="${s.kind}"
                style="flex: 0 1 ${(s.h / SCALE_HOURS * 100).toFixed(2)}%"
-               title="${s.name} — ${hoursLabel(s.h)}">
+               title="${s.name}${s.note ? '' : ' — ' + hoursLabel(s.h)}">
             <span class="block-name">${s.short || s.name}</span>
-            <span class="block-hrs">${hoursLabel(s.h)}</span>
+            <span class="block-hrs">${s.note || hoursLabel(s.h)}</span>
           </div>`).join('')}
       </div>
     </li>`).join('');
+
+  // keep the footnote in step with the data
+  const taught = SCHEDULE.flatMap(d => d.sessions).filter(s => s.kind !== 'milestone');
+  const hrs = taught.reduce((a, s) => a + s.h, 0);
+  const foot = document.getElementById('schedule-total');
+  if (foot) foot.textContent = `Total teaching time: ${hrs} hours across ${taught.length} sessions, plus orientation, hackathon intro and wrap-up.`;
 }
 
 
