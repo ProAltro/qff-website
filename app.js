@@ -428,6 +428,27 @@ function init() {
     });
   });
 
+  // hackathon track tabs
+  const trackTabs = [...document.querySelectorAll('.track-tab')];
+  const selectTrack = btn => {
+    trackTabs.forEach(t => {
+      const on = t === btn;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+  };
+  trackTabs.forEach((btn, i) => {
+    btn.addEventListener('click', () => selectTrack(btn));
+    btn.addEventListener('keydown', e => {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      const next = trackTabs[(i + (e.key === 'ArrowRight' ? 1 : -1) + trackTabs.length) % trackTabs.length];
+      selectTrack(next);
+      next.focus();
+    });
+  });
+
   window.addEventListener('hashchange', () => {
     showTab(location.hash.replace('#', '') || 'home', true);
   });

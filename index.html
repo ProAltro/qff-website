@@ -238,33 +238,38 @@
     <div class="page-head">
       <p class="eyebrow">Hackathon</p>
       <h2>You build with what the week taught you.</h2>
-      <p class="page-lead">The hackathon is the last thread of the programme, not a separate contest. The problem statement is out: it was introduced on Tuesday 27 October, and results are announced on 4 November. Submission will open soon.</p>
+      <p class="page-lead">The hackathon is the last thread of the programme, not a separate contest. The problem statements are out: they were introduced on Tuesday 27 October, and results are announced on 4 November. There are two tracks. Work alone or in a team of up to 3. Submission will open soon.</p>
     </div>
 
     <div class="hack-arc">
       <div class="arc-step">
         <p class="arc-when">27 October · Done</p>
         <h3 style="font-size: 1.75rem; font-weight: 700;">Briefing</h3>
-        <p>The problem statement is below.</p>
+        <p>Both problem statements are below.</p>
       </div>
       <div class="arc-step">
         <p class="arc-when">Now</p>
         <h3 style="font-size: 1.75rem; font-weight: 700;">Build</h3>
-        <p>Build your code and write a report of at most 6 pages. Submission opens soon.</p>
+        <p>Pick a track and build. Submission opens soon.</p>
       </div>
       <div class="arc-step">
         <p class="arc-when">4 November</p>
         <h3 style="font-size: 1.75rem; font-weight: 700;">Results</h3>
-        <p>Results are announced after the viva and demo with the judges.</p>
+        <p>Results are announced once judging for both tracks is done.</p>
       </div>
     </div>
 
-    <article class="problem" aria-labelledby="problem-title">
+    <div class="track-tabs" role="tablist" aria-label="Hackathon tracks">
+      <button class="track-tab is-active" role="tab" id="track-tab-1" aria-selected="true" aria-controls="track-1" data-track="1"><span>Track 1</span>Isogenies on Oasis</button>
+      <button class="track-tab" role="tab" id="track-tab-2" aria-selected="false" aria-controls="track-2" data-track="2" tabindex="-1"><span>Track 2</span>The Silent Group</button>
+    </div>
+
+    <article class="problem" id="track-1" role="tabpanel" aria-labelledby="track-tab-1">
       <header class="problem-head">
-        <p class="panel-tag">Problem statement</p>
+        <p class="panel-tag">Track 1 · Problem statement</p>
         <h3 id="problem-title">Isogenies on Oasis</h3>
         <nav class="problem-toc" aria-label="Problem statement sections">
-          <a href="#ps-campus">How Qankan sees campus</a>
+          <a href="#ps-campus">How Ankan sees campus</a>
           <a href="#ps-part1">1 · The password</a>
           <a href="#ps-part2">2 · The phone on the Clock Tower</a>
           <a href="#ps-part3">3 · The Oasis map</a>
@@ -274,17 +279,17 @@
       </header>
 
       <div class="problem-story">
-        <p>With Oasis coming up in a few days, our beloved physics assoc members, Shashank, Gaurav, Shreyas, Aditya and Soham, were looking forward to having some fun. But suddenly, they get a call from Qankan Qal telling them to meet him in his chambers for a “fun game”. The members, knowing that the “fun” was not going to be very fun, hesitantly went to meet him.</p>
+        <p>With Oasis coming up in a few days, our beloved physics assoc members, Shashank, Gaurav, Shreyash, Aditya and Soham, were looking forward to having some fun. But suddenly, they get a call from Ankan Pal telling them to meet him in his chambers for a “fun game”. The members, knowing that the “fun” was not going to be very fun, hesitantly went to meet him.</p>
         <p>Upon meeting him, they see him excited and a bit concerned as well. “We have a problem at hand, and if you guys want a Domino’s treat from me, you are going to need to help me a bit.”</p>
-        <p>Not particularly interested in Domino’s, but liking Qankan Qal and being curious students, our protagonists decided to hear it out.</p>
-        <p>Qankan explains. He suspects that with Oasis coming up, Djinns have started showing up on campus. He has MFA set up on his Google account, and last night one of them wiped the password clean out of his head <em>and</em> ran off with his phone. He has a crypto test to make and needs to log in to do it. All he remembers is that he took inspiration for the password from the routes between the Maths department and ANC. And when he used Find My Device, it showed his phone on top of the Clock Tower, which is exactly where you’d leave a phone if you could fly.</p>
-        <p>Our protagonists decide they want more than a Domino’s treat, and that their reward should be proportional to how hard it is to get to the top of the Clock Tower. Qankan, a bit too quickly, agrees.</p>
-        <p>Also, it turns out that with Djinns wandering around and so many people running so many events all over campus during Oasis, Qankan Qal was tasked with making a map, and he is too lazy to do it himself. So, multiple birds with one step.</p>
+        <p>Not particularly interested in Domino’s, but liking Ankan Pal and being curious students, our protagonists decided to hear it out.</p>
+        <p>Ankan explains. He suspects that with Oasis coming up, Djinns have started showing up on campus. He has MFA set up on his Google account, and last night one of them wiped the password clean out of his head <em>and</em> ran off with his phone. He has a crypto test to make and needs to log in to do it. All he remembers is that he took inspiration for the password from the routes between the Maths department and ANC. And when he used Find My Device, it showed his phone on top of the Clock Tower, which is exactly where you’d leave a phone if you could fly.</p>
+        <p>Our protagonists decide they want more than a Domino’s treat, and that their reward should be proportional to how hard it is to get to the top of the Clock Tower. Ankan, a bit too quickly, agrees.</p>
+        <p>Also, it turns out that with Djinns wandering around and so many people running so many events all over campus during Oasis, Ankan Pal was tasked with making a map, and he is too lazy to do it himself. So, multiple birds with one step.</p>
       </div>
 
       <section class="problem-sec" id="ps-campus">
-        <h4>How Qankan sees campus</h4>
-        <p>Qankan, of course, doesn’t see campus the way normal people do. He goes to the board.</p>
+        <h4>How Ankan sees campus</h4>
+        <p>Ankan, of course, doesn’t see campus the way normal people do. He goes to the board.</p>
         <p>“Every spot on campus is a curve,” he says.</p>
         <p class="math-block"><i>E<sub>A</sub></i> : <i>y</i><sup>2</sup> = <i>x</i><sup>3</sup> + <i>Ax</i><sup>2</sup> + <i>x</i>,&ensp; with <i>A</i> ∈ 𝔽 = 𝔽<sub><i>p</i></sub>(<i>i</i>),&ensp; <i>p</i> ≡ 3 (mod 4),&ensp; <i>i</i><sup>2</sup> = −1</p>
         <p>“From every spot there are three roads, which are 2-isogenies. You came in on one, so there are two ways forward, 0 and 1. To know which is which, take the two 2-torsion points other than (0, 0) and sort their <i>x</i>-coordinates by key(<i>u</i> + <i>v</i>·<i>i</i>) = <i>u</i> + <i>p</i>·<i>v</i> to get <i>r</i><sub>0</sub> and <i>r</i><sub>1</sub>. Bit <i>b</i> means you take the road through <i>r<sub>b</sub></i>. You land on a curve you can write as <i>E</i><sub><i>A</i>′</sub> or <i>E</i><sub>−<i>A</i>′</sub> (the two forms where (0, 0) is the road back to where you came from, i.e., it generates the kernel of the dual isogeny); take whichever has the smaller key. A password is just a string of bits, so it’s a route, and where you end up is its <i>j</i>-invariant. Call that <i>H</i>(route), and call the length of the route <i>L</i>.” (Every spot has <i>A</i><sup>2</sup> ≠ 4, so the curve is never singular.)</p>
@@ -314,8 +319,8 @@
       <section class="problem-sec" id="ps-part1">
         <p class="part-no">Part 1</p>
         <h4>The password</h4>
-        <p>Qankan’s password is one of the 12-step routes from the Maths department to ANC, but he doesn’t remember which one, so our protagonists need to find <strong>all</strong> of them. And since he’s going to sit there typing them in one by one, he wants to be sure the list is complete, and he wants them to prove it to him with a quantum procedure and tell him how confident they are. He also wants to know how many queries it took (one query is one use of the one-step circuit), compared with what a classical search and the best possible quantum search would need, in terms of <i>N</i> = 2<sup><i>L</i></sup> and the number of routes <i>k</i>.</p>
-        <p>Aditya points out that it’s only 4096 routes and they could just walk all of them. Qankan laughs a bit. That works on this campus, sure, but he only drew them a small one. The real campus, the one his test is about, has <i>p</i> around 2<sup>256</sup> and something like 2<sup>254</sup> spots, so they have to do it the way they’d have to do it there.</p>
+        <p>Ankan’s password is one of the 12-step routes from the Maths department to ANC, but he doesn’t remember which one, so our protagonists need to find <strong>all</strong> of them. And since he’s going to sit there typing them in one by one, he wants to be sure the list is complete, and he wants them to prove it to him with a quantum procedure and tell him how confident they are. He also wants to know how many queries it took (one query is one use of the one-step circuit), compared with what a classical search and the best possible quantum search would need, in terms of <i>N</i> = 2<sup><i>L</i></sup> and the number of routes <i>k</i>.</p>
+        <p>Aditya points out that it’s only 4096 routes and they could just walk all of them. Ankan laughs a bit. That works on this campus, sure, but he only drew them a small one. The real campus, the one his test is about, has <i>p</i> around 2<sup>256</sup> and something like 2<sup>254</sup> spots, so they have to do it the way they’d have to do it there.</p>
         <p>So the rules are as follows:</p>
         <ul class="rule-list">
           <li>They’re allowed to walk every road once before they know where they’re going, which is at most two moves per spot, and turn that into a quantum circuit that takes one step coherently. This survey can’t depend on <i>A</i><sub>0</sub>, <i>L</i> or <i>j</i>*.</li>
@@ -328,8 +333,8 @@
       <section class="problem-sec" id="ps-part2">
         <p class="part-no">Part 2</p>
         <h4>The phone on the Clock Tower</h4>
-        <p>On Qankan’s campus, the top of the Clock Tower is the set of all curves whose <i>j</i>-invariant is in <strong>𝔽<sub><i>p</i></sub></strong>. On the small campus almost a third of routes end up there, so it’s not that impressive. On the real campus it’s more like one spot in √<i>p</i>, which is where it gets hard.</p>
-        <p>Since our protagonists wanted their reward to be proportional to how hard it is to get up there, Qankan says fine: tell me how hard it is. Concretely:</p>
+        <p>On Ankan’s campus, the top of the Clock Tower is the set of all curves whose <i>j</i>-invariant is in <strong>𝔽<sub><i>p</i></sub></strong>. On the small campus almost a third of routes end up there, so it’s not that impressive. On the real campus it’s more like one spot in √<i>p</i>, which is where it gets hard.</p>
+        <p>Since our protagonists wanted their reward to be proportional to how hard it is to get up there, Ankan says fine: tell me how hard it is. Concretely:</p>
         <ul class="rule-list">
           <li>What does it cost a quantum computer, as a power of <i>p</i>, to find a route of length Θ(log <i>p</i>) that ends on top of the Clock Tower?</li>
           <li>They have to prove the upper bound, saying which theorems they borrowed.</li>
@@ -341,21 +346,21 @@
       <section class="problem-sec" id="ps-part3">
         <p class="part-no">Part 3</p>
         <h4>The Oasis map</h4>
-        <p>Now for the map Qankan was too lazy to make. The catch is that the Djinns don’t like being written down, and anything that looks like a table of roads just goes missing overnight. Plus, during Oasis the campus is huge and nobody is going to write down every road anyway. So the map can’t be a table this time. It has to work out every road by itself.</p>
-        <p>For <i>p</i> = 1019, our protagonists have to build <strong>one step</strong> as a reversible circuit using only arithmetic in 𝔽. That means doing the square root, the key comparison and the sign choice, and cleaning up every ancilla afterwards. They check it on every spot and both bits. Then they tell Qankan what the same circuit costs at <i>p</i> ≈ 2<sup>256</sup>, including checking whether you’re on the Clock Tower, and what getting his phone back (Part 2) would cost there.</p>
+        <p>Now for the map Ankan was too lazy to make. The catch is that the Djinns don’t like being written down, and anything that looks like a table of roads just goes missing overnight. Plus, during Oasis the campus is huge and nobody is going to write down every road anyway. So the map can’t be a table this time. It has to work out every road by itself.</p>
+        <p>For <i>p</i> = 1019, our protagonists have to build <strong>one step</strong> as a reversible circuit using only arithmetic in 𝔽. That means doing the square root, the key comparison and the sign choice, and cleaning up every ancilla afterwards. They check it on every spot and both bits. Then they tell Ankan what the same circuit costs at <i>p</i> ≈ 2<sup>256</sup>, including checking whether you’re on the Clock Tower, and what getting his phone back (Part 2) would cost there.</p>
       </section>
 
       <section class="problem-sec" id="ps-part4">
         <p class="part-no">Part 4</p>
         <h4>The Djinns</h4>
-        <p>There’s one more thing bothering Qankan. The Djinns aren’t done. The night before the fest, they’re going to go around campus and swap every signboard according to some secret random shuffle that only they know. The roads stay the same; only the names change. After that, all anyone has is:</p>
+        <p>There’s one more thing bothering Ankan. The Djinns aren’t done. The night before the fest, they’re going to go around campus and swap every signboard according to some secret random shuffle that only they know. The roads stay the same; only the names change. After that, all anyone has is:</p>
         <ul class="rule-list">
           <li>the name of the spot they start from;</li>
           <li>a Djinn who, if asked, tells them the name behind road 0 or road 1;</li>
           <li>a volunteer at every venue who just says yes or no to “is this the Clock Tower?” and “is this ANC?”.</li>
         </ul>
         <p>So he wants to know what exactly their speed-ups were depending on. What still works after the Djinns are done, what doesn’t, and why? Which classical tricks still work? And can they prove the Part 2 lower bound in a world run by Djinns?</p>
-        <p class="problem-coda">Shashank, Gaurav, Shreyas, Aditya and Soham look at each other, then at the Clock Tower, and decide the Domino’s had better be a large.</p>
+        <p class="problem-coda">Shashank, Gaurav, Shreyash, Aditya and Soham look at each other, then at the Clock Tower, and decide the Domino’s had better be a large.</p>
       </section>
 
       <section class="problem-sec problem-details" id="ps-details">
@@ -371,6 +376,8 @@
             </ul>
           </div>
           <div>
+            <p class="panel-tag">Teams</p>
+            <p>Teams of 1 to 3 people.</p>
             <p class="panel-tag">Submission</p>
             <p>A repository containing the code and a report of at most 6 pages.</p>
             <p class="panel-tag">Evaluation</p>
@@ -385,6 +392,169 @@
             </table>
           </div>
         </div>
+      </section>
+    </article>
+
+    <article class="problem" id="track-2" role="tabpanel" aria-labelledby="track-tab-2" hidden>
+      <header class="problem-head">
+        <p class="panel-tag">Track 2 · Problem statement</p>
+        <h3>The Silent Group</h3>
+        <p class="problem-sub">Break a three-party Diffie–Hellman exchange in a group you can never look at.</p>
+        <nav class="problem-toc" aria-label="Problem statement sections">
+          <a href="#sg-task">Your task</a>
+          <a href="#sg-kit">What you get</a>
+          <a href="#sg-rules">Rules</a>
+          <a href="#sg-scoring">Scoring</a>
+          <a href="#sg-submit">Submitting</a>
+          <a href="#sg-start">Getting started</a>
+          <a href="#sg-physics">Notes on the physics</a>
+          <a href="#sg-faq">FAQ</a>
+        </nav>
+        <a class="repo-link" href="https://github.com/ProAltro/qff-hackathon" target="_blank" rel="noopener noreferrer">github.com/ProAltro/qff-hackathon</a>
+      </header>
+
+      <div class="problem-story">
+        <p>Three members of the Illuminati, known only as <strong>Galileo</strong>, <strong>Bernini</strong> and <strong>Milton</strong>, are planning a secret meeting. The time and place are never written down. Instead, the three of them agree on a shared secret <i>K</i>, and <i>K</i> is the meeting.</p>
+        <p>They don’t trust paper, and they don’t trust ordinary arithmetic. Every key exchange the Order runs goes through the <em>Silent Group</em>. This is a sealed quantum device that holds one element of a finite abelian group in a quantum register. You hand it a control qubit and an instruction such as “multiply by <i>h</i> to the power <i>k</i>”. If the control is |1⟩, the device multiplies its register by <i>h<sup>k</sup></i>. If the control is |0⟩, nothing happens. That’s all it does. It has no display and no readout, and it can’t be opened. Outside the Order, all anyone knows is that the group is finite and abelian, with at most 2<sup>60</sup> elements.</p>
+        <p>To set a meeting, the three of them agree on a public element <i>g</i>. Galileo, Bernini and Milton each pick secret exponents <i>a</i>, <i>b</i> and <i>c</i>, and broadcast <i>A</i> = <i>g<sup>a</sup></i>, <i>B</i> = <i>g<sup>b</sup></i> and <i>C</i> = <i>g<sup>c</sup></i>. Then they pass messages around the circle over private channels: Galileo sends <i>B<sup>a</sup></i> to Milton, Bernini sends <i>C<sup>b</sup></i> to Galileo, and Milton sends <i>A<sup>c</sup></i> to Bernini. Each raises what they receive to their own secret, and all three arrive at the same key, <i>K</i> = <i>g</i><sup><i>abc</i></sup>.</p>
+        <p>You’ve intercepted the public broadcasts <i>g</i>, <i>A</i>, <i>B</i> and <i>C</i> for three upcoming meetings. The private messages went over channels you couldn’t tap. Tonight, for a few hours, you also have the device itself. Find each meeting’s <i>K</i>.</p>
+        <p>You have four things to keep in mind:</p>
+        <ul class="rule-list">
+          <li><strong>The device is old.</strong> It raises elements to powers by repeated squaring, so <i>h<sup>k</sup></i> takes about log<sub>2</sub> <i>k</i> internal operations. Every operation drains its power cell.</li>
+          <li><strong>The device is noisy.</strong> Each multiplication leaves a small random error in the phase it kicks back. The bigger the power, the bigger the error.</li>
+          <li><strong>The Order suspects a mole.</strong> Before some meetings, one or more members broadcast a forgery: an element that isn’t a power of <i>g</i> at all. No real key comes out of that exchange, and the meeting is a trap. Spot it.</li>
+          <li><strong>The power cell is per meeting.</strong> Every shot of every circuit you run against a meeting’s broadcasts drains that meeting’s budget.</li>
+        </ul>
+      </div>
+
+      <section class="problem-sec" id="sg-task">
+        <h4>Your task</h4>
+        <p>Each meeting gives you four element names: <code>g</code>, <code>A</code>, <code>B</code> and <code>C</code>. You can’t print group elements, so every answer is a number:</p>
+        <div class="table-scroll">
+          <table class="checks">
+            <thead><tr><th scope="col">Field</th><th scope="col">Meaning</th></tr></thead>
+            <tbody>
+              <tr><td>order</td><td>ord(<i>g</i>): the smallest <i>n</i> &gt; 0 with <i>g<sup>n</sup></i> = <i>e</i></td></tr>
+              <tr><td>secret</td><td><i>abc</i> mod ord(<i>g</i>), so that <i>K</i> = <i>g</i><sup>secret</sup></td></tr>
+              <tr><td>secret = "none"</td><td>if any of <i>A</i>, <i>B</i> or <i>C</i> is not a power of <i>g</i> (a forgery)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Always report <code>order</code>, even for a forgery.</p>
+      </section>
+
+      <section class="problem-sec" id="sg-kit">
+        <h4>What you get</h4>
+        <p>The repo is a Python package, <code>silentgroup</code>, that simulates the device on your laptop:</p>
+        <div class="table-scroll">
+          <table class="checks kit">
+            <thead><tr><th scope="col">Name</th><th scope="col">What it does</th></tr></thead>
+            <tbody>
+              <tr><td>oracle_gate(element, power)</td><td>A one-qubit Qiskit gate. Its qubit is the control, and it multiplies the device’s register by <code>element ** power</code>. <code>power</code> can be any int, including negative or very large values. The register itself is implicit: you never allocate, touch or measure it. It starts in the identity <i>e</i>.</td></tr>
+              <tr><td>Oracle(instance)</td><td><code>.run(circuit, shots)</code> returns counts. Keys are bitstrings with classical bit 0 rightmost. Also: <code>.cost(circuit, shots)</code>, <code>.budget_left()</code>, <code>.queries_used</code>, <code>.elements</code></td></tr>
+              <tr><td>load_public("public_1")</td><td>One of two practice meetings at full size. Their answers are in <code>silentgroup/instances/</code>.</td></tr>
+              <tr><td>MockGroup(moduli, ...)</td><td>A group ℤ<sub><i>d</i>1</sub> × ℤ<sub><i>d</i>2</sub> × … that you choose, for debugging. Its answer is known, and <code>forged="C"</code> (or <code>"AB"</code>, …) makes those broadcasts forgeries.</td></tr>
+            </tbody>
+          </table>
+        </div>
+<pre class="code"><code>from qiskit import QuantumCircuit
+from silentgroup import MockGroup, Oracle, load_public, oracle_gate
+
+qc = QuantumCircuit(1, 1)
+qc.h(0)
+qc.append(oracle_gate("g", 5), [0])   # controlled multiplication by g^5
+qc.h(0)
+qc.measure(0, 0)
+
+Oracle(MockGroup([2**20, 6], seed=1), noise=0).run(qc, shots=100)   # perfect device, for debugging
+Oracle(load_public("public_1")).run(qc, shots=100)                   # realistic device</code></pre>
+        <p>The source is all there, and you’re welcome to read it.</p>
+      </section>
+
+      <section class="problem-sec" id="sg-rules">
+        <h4>Rules</h4>
+        <ol class="num-list">
+          <li><strong>Qubits.</strong> At most 16 qubits per circuit. The device’s register doesn’t count.</li>
+          <li><strong>Gates.</strong> Anything Qiskit can express on your own qubits: standard and library gates, <code>measure</code>, <code>reset</code>, and <code>if_test</code> conditioned on a classical bit or register. <code>for_loop</code>, <code>while_loop</code> and <code>switch_case</code> aren’t supported, so unroll loops in Python. Gates must be fully bound, with no free parameters.</li>
+          <li><strong>Cost.</strong> Each <code>oracle_gate(h, k)</code> costs max(1, bit_length(|<i>k</i>|)) queries per shot. Oracle gates in both branches of an <code>if_test</code> are charged. A run costs the circuit’s cost per shot times the number of shots.</li>
+          <li><strong>Noise.</strong> Each oracle call adds an independent Gaussian phase error to the phase it kicks back. Its standard deviation is 0.002 × √(that call’s cost) turns, where 1 turn = 2π radians.</li>
+          <li><strong>Budget.</strong> Each hidden meeting has 80,000 queries. Once they run out, the device stops responding.</li>
+          <li><strong>Time.</strong> Each hidden meeting gets 10 minutes of wall-clock time.</li>
+          <li><strong>Adaptivity.</strong> Your solver can look at the results of one run before building the next.</li>
+          <li><strong>Fair play.</strong> Your solver may interact with the device only through the <code>oracle</code> object. An attempt to inspect, import or attack the judge scores 0 for that meeting.</li>
+        </ol>
+      </section>
+
+      <section class="problem-sec" id="sg-scoring">
+        <h4>Scoring</h4>
+        <div class="details-grid">
+          <div>
+            <table class="points weights">
+              <thead><tr><th scope="col">Component</th><th scope="col">How it’s scored</th><th scope="col">Weight</th></tr></thead>
+              <tbody>
+                <tr><td>Auto score</td><td>Summed over the 3 hidden meetings, scored per meeting as below</td><td>60%</td></tr>
+                <tr><td>Open track</td><td>One extension of your choice, judged on depth</td><td>20%</td></tr>
+                <tr><td>Presentation</td><td>8 minutes: your algorithm, why it works, and what failed</td><td>20%</td></tr>
+              </tbody>
+            </table>
+            <p class="panel-tag">Auto score for one meeting</p>
+            <ul class="rule-list">
+              <li><strong>0</strong> if <code>order</code> is wrong.</li>
+              <li><strong>0.3</strong> if <code>order</code> is right but <code>secret</code> is wrong.</li>
+              <li><strong>1 + 0.5 × (fraction of budget left)</strong> if both are right.</li>
+            </ul>
+          </div>
+          <div>
+            <p class="panel-tag">Ideas for the open track</p>
+            <ul class="rule-list">
+              <li>Find the full structure of the subgroup generated by <i>g</i>, <i>A</i>, <i>B</i> and <i>C</i>, as a product ℤ<sub><i>n</i>1</sub> × ℤ<sub><i>n</i>2</sub> × ….</li>
+              <li>Derive a query-cost bound for your method and compare it with what you measure.</li>
+              <li>Characterise how your solver degrades as the noise grows.</li>
+              <li>Solve with as few qubits as possible.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="problem-sec" id="sg-submit">
+        <h4>Submitting</h4>
+        <p>Teams of 1 to 3 people. Submit one Python file that defines:</p>
+<pre class="code"><code>def solve(oracle) -&gt; dict:
+    return {"order": ..., "secret": ...}</code></pre>
+        <p><code>examples/solver_template.py</code> is a starting point. After the deadline the organizers run your <code>solve</code> once on each hidden meeting. Your solver runs in a sandbox, and its <code>oracle</code> has the same interface as <code>Oracle</code> in the repo. It can use the Python standard library, <code>numpy</code> and <code>qiskit</code>. If you need another package, ask the organizers before the deadline.</p>
+        <p>To rehearse, score your solver on the public meetings exactly as the judge will score the hidden ones:</p>
+<pre class="code"><code>python -m silentgroup.check my_solver.py --repeat 5</code></pre>
+        <p>The noise is random, so run it more than once. A solver that’s right 4 times out of 5 can still fail on the night.</p>
+      </section>
+
+      <section class="problem-sec" id="sg-start">
+        <h4>Getting started</h4>
+<pre class="code"><code>git clone https://github.com/ProAltro/qff-hackathon.git &amp;&amp; cd qff-hackathon
+python -m venv .venv &amp;&amp; source .venv/bin/activate
+pip install -e .
+python examples/quickstart.py
+python -m silentgroup.check examples/solver_template.py</code></pre>
+      </section>
+
+      <section class="problem-sec" id="sg-physics">
+        <h4>Notes on the physics</h4>
+        <p>The register starts in the identity state |<i>e</i>⟩, and the device never measures it. <i>G</i> is abelian, so all the multiplication operators <i>U<sub>h</sub></i> share one eigenbasis. There is one eigenvector |<i>χ̂</i>⟩ for each character <i>χ</i> of <i>G</i>, with</p>
+        <p class="math-block"><i>U<sub>h</sub></i> |<i>χ̂</i>⟩ = e<sup>2π<i>i</i> <i>χ</i>(<i>h</i>)</sup> |<i>χ̂</i>⟩,</p>
+        <p>and |<i>e</i>⟩ is the uniform superposition of all these eigenvectors. Work out what that means for what your measurements can tell you. The simulator in <code>silentgroup/simulator.py</code> does exactly this calculation.</p>
+      </section>
+
+      <section class="problem-sec" id="sg-faq">
+        <h4>FAQ</h4>
+        <dl class="faq">
+          <dt>Can I see the group?</dt>
+          <dd>Only for <code>MockGroup</code> and the two public meetings. The hidden groups exist only on the judge’s machine.</dd>
+          <dt>Is the hidden group cyclic? How big is it?</dt>
+          <dd>Assume nothing beyond “finite, abelian, at most 2<sup>60</sup> elements”. Hidden groups vary in shape.</dd>
+          <dt>Why is my answer different each run?</dt>
+          <dd>Every shot is random, and so is the noise. Design for that.</dd>
+          <dt>Do failed runs cost queries?</dt>
+          <dd>A run that’s refused for breaking the rules (too many qubits, an unknown element, an unsupported gate) costs nothing. A run that executes costs its full price, whatever you do with the result.</dd>
+        </dl>
       </section>
     </article>
 
