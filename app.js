@@ -69,8 +69,6 @@ const SCHEDULE = [
     { name: 'Hackathon intro',                 h: 1,    kind: 'milestone' } ] },
   { date: '28 Oct', day: 'Wed', time: 'Time TBA', sessions: [
     { name: 'Wrap-up',                         h: 1,    kind: 'milestone' } ] },
-  { date: '4 Nov',  day: 'Wed', label: 'Results', sessions: [
-    { name: 'Hackathon results',               h: 1,    kind: 'milestone', note: 'Announced' } ] },
 ];
 
 const SCALE_HOURS = Math.max(...SCHEDULE.map(d => d.sessions.reduce((s, x) => s + x.h, 0)));
