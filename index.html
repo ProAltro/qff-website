@@ -238,27 +238,163 @@
     <div class="page-head">
       <p class="eyebrow">Hackathon</p>
       <h2>You build with what the week taught you.</h2>
-      <p class="page-lead">The hackathon is the last thread of the programme, not a separate contest. It is introduced on Saturday 24 October, built through the week, and results are announced on 4 November.</p>
+      <p class="page-lead">The hackathon is the last thread of the programme, not a separate contest. The problem statement is out: it was introduced on Tuesday 27 October, and results are announced on 4 November. Submission will open soon.</p>
     </div>
 
     <div class="hack-arc">
       <div class="arc-step">
+        <p class="arc-when">27 October · Done</p>
         <h3 style="font-size: 1.75rem; font-weight: 700;">Briefing</h3>
+        <p>The problem statement is below.</p>
       </div>
       <div class="arc-step">
+        <p class="arc-when">Now</p>
         <h3 style="font-size: 1.75rem; font-weight: 700;">Build</h3>
+        <p>Build your code and write a report of at most 6 pages. Submission opens soon.</p>
       </div>
       <div class="arc-step">
+        <p class="arc-when">4 November</p>
         <h3 style="font-size: 1.75rem; font-weight: 700;">Results</h3>
+        <p>Results are announced after the viva and demo with the judges.</p>
       </div>
     </div>
+
+    <article class="problem" aria-labelledby="problem-title">
+      <header class="problem-head">
+        <p class="panel-tag">Problem statement</p>
+        <h3 id="problem-title">Isogenies on Oasis</h3>
+        <nav class="problem-toc" aria-label="Problem statement sections">
+          <a href="#ps-campus">How Qankan sees campus</a>
+          <a href="#ps-part1">1 · The password</a>
+          <a href="#ps-part2">2 · The phone on the Clock Tower</a>
+          <a href="#ps-part3">3 · The Oasis map</a>
+          <a href="#ps-part4">4 · The Djinns</a>
+          <a href="#ps-details">Details</a>
+        </nav>
+      </header>
+
+      <div class="problem-story">
+        <p>With Oasis coming up in a few days, our beloved physics assoc members, Shashank, Gaurav, Shreyas, Aditya and Soham, were looking forward to having some fun. But suddenly, they get a call from Qankan Qal telling them to meet him in his chambers for a “fun game”. The members, knowing that the “fun” was not going to be very fun, hesitantly went to meet him.</p>
+        <p>Upon meeting him, they see him excited and a bit concerned as well. “We have a problem at hand, and if you guys want a Domino’s treat from me, you are going to need to help me a bit.”</p>
+        <p>Not particularly interested in Domino’s, but liking Qankan Qal and being curious students, our protagonists decided to hear it out.</p>
+        <p>Qankan explains. He suspects that with Oasis coming up, Djinns have started showing up on campus. He has MFA set up on his Google account, and last night one of them wiped the password clean out of his head <em>and</em> ran off with his phone. He has a crypto test to make and needs to log in to do it. All he remembers is that he took inspiration for the password from the routes between the Maths department and ANC. And when he used Find My Device, it showed his phone on top of the Clock Tower, which is exactly where you’d leave a phone if you could fly.</p>
+        <p>Our protagonists decide they want more than a Domino’s treat, and that their reward should be proportional to how hard it is to get to the top of the Clock Tower. Qankan, a bit too quickly, agrees.</p>
+        <p>Also, it turns out that with Djinns wandering around and so many people running so many events all over campus during Oasis, Qankan Qal was tasked with making a map, and he is too lazy to do it himself. So, multiple birds with one step.</p>
+      </div>
+
+      <section class="problem-sec" id="ps-campus">
+        <h4>How Qankan sees campus</h4>
+        <p>Qankan, of course, doesn’t see campus the way normal people do. He goes to the board.</p>
+        <p>“Every spot on campus is a curve,” he says.</p>
+        <p class="math-block"><i>E<sub>A</sub></i> : <i>y</i><sup>2</sup> = <i>x</i><sup>3</sup> + <i>Ax</i><sup>2</sup> + <i>x</i>,&ensp; with <i>A</i> ∈ 𝔽 = 𝔽<sub><i>p</i></sub>(<i>i</i>),&ensp; <i>p</i> ≡ 3 (mod 4),&ensp; <i>i</i><sup>2</sup> = −1</p>
+        <p>“From every spot there are three roads, which are 2-isogenies. You came in on one, so there are two ways forward, 0 and 1. To know which is which, take the two 2-torsion points other than (0, 0) and sort their <i>x</i>-coordinates by key(<i>u</i> + <i>v</i>·<i>i</i>) = <i>u</i> + <i>p</i>·<i>v</i> to get <i>r</i><sub>0</sub> and <i>r</i><sub>1</sub>. Bit <i>b</i> means you take the road through <i>r<sub>b</sub></i>. You land on a curve you can write as <i>E</i><sub><i>A</i>′</sub> or <i>E</i><sub>−<i>A</i>′</sub> (the two forms where (0, 0) is the road back to where you came from, i.e., it generates the kernel of the dual isogeny); take whichever has the smaller key. A password is just a string of bits, so it’s a route, and where you end up is its <i>j</i>-invariant. Call that <i>H</i>(route), and call the length of the route <i>L</i>.” (Every spot has <i>A</i><sup>2</sup> ≠ 4, so the curve is never singular.)</p>
+        <dl class="params">
+          <div><dt>p</dt><dd>1019</dd></div>
+          <div><dt>Maths department</dt><dd><i>A</i><sub>0</sub> = 977 + 297<i>i</i></dd></div>
+          <div><dt>Route length</dt><dd><i>L</i> = 12</dd></div>
+          <div><dt>ANC</dt><dd><i>j</i>* = 797 + 921<i>i</i></dd></div>
+        </dl>
+        <p>“Some checks so you know you’re doing it right,” he adds:</p>
+        <div class="table-scroll">
+          <table class="checks">
+            <thead><tr><th scope="col">Route</th><th scope="col">Where you are after it</th><th scope="col"><i>j</i></th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>747 + 288<i>i</i></td><td>98 + 85<i>i</i></td></tr>
+              <tr><td>1</td><td>79 + 218<i>i</i></td><td>138</td></tr>
+              <tr><td>01</td><td class="na">—</td><td>967 + 249<i>i</i></td></tr>
+              <tr><td>000000000000</td><td class="na">—</td><td>348 + 660<i>i</i></td></tr>
+              <tr><td>111111111111</td><td class="na">—</td><td>34</td></tr>
+              <tr><td>011010010110</td><td class="na">—</td><td>98 + 934<i>i</i></td></tr>
+              <tr><td>101100111000</td><td class="na">—</td><td>119</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="problem-sec" id="ps-part1">
+        <p class="part-no">Part 1</p>
+        <h4>The password</h4>
+        <p>Qankan’s password is one of the 12-step routes from the Maths department to ANC, but he doesn’t remember which one, so our protagonists need to find <strong>all</strong> of them. And since he’s going to sit there typing them in one by one, he wants to be sure the list is complete, and he wants them to prove it to him with a quantum procedure and tell him how confident they are. He also wants to know how many queries it took (one query is one use of the one-step circuit), compared with what a classical search and the best possible quantum search would need, in terms of <i>N</i> = 2<sup><i>L</i></sup> and the number of routes <i>k</i>.</p>
+        <p>Aditya points out that it’s only 4096 routes and they could just walk all of them. Qankan laughs a bit. That works on this campus, sure, but he only drew them a small one. The real campus, the one his test is about, has <i>p</i> around 2<sup>256</sup> and something like 2<sup>254</sup> spots, so they have to do it the way they’d have to do it there.</p>
+        <p>So the rules are as follows:</p>
+        <ul class="rule-list">
+          <li>They’re allowed to walk every road once before they know where they’re going, which is at most two moves per spot, and turn that into a quantum circuit that takes one step coherently. This survey can’t depend on <i>A</i><sub>0</sub>, <i>L</i> or <i>j</i>*.</li>
+          <li>After that, no planning routes on paper. That means no counting paths, no going backwards from ANC, no meet-in-the-middle, and no listing routes. The only classical thing allowed is walking a route they measured, once, to check it.</li>
+          <li>They can’t build an oracle out of evaluations of <i>H</i> either. The “are we at ANC?” check has to look at the spot itself, inside the circuit. On the small campus it can come from the survey, but on the real one it has to be arithmetic, which is what Part 3 is for.</li>
+          <li>And if it turns out no route actually gets to ANC, their code should say so instead of dying.</li>
+        </ul>
+      </section>
+
+      <section class="problem-sec" id="ps-part2">
+        <p class="part-no">Part 2</p>
+        <h4>The phone on the Clock Tower</h4>
+        <p>On Qankan’s campus, the top of the Clock Tower is the set of all curves whose <i>j</i>-invariant is in <strong>𝔽<sub><i>p</i></sub></strong>. On the small campus almost a third of routes end up there, so it’s not that impressive. On the real campus it’s more like one spot in √<i>p</i>, which is where it gets hard.</p>
+        <p>Since our protagonists wanted their reward to be proportional to how hard it is to get up there, Qankan says fine: tell me how hard it is. Concretely:</p>
+        <ul class="rule-list">
+          <li>What does it cost a quantum computer, as a power of <i>p</i>, to find a route of length Θ(log <i>p</i>) that ends on top of the Clock Tower?</li>
+          <li>They have to prove the upper bound, saying which theorems they borrowed.</li>
+          <li>They have to prove a matching lower bound in a model they define properly, and explain why nobody can prove one for the real arithmetic.</li>
+        </ul>
+        <p>He also wants data on how often routes end up there as <i>p</i> grows, with the exponent fitted. For the data they’re allowed to walk random routes classically, since that’s measuring the campus, not looking for the phone. And he wants to see them actually do it on a campus where at most 1 in 32 routes gets there, with success plotted against Grover iterations, next to the theory curve and next to just walking around classically.</p>
+      </section>
+
+      <section class="problem-sec" id="ps-part3">
+        <p class="part-no">Part 3</p>
+        <h4>The Oasis map</h4>
+        <p>Now for the map Qankan was too lazy to make. The catch is that the Djinns don’t like being written down, and anything that looks like a table of roads just goes missing overnight. Plus, during Oasis the campus is huge and nobody is going to write down every road anyway. So the map can’t be a table this time. It has to work out every road by itself.</p>
+        <p>For <i>p</i> = 1019, our protagonists have to build <strong>one step</strong> as a reversible circuit using only arithmetic in 𝔽. That means doing the square root, the key comparison and the sign choice, and cleaning up every ancilla afterwards. They check it on every spot and both bits. Then they tell Qankan what the same circuit costs at <i>p</i> ≈ 2<sup>256</sup>, including checking whether you’re on the Clock Tower, and what getting his phone back (Part 2) would cost there.</p>
+      </section>
+
+      <section class="problem-sec" id="ps-part4">
+        <p class="part-no">Part 4</p>
+        <h4>The Djinns</h4>
+        <p>There’s one more thing bothering Qankan. The Djinns aren’t done. The night before the fest, they’re going to go around campus and swap every signboard according to some secret random shuffle that only they know. The roads stay the same; only the names change. After that, all anyone has is:</p>
+        <ul class="rule-list">
+          <li>the name of the spot they start from;</li>
+          <li>a Djinn who, if asked, tells them the name behind road 0 or road 1;</li>
+          <li>a volunteer at every venue who just says yes or no to “is this the Clock Tower?” and “is this ANC?”.</li>
+        </ul>
+        <p>So he wants to know what exactly their speed-ups were depending on. What still works after the Djinns are done, what doesn’t, and why? Which classical tricks still work? And can they prove the Part 2 lower bound in a world run by Djinns?</p>
+        <p class="problem-coda">Shashank, Gaurav, Shreyas, Aditya and Soham look at each other, then at the Clock Tower, and decide the Domino’s had better be a large.</p>
+      </section>
+
+      <section class="problem-sec problem-details" id="ps-details">
+        <h4>Details</h4>
+        <div class="details-grid">
+          <div>
+            <p class="panel-tag">Rules</p>
+            <ul class="rule-list">
+              <li>All circuits are built and run in Qiskit, on any simulator.</li>
+              <li>Report resources after transpiling to a basis you state. For every run, include the number of queries, the qubit count, the two-qubit gate count and the depth. For Part 3, also include the Toffoli (or T) count.</li>
+              <li>One command reproduces every result and takes <i>p</i>, <i>A</i><sub>0</sub>, <i>L</i> and <i>j</i>* as arguments.</li>
+              <li>AI tools are explicitly allowed throughout the build. Understanding still counts for a lot, though, and it will be tested in the viva and demo: you should be able to explain and modify anything you submit.</li>
+            </ul>
+          </div>
+          <div>
+            <p class="panel-tag">Submission</p>
+            <p>A repository containing the code and a report of at most 6 pages.</p>
+            <p class="panel-tag">Evaluation</p>
+            <p>Each participant has 15 minutes with the judges, without AI tools. Any part of the submission you cannot explain or modify is treated as not submitted.</p>
+            <table class="points">
+              <thead><tr><th scope="col">Criterion</th><th scope="col">Points</th></tr></thead>
+              <tbody>
+                <tr><td>Code</td><td>35</td></tr>
+                <tr><td>Viva</td><td>45</td></tr>
+                <tr><td>Demo</td><td>20</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </article>
+
 <div class="readiness" style="display: flex; flex-direction: row; align-items: center; gap: 24px; width: 100%; box-sizing: border-box; background: #ffffff; border-radius: 12px; padding: 24px;">
 
   <img src="/stickers/tile-loop.svg" alt="" class="readiness-tile" style="width: 160px; height: auto; flex-shrink: 0;">
   
  <div class="readiness-body" style="padding: 0; flex-grow: 1;">
     <p class="tba" style="color: #2e1065; margin: 0; border-left: 4px solid #f43f5e; padding-left: 16px; font-size: 1.15rem; line-height: 1.5; font-weight: 350;">
-      Team size, tracks and prizes are set by the organising committee and will be announced with the problem statements.
+      Submission for the hackathon will open soon. We'll share the link here and in the WhatsApp group.
     </p>
   </div>
 </div>

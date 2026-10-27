@@ -56,8 +56,7 @@ const SCHEDULE = [
   { date: '23 Oct', day: 'Fri', time: '7–9 pm', sessions: [
     { name: 'Intro to quantum computing III',  h: 2,    kind: 'lecture', short: 'Intro to QC III' } ] },
   { date: '24 Oct', day: 'Sat', time: '2–5 pm', sessions: [
-    { name: 'Quantum algorithms',              h: 2,    kind: 'lecture', short: 'Algorithms'      },
-    { name: 'Hackathon intro',                 h: 1,    kind: 'milestone' } ] },
+    { name: 'Quantum algorithms',              h: 2,    kind: 'lecture', short: 'Algorithms'      } ] },
   { date: '25 Oct', day: 'Sun', time: '2–5 pm', sessions: [
     { name: 'QML: variational circuits, lecture + workshop', h: 3, kind: 'workshop', short: 'QML & VQC workshop' },
     { name: 'Guest lecture',                   h: 1,    kind: 'guest'     } ] },
@@ -66,7 +65,8 @@ const SCHEDULE = [
     { name: 'QKD workshop',                    h: 1.5,  kind: 'workshop'  } ] },
   { date: '27 Oct', day: 'Tue', time: 'Time TBA', sessions: [
     { name: 'Intro to photonics',              h: 1,    kind: 'lecture'   },
-    { name: 'Guest lecture',                   h: 1,    kind: 'guest'     } ] },
+    { name: 'Guest lecture',                   h: 1,    kind: 'guest'     },
+    { name: 'Hackathon intro',                 h: 1,    kind: 'milestone' } ] },
   { date: '28 Oct', day: 'Wed', time: 'Time TBA', sessions: [
     { name: 'Wrap-up',                         h: 1,    kind: 'milestone' } ] },
   { date: '4 Nov',  day: 'Wed', label: 'Results', sessions: [
@@ -418,6 +418,15 @@ function init() {
 
   const fromUrl = location.hash.replace('#', '');
   if (fromUrl && TABS.includes(fromUrl)) showTab(fromUrl, true);
+
+  // in-page links inside the problem statement scroll without touching the tab hash
+  document.querySelectorAll('.problem-toc a').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href'))
+        .scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  });
 
   window.addEventListener('hashchange', () => {
     showTab(location.hash.replace('#', '') || 'home', true);
